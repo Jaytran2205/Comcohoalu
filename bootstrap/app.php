@@ -36,7 +36,14 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (\Throwable $e) {
+        $exceptions->render(function (\Throwable $e, Request $request) {
+            // Bỏ qua không can thiệp vào các lỗi validation, auth, hoặc HTTP (như 404, 403) để Laravel tự xử lý mặc định
+            if ($e instanceof \Illuminate\Validation\ValidationException ||
+                $e instanceof \Illuminate\Auth\AuthenticationException ||
+                $e instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
+                return null;
+            }
+
             header('Content-Type: text/html; charset=utf-8');
             echo '<h1>Original Fatal Error</h1>';
             echo '<p><b>Error:</b> ' . htmlspecialchars($e->getMessage()) . '</p>';
