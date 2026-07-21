@@ -22,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS in production/Vercel to fix mixed content blocked assets
+        if (config('app.env') === 'production' || env('VERCEL_ENV')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         // Share settings globally in views
         try {
             if (Schema::hasTable('settings')) {
