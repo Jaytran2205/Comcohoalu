@@ -96,9 +96,50 @@ Route::get('/run-migrations', function () {
     try {
         Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
         return 'Migrations and seeding completed successfully!<br><br>Output:<br><pre>' . Artisan::output() . '</pre>';
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
+    } catch (\Throwable $e) {
+        return 'Error: ' . $e->getMessage() . '<br><br>Trace:<br><pre>' . $e->getTraceAsString() . '</pre>';
     }
+});
+
+Route::get('/test-connection', function () {
+    $host = env('DB_HOST');
+    $port = env('DB_PORT');
+    $db   = env('DB_DATABASE');
+    $user = env('DB_USERNAME');
+    $pass = env('DB_PASSWORD');
+
+    $results = [];
+    $results['env'] = [
+        'host' => $host,
+        'port' => $port,
+        'db' => $db,
+        'user' => $user,
+        'pass_length' => strlen($pass),
+    ];
+
+    try {
+        $dsn = "pgsql:host=$host;port=$port;dbname=$db";
+        $results['dsn'] = $dsn;
+        
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ];
+        
+        $pdo = new PDO($dsn, $user, $pass, $options);
+        $results['status'] = 'Success! Connected to database.';
+        
+        $stmt = $pdo->query('SELECT version()');
+        $results['version'] = $stmt->fetchColumn();
+    } catch (\Throwable $e) {
+        $results['status'] = 'Failed';
+        $results['error'] = [
+            'class' => get_class($e),
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+        ];
+    }
+    
+    return response()->json($results);
 });
 
 Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');

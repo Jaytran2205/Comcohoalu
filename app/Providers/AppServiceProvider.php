@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 View::share('siteSettings', []);
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             View::share('siteSettings', []);
         }
     }
