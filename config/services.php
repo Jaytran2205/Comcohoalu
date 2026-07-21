@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'migration' => [
+        'secret_token' => env('MIGRATION_SECRET_TOKEN'),
+    ],
+
 ];

@@ -9,6 +9,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,14 +94,85 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-use Illuminate\Support\Facades\Artisan;
+Route::post('/run-migrations', function (\Illuminate\Http\Request $request) {
+    // 1. Lấy token từ header X-Migration-Token
+    $token = $request->header('X-Migration-Token');
+    $secretToken = config('services.migration.secret_token');
 
-Route::get('/run-migrations', function () {
+    // Nếu cấu hình chưa thiết lập token bí mật
+    if (empty($secretToken)) {
+        Log::error('Migration failed: services.migration.secret_token is not set in configuration.');
+        return response('Internal Server Error. Configuration missing.', 500);
+    }
+
+    // 2. So sánh token an toàn bằng hash_equals để chống timing attacks
+    if ($token === null || !hash_equals($secretToken, $token)) {
+        return response('Unauthorized.', 401);
+    }
+
+    // 3. Kiểm tra xem bảng cache_locks có tồn tại hay không trước khi thực thi
+    $useLock = false;
     try {
-        Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
-        return 'Migrations and seeding completed successfully!<br><br>Output:<br><pre>' . Artisan::output() . '</pre>';
+        $useLock = Schema::hasTable('cache_locks');
     } catch (\Throwable $e) {
-        return 'Error: ' . $e->getMessage() . '<br><br>Trace:<br><pre>' . $e->getTraceAsString() . '</pre>';
+        Log::warning('Database schema check failed for table cache_locks: ' . $e->getMessage() . '. Running without lock checks.');
+    }
+
+    // 4. Khóa chống chạy trùng lặp bằng Cache Lock (nếu bảng cache_locks tồn tại)
+    $lock = null;
+    $lockAcquired = false;
+
+    if ($useLock) {
+        try {
+            $lock = Cache::lock('migration_run_lock', 60);
+            $lockAcquired = $lock->get();
+
+            if (!$lockAcquired) {
+                return response('Another migration run is already in progress.', 429);
+            }
+        } catch (\Throwable $e) {
+            // Chế độ fail-safe: Nếu gặp lỗi khi chạy Lock (ví dụ lỗi dịch vụ cache), chặn không cho migrate
+            Log::error('Cache lock service unavailable: ' . $e->getMessage(), [
+                'exception' => $e
+            ]);
+            return response('Cache lock service unavailable.', 503);
+        }
+    }
+
+    try {
+        $fresh = $request->input('fresh') === '1';
+
+        if ($fresh) {
+            // Chạy migrate:fresh --seed khi tham số fresh được truyền rõ ràng là 1
+            Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+            $action = 'migrate:fresh --seed';
+        } else {
+            // Mặc định chạy migrate thông thường
+            Artisan::call('migrate', ['--force' => true]);
+            $action = 'migrate';
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'action' => $action,
+            'message' => 'Migration completed successfully.'
+        ]);
+    } catch (\Throwable $e) {
+        // Ghi log lỗi chi tiết trên máy chủ
+        Log::error('Migration failed with exception: ' . $e->getMessage(), [
+            'exception' => $e
+        ]);
+
+        return response('Migration failed, check server logs.', 500);
+    } finally {
+        // Luôn giải phóng lock nếu đã được lấy thành công để không bị treo
+        if ($useLock && $lock && $lockAcquired) {
+            try {
+                $lock->release();
+            } catch (\Throwable $e) {
+                Log::error('Failed to release cache lock: ' . $e->getMessage());
+            }
+        }
     }
 });
 
