@@ -74,40 +74,44 @@
 <style>
 /* Base Floating Contact Container styling */
 .floating-contact-container {
-    position: fixed;
-    right: 16px;
-    bottom: 32px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    position: fixed !important;
+    right: 16px !important;
+    bottom: 32px !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 @media (min-width: 768px) {
     .floating-contact-container {
-        right: 24px;
-        bottom: 40px;
+        right: 24px !important;
+        bottom: 40px !important;
     }
 }
 
 /* Individual Floating Button styling */
 .floating-contact-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 16px rgba(44, 24, 16, 0.2);
-    position: relative;
-    text-decoration: none;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 16px rgba(44, 24, 16, 0.2) !important;
+    position: relative !important;
+    text-decoration: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 @media (min-width: 768px) {
     .floating-contact-btn {
-        width: 56px;
-        height: 56px;
+        width: 56px !important;
+        height: 56px !important;
     }
 }
 
