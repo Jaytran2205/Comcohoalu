@@ -90,4 +90,15 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 |--------------------------------------------------------------------------
 */
 
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-migrations', function () {
+    try {
+        Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+        return 'Migrations and seeding completed successfully!<br><br>Output:<br><pre>' . Artisan::output() . '</pre>';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
+
 Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');
