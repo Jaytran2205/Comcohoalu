@@ -13,13 +13,31 @@ class MenuSeeder extends Seeder
 {
     public function run(): void
     {
-        // Disable foreign key checks to truncate safely
-        DB::statement('PRAGMA foreign_keys = OFF');
-        DB::table('set_menu_items')->truncate();
-        MenuItem::truncate();
-        MenuCategory::truncate();
-        SetMenu::truncate();
-        DB::statement('PRAGMA foreign_keys = ON');
+        $driver = DB::connection()->getDriverName();
+
+        if ($driver === 'pgsql') {
+            DB::statement('TRUNCATE TABLE set_menu_items CASCADE');
+            DB::statement('TRUNCATE TABLE menu_items CASCADE');
+            DB::statement('TRUNCATE TABLE menu_categories CASCADE');
+            DB::statement('TRUNCATE TABLE set_menus CASCADE');
+        } else {
+            if ($driver === 'sqlite') {
+                DB::statement('PRAGMA foreign_keys = OFF');
+            } else {
+                DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+            }
+
+            DB::table('set_menu_items')->truncate();
+            MenuItem::truncate();
+            MenuCategory::truncate();
+            SetMenu::truncate();
+
+            if ($driver === 'sqlite') {
+                DB::statement('PRAGMA foreign_keys = ON');
+            } else {
+                DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+            }
+        }
 
         // ── 1. Create Menu Categories ──
         $catKhaiVi = MenuCategory::create(['name' => 'Khai vị', 'slug' => 'khai-vi', 'icon' => 'fa-cookie-bite', 'sort_order' => 1]);
