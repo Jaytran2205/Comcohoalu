@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
+    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
+
     <!-- SEO Meta Tags -->
     <title>@yield('title', $siteSettings['site_name'] ?? 'Cơm Cổ Hoa Lư') - {{ $siteSettings['site_slogan'] ?? 'Hương vị cổ truyền Hoa Lư' }}</title>
     <meta name="description" content="@yield('meta_description', 'Nhà hàng Cơm Cổ Hoa Lư mang đến trải nghiệm ẩm thực đặc sắc Ninh Bình với cơm niêu than hồng, dê núi và các món ăn đặc sản đậm đà hương vị truyền thống.')">
