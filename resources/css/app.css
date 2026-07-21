@@ -1,0 +1,160 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../views/**/*.blade.php';
+@source '../../resources/views/**/*.blade.php';
+@source '/Users/vudovn/Desktop/project/quan-com/app-site/resources/views/**/*.blade.php';
+@source '../js/**/*.js';
+
+@theme {
+    /* Font Families */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-accent: 'Dancing Script', cursive;
+
+    /* Theme Colors */
+    --color-primary: #8B4513;
+    --color-primary-dark: #5D2E0C;
+    --color-primary-light: #A0522D;
+
+    --color-secondary: #D4A855;
+    --color-secondary-light: #F5E6C8;
+    --color-secondary-dark: #B8860B;
+
+    --color-bg-primary: #FFF9F0;
+    --color-bg-secondary: #F5F0E8;
+    --color-bg-dark: #2C1810;
+
+    --color-text-primary: #2C1810;
+    --color-text-secondary: #6B5B4C;
+    --color-text-light: #FFFFFF;
+
+    --color-border-custom: #D4C5B2;
+
+    --color-success: #4A7C59;
+    --color-error: #C0392B;
+    --color-warning: #E67E22;
+    --color-info: #2980B9;
+
+    /* Custom Animations */
+    --animate-float-slow: float-slow 8s ease-in-out infinite;
+    --animate-float-delayed: float-slow 8s ease-in-out infinite 4s;
+    --animate-spin-slow: spin-slow 25s linear infinite;
+
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-16px); }
+    }
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+}
+
+/* Custom Base Styles */
+@layer base {
+    body {
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
+        font-family: var(--font-sans);
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-serif);
+    }
+}
+
+/* Design System Component Utilities */
+@layer utilities {
+    /* Custom Scrollbar for premium feeling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-bg-secondary);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-primary-light);
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary);
+    }
+
+    /* Heading decorative elements */
+    .heading-decorator {
+        position: relative;
+        display: inline-block;
+    }
+    .heading-decorator::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--color-secondary);
+        margin: 12px auto 0 auto;
+        border-radius: 2px;
+    }
+
+    /* Double heading decoration (traditional accent) */
+    .heading-decorator-double::before,
+    .heading-decorator-double::after {
+        content: '❦';
+        color: var(--color-secondary);
+        font-size: 1.25rem;
+        margin: 0 10px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Traditional Vietnamese Border/Pattern Frame */
+    .viet-pattern-bg {
+        background-image: radial-gradient(var(--color-border-custom) 0.5px, transparent 0.5px), radial-gradient(var(--color-border-custom) 0.5px, var(--color-bg-primary) 0.5px);
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+        opacity: 0.15;
+    }
+
+    /* Card shadow & transitions */
+    .premium-card {
+        background: #FFFFFF;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(44, 24, 16, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(212, 197, 178, 0.3);
+    }
+    .premium-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(93, 46, 12, 0.12);
+        border-color: var(--color-secondary);
+    }
+
+    /* Glassmorphism elements */
+    .glass-dark {
+        background: rgba(44, 24, 16, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    .glass-light {
+        background: rgba(255, 249, 240, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Shimmer effect for images loading or badges */
+    .shimmer {
+        background: linear-gradient(90deg, #f5f0e8 25%, #fff9f0 50%, #f5f0e8 75%);
+        background-size: 200% 100%;
+        animation: loading-shimmer 1.5s infinite;
+    }
+}
+
+@keyframes loading-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
