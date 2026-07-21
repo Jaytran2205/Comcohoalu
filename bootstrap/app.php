@@ -34,7 +34,12 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*'),
-        );
+        $exceptions->render(function (\Throwable $e) {
+            header('Content-Type: text/html; charset=utf-8');
+            echo '<h1>Original Fatal Error</h1>';
+            echo '<p><b>Error:</b> ' . htmlspecialchars($e->getMessage()) . '</p>';
+            echo '<p><b>File:</b> ' . htmlspecialchars($e->getFile()) . ' on line ' . $e->getLine() . '</p>';
+            echo '<pre>' . htmlspecialchars($e->getTraceAsString()) . '</pre>';
+            exit;
+        });
     })->create();
