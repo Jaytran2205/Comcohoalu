@@ -2,13 +2,13 @@
     $hotline = $siteSettings['site_hotline'] ?? '0866.000.000';
     $cleanPhone = str_replace(['.', ' ', '-'], '', $hotline);
     
-    // Zalo fallback: link to zalo.me/phone if Zalo URL setting is empty
+    // Zalo fallback
     $zaloUrl = $siteSettings['site_zalo'] ?? '';
     if (empty($zaloUrl)) {
         $zaloUrl = 'https://zalo.me/' . $cleanPhone;
     }
     
-    // Messenger fallback: convert Facebook page to m.me link, or fallback to #
+    // Messenger fallback
     $facebookUrl = $siteSettings['site_facebook'] ?? '';
     $messengerUrl = '#';
     if (!empty($facebookUrl)) {
@@ -20,60 +20,54 @@
     }
 @endphp
 
-<!-- Floating Contact Buttons -->
-<div class="floating-contact-container">
+<!-- Generic class names (c-bar, c-item) to prevent mobile ad-blockers / content-blockers from hiding them -->
+<div class="c-bar">
     
-    <!-- Messenger Button -->
+    <!-- Messenger -->
     <a href="{{ $messengerUrl }}" target="_blank" rel="noopener noreferrer" 
-       class="floating-contact-btn bg-messenger"
+       class="c-item c-m"
        title="Chat Messenger">
         <i class="fab fa-facebook-messenger text-lg md:text-xl"></i>
-        <!-- Tooltip -->
-        <span class="floating-tooltip">
+        <span class="c-tt">
             Chat Messenger
         </span>
     </a>
 
-    <!-- Zalo Button -->
+    <!-- Zalo -->
     <a href="{{ $zaloUrl }}" target="_blank" rel="noopener noreferrer" 
-       class="floating-contact-btn bg-zalo"
+       class="c-item c-z"
        title="Chat Zalo">
-        <!-- Zalo Speech Bubble SVG -->
-        <svg class="zalo-svg fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="c-z-svg fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.003 2C6.478 2 2 6.03 2 11c0 2.535 1.187 4.815 3.1 6.345-.24.845-.85 2.445-.85 2.445s1.65-.29 3.22-1.105c1.49.435 3.09.695 4.83.695 5.525 0 10.003-4.03 10.003-9 0-4.97-4.478-9-10.003-9zm3.565 11.395h-3.23l-.57 1.38h-1.43l2.31-5.34h1.25l2.31 5.34h-1.41l-.57-1.38zm-2.68-1.12h2.14l-1.07-2.57-1.07 2.57zm4.94 2.5H16.29V9.435h1.22v4.185h2.22v1.155zm3.43-2.7c0 1.61-1.15 2.825-2.73 2.825s-2.73-1.215-2.73-2.825 1.15-2.825 2.73-2.825 2.73 1.215 2.73 2.825zm-4.08 0c0 .97.55 1.67 1.35 1.67.8 0 1.35-.7 1.35-1.67s-.55-1.67-1.35-1.67c-.8 0-1.35.7-1.35 1.67z"/>
         </svg>
-        <!-- Tooltip -->
-        <span class="floating-tooltip">
+        <span class="c-tt">
             Chat Zalo
         </span>
     </a>
 
-    <!-- Directions/Map Button -->
+    <!-- Directions/Map -->
     <a href="{{ route('contact') }}" 
-       class="floating-contact-btn bg-directions"
+       class="c-item c-d"
        title="Chỉ đường bản đồ">
         <i class="fas fa-map-marker-alt text-lg md:text-xl"></i>
-        <!-- Tooltip -->
-        <span class="floating-tooltip">
+        <span class="c-tt">
             Chỉ đường bản đồ
         </span>
     </a>
 
-    <!-- Hotline Button with custom pulse styling -->
+    <!-- Hotline -->
     <a href="tel:{{ $cleanPhone }}" 
-       class="floating-contact-btn bg-hotline phone-pulse-btn"
+       class="c-item c-h c-p"
        title="Gọi Hotline">
         <i class="fas fa-phone-alt text-lg md:text-xl rotate-12 transition-transform duration-300"></i>
-        <!-- Tooltip -->
-        <span class="floating-tooltip">
+        <span class="c-tt">
             Hotline: {{ $hotline }}
         </span>
     </a>
 </div>
 
 <style>
-/* Base Floating Contact Container styling */
-.floating-contact-container {
+.c-bar {
     position: fixed !important;
     right: 16px !important;
     bottom: 32px !important;
@@ -86,14 +80,13 @@
 }
 
 @media (min-width: 768px) {
-    .floating-contact-container {
+    .c-bar {
         right: 24px !important;
         bottom: 40px !important;
     }
 }
 
-/* Individual Floating Button styling */
-.floating-contact-btn {
+.c-item {
     width: 48px !important;
     height: 48px !important;
     border-radius: 50% !important;
@@ -109,120 +102,116 @@
 }
 
 @media (min-width: 768px) {
-    .floating-contact-btn {
+    .c-item {
         width: 56px !important;
         height: 56px !important;
     }
 }
 
-.floating-contact-btn:hover {
-    transform: scale(1.1) translateY(-4px);
-    box-shadow: 0 8px 24px rgba(44, 24, 16, 0.35);
+.c-item:hover {
+    transform: scale(1.1) translateY(-4px) !important;
+    box-shadow: 0 8px 24px rgba(44, 24, 16, 0.35) !important;
 }
 
-/* Specific heritage colors */
-.bg-messenger {
+.c-m {
     background-color: var(--color-bg-dark) !important;
-    border: 1px solid rgba(212, 168, 85, 0.45);
+    border: 1px solid rgba(212, 168, 85, 0.45) !important;
 }
-.bg-messenger i {
+.c-m i {
     color: var(--color-secondary) !important;
 }
-.bg-messenger:hover {
+.c-m:hover {
     background-color: var(--color-secondary) !important;
 }
-.bg-messenger:hover i {
+.c-m:hover i {
     color: var(--color-bg-dark) !important;
 }
 
-.bg-zalo {
+.c-z {
     background-color: var(--color-bg-dark) !important;
-    border: 1px solid rgba(212, 168, 85, 0.45);
+    border: 1px solid rgba(212, 168, 85, 0.45) !important;
 }
-.bg-zalo .zalo-svg {
+.c-z .c-z-svg {
     color: var(--color-secondary) !important;
 }
-.bg-zalo:hover {
+.c-z:hover {
     background-color: var(--color-secondary) !important;
 }
-.bg-zalo:hover .zalo-svg {
+.c-z:hover .c-z-svg {
     color: var(--color-bg-dark) !important;
 }
 
-.bg-directions {
+.c-d {
     background-color: var(--color-bg-dark) !important;
-    border: 1px solid rgba(212, 168, 85, 0.45);
+    border: 1px solid rgba(212, 168, 85, 0.45) !important;
 }
-.bg-directions i {
+.c-d i {
     color: var(--color-secondary) !important;
 }
-.bg-directions:hover {
+.c-d:hover {
     background-color: var(--color-secondary) !important;
 }
-.bg-directions:hover i {
+.c-d:hover i {
     color: var(--color-bg-dark) !important;
 }
 
-.bg-hotline {
+.c-h {
     background-color: var(--color-bg-dark) !important;
-    border: 1px solid rgba(212, 168, 85, 0.45);
+    border: 1px solid rgba(212, 168, 85, 0.45) !important;
 }
-.bg-hotline i {
+.c-h i {
     color: var(--color-secondary) !important;
 }
-.bg-hotline:hover {
+.c-h:hover {
     background-color: var(--color-secondary) !important;
 }
-.bg-hotline:hover i {
+.c-h:hover i {
     color: var(--color-bg-dark) !important;
 }
 
-/* Tooltip styles */
-.floating-tooltip {
-    position: absolute;
-    right: 58px;
-    background-color: rgba(44, 24, 16, 0.95);
-    color: #FFF9F0;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
-    border: 1px solid rgba(212, 197, 178, 0.2);
-    pointer-events: none;
-    font-family: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+.c-tt {
+    position: absolute !important;
+    right: 58px !important;
+    background-color: rgba(44, 24, 16, 0.95) !important;
+    color: #FFF9F0 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateX(10px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    white-space: nowrap !important;
+    border: 1px solid rgba(212, 197, 178, 0.2) !important;
+    pointer-events: none !important;
+    font-family: 'Open Sans', 'Segoe UI', system-ui, sans-serif !important;
 }
 
 @media (min-width: 768px) {
-    .floating-tooltip {
-        right: 68px;
+    .c-tt {
+        right: 68px !important;
     }
 }
 
-.floating-contact-btn:hover .floating-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+.c-item:hover .c-tt {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
 }
 
-/* Zalo SVG sizing */
-.zalo-svg {
-    width: 24px;
-    height: 24px;
+.c-z-svg {
+    width: 24px !important;
+    height: 24px !important;
 }
 @media (min-width: 768px) {
-    .zalo-svg {
-        width: 28px;
-        height: 28px;
+    .c-z-svg {
+        width: 28px !important;
+        height: 28px !important;
     }
 }
 
-/* Pulse animation for Hotline button */
 @keyframes ping-slow {
     0% {
         transform: scale(1);
@@ -237,32 +226,32 @@
     }
 }
 
-.phone-pulse-btn::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border: 2px solid var(--color-secondary);
-    border-radius: 50%;
-    opacity: 0.5;
-    animation: ping-slow 2s infinite ease-out;
-    pointer-events: none;
+.c-p::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -4px !important;
+    left: -4px !important;
+    right: -4px !important;
+    bottom: -4px !important;
+    border: 2px solid var(--color-secondary) !important;
+    border-radius: 50% !important;
+    opacity: 0.5 !important;
+    animation: ping-slow 2s infinite ease-out !important;
+    pointer-events: none !important;
 }
 
-.phone-pulse-btn::after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border: 2px solid var(--color-secondary);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: ping-slow 2s infinite ease-out;
-    animation-delay: 0.8s;
-    pointer-events: none;
+.c-p::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -8px !important;
+    left: -8px !important;
+    right: -8px !important;
+    bottom: -8px !important;
+    border: 2px solid var(--color-secondary) !important;
+    border-radius: 50% !important;
+    opacity: 0.3 !important;
+    animation: ping-slow 2s infinite ease-out !important;
+    animation-delay: 0.8s !important;
+    pointer-events: none !important;
 }
 </style>
