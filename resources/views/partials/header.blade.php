@@ -92,8 +92,11 @@
 
     </div>
 
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-xs transition-opacity duration-300"></div>
+
     <!-- Mobile Slide-over Menu (Right side) -->
-    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-bg-primary shadow-2xl border-l border-border-custom/50 transform translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-[280px] sm:max-w-xs bg-bg-primary shadow-2xl border-l border-border-custom/50 transform translate-x-full hidden transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
         
         <!-- Header area -->
         <div>

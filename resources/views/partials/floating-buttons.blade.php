@@ -170,6 +170,7 @@
 }
 
 .c-tt {
+    display: none !important;
     position: absolute !important;
     right: 58px !important;
     background-color: rgba(44, 24, 16, 0.95) !important;
@@ -191,6 +192,7 @@
 
 @media (min-width: 768px) {
     .c-tt {
+        display: block !important;
         right: 68px !important;
     }
 }

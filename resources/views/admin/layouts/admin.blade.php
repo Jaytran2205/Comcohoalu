@@ -39,36 +39,41 @@
     <div class="flex-grow flex flex-col min-w-0 overflow-hidden bg-bg-secondary">
         
         <!-- Top header bar -->
-        <header class="h-16 bg-white border-b border-border-custom/30 flex items-center justify-between px-6 flex-shrink-0">
-            <!-- Left Header Title -->
-            <div class="flex items-center space-x-3">
-                <h1 class="text-sm font-bold text-text-primary uppercase tracking-wider font-sans">
+        <header class="h-16 bg-white border-b border-border-custom/30 flex items-center justify-between px-3 sm:px-6 flex-shrink-0">
+            <!-- Left Header Title & Mobile Hamburger Toggle -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <button id="admin-mobile-sidebar-toggle" type="button" class="lg:hidden p-2 text-text-primary hover:text-primary focus:outline-none" aria-label="Mở Menu Admin">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-xs sm:text-sm font-bold text-text-primary uppercase tracking-wider font-sans truncate max-w-[130px] sm:max-w-none">
                     @yield('page_title', 'Bảng điều khiển')
                 </h1>
             </div>
 
             <!-- Right Controls -->
-            <div class="flex items-center space-x-4 text-xs">
-                <div class="flex items-center space-x-2 border-r border-border-custom/30 pr-4">
-                    <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+            <div class="flex items-center space-x-2 sm:space-x-4 text-xs">
+                <div class="flex items-center space-x-2 border-r border-border-custom/30 pr-2 sm:pr-4">
+                    <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs sm:text-sm">
                         {{ substr(Auth::user()->name ?? 'Q', 0, 1) }}
                     </span>
-                    <span class="font-semibold text-text-primary hidden sm:inline">{{ Auth::user()->name ?? 'Quản trị viên' }}</span>
-                    <span class="px-2 py-0.5 rounded-full text-[9px] bg-primary text-white font-bold uppercase">{{ Auth::user()->role ?? 'admin' }}</span>
+                    <span class="font-semibold text-text-primary hidden md:inline">{{ Auth::user()->name ?? 'Quản trị viên' }}</span>
+                    <span class="px-2 py-0.5 rounded-full text-[9px] bg-primary text-white font-bold uppercase hidden sm:inline-block">{{ Auth::user()->role ?? 'admin' }}</span>
                 </div>
                 
-                <a href="{{ route('home') }}" target="_blank" class="text-text-secondary hover:text-primary transition-colors py-1 px-2 rounded hover:bg-bg-secondary">
-                    <i class="fas fa-external-link-alt mr-1"></i>Xem trang chủ
+                <a href="{{ route('home') }}" target="_blank" class="text-text-secondary hover:text-primary transition-colors py-1 px-1.5 sm:px-2 rounded hover:bg-bg-secondary text-xs" title="Xem trang chủ">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span class="hidden sm:inline ml-1">Xem trang chủ</span>
                 </a>
                 
-                <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-error hover:text-error/85 transition-colors py-1 px-2 rounded hover:bg-error/5 font-semibold">
-                    <i class="fas fa-sign-out-alt mr-1"></i>Đăng xuất
+                <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-error hover:text-error/85 transition-colors py-1 px-1.5 sm:px-2 rounded hover:bg-error/5 font-semibold text-xs" title="Đăng xuất">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="hidden sm:inline ml-1">Đăng xuất</span>
                 </button>
             </div>
         </header>
 
         <!-- Main Content (Scrollable) -->
-        <main class="flex-grow overflow-y-auto p-6 md:p-8">
+        <main class="flex-grow overflow-y-auto p-3 sm:p-6 md:p-8">
             <!-- Breadcrumbs in admin (optional but very nice) -->
             <div class="mb-6 flex justify-between items-center">
                 <div class="text-xs text-text-secondary">

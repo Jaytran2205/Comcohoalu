@@ -7,26 +7,82 @@ $(document).ready(function () {
         }
     });
 
-    // ── Mobile Menu Toggle ──
+    // ── Public Mobile Menu Toggle ──
     const $mobileMenuBtn = $('#mobile-menu-btn');
     const $mobileMenu = $('#mobile-menu');
     const $mobileMenuClose = $('#mobile-menu-close');
+    const $mobileBackdrop = $('#mobile-menu-backdrop');
+
+    function openMobileMenu() {
+        if (!$mobileMenu.length) return;
+        $mobileBackdrop.removeClass('hidden');
+        $mobileMenu.removeClass('hidden');
+        setTimeout(function () {
+            $mobileMenu.removeClass('translate-x-full');
+        }, 10);
+        $('body').css('overflow', 'hidden');
+    }
+
+    function closeMobileMenu() {
+        if (!$mobileMenu.length) return;
+        $mobileMenu.addClass('translate-x-full');
+        $mobileBackdrop.addClass('hidden');
+        setTimeout(function () {
+            $mobileMenu.addClass('hidden');
+        }, 300);
+        $('body').css('overflow', '');
+    }
 
     if ($mobileMenuBtn.length && $mobileMenu.length) {
-        $mobileMenuBtn.on('click', function () {
-            $mobileMenu.removeClass('translate-x-full');
-        });
-
-        $mobileMenuClose.on('click', function () {
-            $mobileMenu.addClass('translate-x-full');
-        });
-
-        // Close menu when clicking outside
-        $(document).on('click', function (e) {
-            if (!$(e.target).closest('#mobile-menu').length && !$(e.target).closest('#mobile-menu-btn').length) {
-                $mobileMenu.addClass('translate-x-full');
+        $mobileMenuBtn.on('click', function (e) {
+            e.stopPropagation();
+            if ($mobileMenu.hasClass('hidden') || $mobileMenu.hasClass('translate-x-full')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
             }
         });
+
+        $mobileMenuClose.on('click', closeMobileMenu);
+        $mobileBackdrop.on('click', closeMobileMenu);
+
+        $(document).on('keyup', function (e) {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+    }
+
+    // ── Admin Mobile Sidebar Toggle ──
+    const $adminSidebarToggle = $('#admin-mobile-sidebar-toggle');
+    const $adminSidebarMobile = $('#admin-sidebar-mobile');
+    const $adminSidebarClose = $('#admin-sidebar-close');
+    const $adminSidebarBackdrop = $('#admin-sidebar-backdrop');
+
+    function openAdminSidebar() {
+        if (!$adminSidebarMobile.length) return;
+        $adminSidebarBackdrop.removeClass('hidden');
+        $adminSidebarMobile.removeClass('hidden');
+        setTimeout(function () {
+            $adminSidebarMobile.removeClass('-translate-x-full');
+        }, 10);
+    }
+
+    function closeAdminSidebar() {
+        if (!$adminSidebarMobile.length) return;
+        $adminSidebarMobile.addClass('-translate-x-full');
+        $adminSidebarBackdrop.addClass('hidden');
+        setTimeout(function () {
+            $adminSidebarMobile.addClass('hidden');
+        }, 300);
+    }
+
+    if ($adminSidebarToggle.length && $adminSidebarMobile.length) {
+        $adminSidebarToggle.on('click', function (e) {
+            e.stopPropagation();
+            openAdminSidebar();
+        });
+
+        if ($adminSidebarClose.length) $adminSidebarClose.on('click', closeAdminSidebar);
+        if ($adminSidebarBackdrop.length) $adminSidebarBackdrop.on('click', closeAdminSidebar);
     }
 
     // ── Toast Notification Dismissal ──

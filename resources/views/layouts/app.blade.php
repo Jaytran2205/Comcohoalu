@@ -41,7 +41,7 @@
         {!! $siteSettings['google_analytics_code'] !!}
     @endif
 </head>
-<body class="bg-bg-primary text-text-primary min-h-screen flex flex-col antialiased">
+<body class="bg-bg-primary text-text-primary min-h-screen flex flex-col antialiased overflow-x-hidden max-w-full w-full relative">
     <!-- Facebook SDK for Social Plugins -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0"></script>
