@@ -46,6 +46,15 @@
             QUẢN LÝ THỰC ĐƠN
         </a>
 
+        <!-- Set Menus Link -->
+        <a 
+            href="{{ route('admin.set-menus.index') }}" 
+            class="flex items-center px-4 py-3 rounded-lg text-xs font-semibold tracking-wider transition-all {{ request()->is('admin/set-menus*') ? 'bg-primary text-white shadow-md' : 'text-text-light/75 hover:bg-white/5 hover:text-white' }}"
+        >
+            <i class="fas fa-layer-group mr-3 text-sm {{ request()->is('admin/set-menus*') ? 'text-white' : 'text-secondary/80' }}"></i>
+            QUẢN LÝ SET MÂM CƠM
+        </a>
+
         <!-- Menu Categories Link -->
         <a 
             href="{{ route('admin.menu-categories.index') }}" 
@@ -143,6 +152,14 @@
             >
                 <i class="fas fa-utensils mr-3 text-sm {{ request()->is('admin/menu-items*') ? 'text-white' : 'text-secondary/80' }}"></i>
                 QUẢN LÝ THỰC ĐƠN
+            </a>
+
+            <a 
+                href="{{ route('admin.set-menus.index') }}" 
+                class="flex items-center px-4 py-3 rounded-lg text-xs font-semibold tracking-wider transition-all {{ request()->is('admin/set-menus*') ? 'bg-primary text-white shadow-md' : 'text-text-light/75 hover:bg-white/5 hover:text-white' }}"
+            >
+                <i class="fas fa-layer-group mr-3 text-sm {{ request()->is('admin/set-menus*') ? 'text-white' : 'text-secondary/80' }}"></i>
+                QUẢN LÝ SET MÂM CƠM
             </a>
 
             <a 

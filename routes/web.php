@@ -75,6 +75,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     // Quản lý thực đơn
     Route::resource('menu-items', Admin\MenuItemController::class);
+    Route::resource('set-menus', Admin\SetMenuController::class);
     Route::resource('menu-categories', Admin\MenuCategoryController::class);
     Route::resource('menu-boards', Admin\MenuBoardController::class);
 

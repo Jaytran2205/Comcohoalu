@@ -13,6 +13,22 @@
 @endsection
 
 @section('content')
+<!-- Navigation Sub-Tabs -->
+<div class="flex items-center space-x-2 border-b border-border-custom/30 mb-6 overflow-x-auto pb-2">
+    <a href="{{ route('admin.menu-items.index') }}" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-text-secondary hover:bg-bg-primary transition-all">
+        <i class="fas fa-utensils mr-1.5"></i>Món Ăn Lẻ
+    </a>
+    <a href="{{ route('admin.set-menus.index') }}" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-text-secondary hover:bg-bg-primary transition-all">
+        <i class="fas fa-layer-group mr-1.5"></i>Set Mâm Cơm
+    </a>
+    <a href="{{ route('admin.menu-categories.index') }}" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-primary text-white shadow-sm">
+        <i class="fas fa-folder mr-1.5"></i>Danh Mục Món
+    </a>
+    <a href="{{ route('admin.menu-boards.index') }}" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg text-text-secondary hover:bg-bg-primary transition-all">
+        <i class="fas fa-images mr-1.5"></i>Ảnh Menu Lá
+    </a>
+</div>
+
 <!-- Table List Section -->
 <div class="bg-white rounded-xl shadow-sm border border-border-custom/30 overflow-hidden">
     <div class="overflow-x-auto">

@@ -161,7 +161,7 @@ $(document).ready(function () {
             $loadMoreText.text('Đang tải...');
 
             $.ajax({
-                url: '/api/menu/filter',
+                url: '/menu/filter',
                 type: 'GET',
                 data: {
                     category_id: activeCategoryId,
@@ -206,7 +206,7 @@ $(document).ready(function () {
             $loadMoreContainer.addClass('hidden');
 
             $.ajax({
-                url: '/api/menu/filter',
+                url: '/menu/filter',
                 type: 'GET',
                 data: {
                     category_id: activeCategoryId,
