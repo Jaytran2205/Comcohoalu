@@ -29,7 +29,7 @@
     <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center">
         
         <!-- Semi-transparent Frosted Glass Container ("Thẻ mờ ẩn" - Initially hidden, reveals on scroll down) -->
-        <div id="hero-glass-card" class="w-full bg-black/60 backdrop-blur-lg rounded-2xl border border-white/20 p-5 sm:p-8 md:p-10 shadow-2xl transition-all duration-700 transform opacity-0 pointer-events-none translate-y-10 scale-95 hover:border-secondary/40">
+        <div id="hero-glass-card" class="w-full bg-black/60 backdrop-blur-lg rounded-2xl border border-white/20 p-5 sm:p-8 md:p-10 shadow-2xl transition-[opacity,transform] duration-500 ease-out transform-gpu opacity-0 pointer-events-none translate-y-8 scale-95 hover:border-secondary/40">
             
             <!-- Typography -->
             <div class="space-y-4 sm:space-y-5 max-w-4xl mx-auto">

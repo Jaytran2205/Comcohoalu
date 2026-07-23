@@ -111,7 +111,7 @@ $(document).ready(function () {
             if (scrollTop < 15) {
                 // Completely hidden at the top of the video intro
                 $heroGlassCard
-                    .addClass('opacity-0 pointer-events-none translate-y-10 scale-95')
+                    .addClass('opacity-0 pointer-events-none translate-y-8 scale-95')
                     .removeClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
 
                 if ($scrollCue.length) {
@@ -120,7 +120,7 @@ $(document).ready(function () {
             } else {
                 // Smoothly slide up & fade in centered over the video background
                 $heroGlassCard
-                    .removeClass('opacity-0 pointer-events-none translate-y-10 scale-95')
+                    .removeClass('opacity-0 pointer-events-none translate-y-8 scale-95')
                     .addClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
 
                 if ($scrollCue.length) {
@@ -130,16 +130,34 @@ $(document).ready(function () {
         }
     }
 
-    // Smooth scroll down slightly inside video intro bounds to center hero card
+    // Hardware-accelerated Native Smooth Scroll on Scroll Cue Click
     if ($scrollCue.length) {
-        $scrollCue.on('click', function () {
-            $('html, body').animate({
-                scrollTop: 40
-            }, 500);
+        $scrollCue.on('click', function (e) {
+            e.preventDefault();
+            // Pre-reveal card for zero latency feedback
+            if ($heroGlassCard.length) {
+                $heroGlassCard
+                    .removeClass('opacity-0 pointer-events-none translate-y-8 scale-95')
+                    .addClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
+            }
+            window.scrollTo({
+                top: 40,
+                behavior: 'smooth'
+            });
         });
     }
 
-    $(window).on('scroll resize', handleScrollEffects);
+    // Throttled Scroll Listener using RequestAnimationFrame
+    let isScrollTicking = false;
+    $(window).on('scroll resize', function () {
+        if (!isScrollTicking) {
+            window.requestAnimationFrame(function () {
+                handleScrollEffects();
+                isScrollTicking = false;
+            });
+            isScrollTicking = true;
+        }
+    });
     handleScrollEffects();
 
     // ── Toast Notification Dismissal ──
