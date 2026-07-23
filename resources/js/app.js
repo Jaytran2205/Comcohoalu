@@ -85,9 +85,10 @@ $(document).ready(function () {
         if ($adminSidebarBackdrop.length) $adminSidebarBackdrop.on('click', closeAdminSidebar);
     }
 
-    // ── Transparent Header & Hero Glassmorphism Scroll Reveal ──
+    // ── Fullscreen Video Intro & Hero Card Scroll Reveal ──
     const $siteHeader = $('#site-header');
     const $heroGlassCard = $('#hero-glass-card');
+    const $scrollCue = $('#scroll-cue');
 
     function handleScrollEffects() {
         const scrollTop = $(window).scrollTop();
@@ -95,7 +96,7 @@ $(document).ready(function () {
         // 1. Dynamic Header Transition
         if ($siteHeader.length) {
             if ($('#hero-section').length) {
-                if (scrollTop > 40) {
+                if (scrollTop > 60) {
                     $siteHeader.addClass('header-scrolled').removeClass('header-transparent');
                 } else {
                     $siteHeader.addClass('header-transparent').removeClass('header-scrolled');
@@ -105,28 +106,37 @@ $(document).ready(function () {
             }
         }
 
-        // 2. Hero Content Card Smooth Reveal & Parallax
+        // 2. Hero Content Card Reveal (Hidden at top video intro, reveals when scrolling down)
         if ($heroGlassCard.length) {
-            if (scrollTop <= 10) {
-                $heroGlassCard.css({
-                    'opacity': '0.90',
-                    'transform': 'scale(0.99) translateY(0px)',
-                    'backdrop-filter': 'blur(10px)'
-                });
-            } else if (scrollTop > 10 && scrollTop < 400) {
-                const progress = Math.min(1, (scrollTop - 10) / 250);
-                const opacity = 0.90 + (0.10 * progress);
-                const scale = 0.99 + (0.01 * progress);
-                const blur = 10 + (6 * progress);
-                const translateY = scrollTop * 0.12;
+            if (scrollTop < 60) {
+                // Completely hidden at the top of the video intro
+                $heroGlassCard
+                    .addClass('opacity-0 pointer-events-none translate-y-12 scale-95')
+                    .removeClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
 
-                $heroGlassCard.css({
-                    'opacity': opacity,
-                    'transform': `scale(${scale}) translateY(${translateY}px)`,
-                    'backdrop-filter': `blur(${blur}px)`
-                });
+                if ($scrollCue.length) {
+                    $scrollCue.removeClass('opacity-0 pointer-events-none');
+                }
+            } else {
+                // Smoothly slide up & fade in over the video background when scrolled down
+                $heroGlassCard
+                    .removeClass('opacity-0 pointer-events-none translate-y-12 scale-95')
+                    .addClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
+
+                if ($scrollCue.length) {
+                    $scrollCue.addClass('opacity-0 pointer-events-none');
+                }
             }
         }
+    }
+
+    // Smooth scroll down when clicking on scroll cue
+    if ($scrollCue.length) {
+        $scrollCue.on('click', function () {
+            $('html, body').animate({
+                scrollTop: 200
+            }, 600);
+        });
     }
 
     $(window).on('scroll resize', handleScrollEffects);

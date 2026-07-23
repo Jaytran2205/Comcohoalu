@@ -28,8 +28,8 @@
     <!-- Hero Content Container -->
     <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center">
         
-        <!-- Semi-transparent Frosted Glass Container ("Thẻ mờ ẩn") -->
-        <div id="hero-glass-card" class="w-full bg-black/45 backdrop-blur-md rounded-2xl border border-white/20 p-6 sm:p-10 md:p-12 shadow-2xl transition-all duration-700 transform opacity-90 scale-[0.99] hover:border-secondary/40">
+        <!-- Semi-transparent Frosted Glass Container ("Thẻ mờ ẩn" - Initially hidden, reveals on scroll down) -->
+        <div id="hero-glass-card" class="w-full bg-black/55 backdrop-blur-lg rounded-2xl border border-white/20 p-6 sm:p-10 md:p-12 shadow-2xl transition-all duration-700 transform opacity-0 pointer-events-none translate-y-12 scale-95 hover:border-secondary/40">
             
             <!-- Typography -->
             <div class="space-y-6 max-w-4xl mx-auto">
@@ -143,6 +143,14 @@
                 </div>
             </form>
 
+        </div>
+    </div>
+
+    <!-- Scroll Down Cue Indicator (Visible on initial full-screen video intro) -->
+    <div id="scroll-cue" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center space-y-2 cursor-pointer transition-all duration-500 animate-bounce select-none">
+        <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/90 drop-shadow">Cuộn xuống để khám phá</span>
+        <div class="w-8 h-8 rounded-full bg-black/40 border border-white/30 backdrop-blur-xs flex items-center justify-center text-secondary shadow-lg">
+            <i class="fas fa-chevron-down text-xs"></i>
         </div>
     </div>
 </section>
