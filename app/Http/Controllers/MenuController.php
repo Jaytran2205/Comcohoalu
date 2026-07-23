@@ -15,21 +15,17 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $categories = \Illuminate\Support\Facades\Cache::remember('menu.categories', 3600, function () {
-            return MenuCategory::active()->ordered()->get();
-        });
+        $categories = MenuCategory::active()->ordered()->get();
 
         $items = MenuItem::available()
             ->ordered()
             ->with('category')
             ->paginate(12);
 
-        $setMenus = \Illuminate\Support\Facades\Cache::remember('menu.set_menus', 3600, function () {
-            return SetMenu::active()
-                ->ordered()
-                ->with('items')
-                ->get();
-        });
+        $setMenus = SetMenu::active()
+            ->ordered()
+            ->with('items')
+            ->get();
 
         return view('pages.menu', compact('categories', 'items', 'setMenus'));
     }
@@ -39,9 +35,7 @@ class MenuController extends Controller
      */
     public function menuBoard()
     {
-        $boards = \Illuminate\Support\Facades\Cache::remember('menu.boards', 3600, function () {
-            return \App\Models\MenuBoard::active()->ordered()->get();
-        });
+        $boards = \App\Models\MenuBoard::active()->ordered()->get();
 
         return view('pages.menu-board', compact('boards'));
     }
