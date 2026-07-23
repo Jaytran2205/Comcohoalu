@@ -96,7 +96,7 @@ $(document).ready(function () {
         // 1. Dynamic Header Transition
         if ($siteHeader.length) {
             if ($('#hero-section').length) {
-                if (scrollTop > 40) {
+                if (scrollTop > 25) {
                     $siteHeader.addClass('header-scrolled').removeClass('header-transparent');
                 } else {
                     $siteHeader.addClass('header-transparent').removeClass('header-scrolled');
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
         // 2. Hero Content Card Reveal (Hidden at top video intro, reveals when scrolling down)
         if ($heroGlassCard.length) {
-            if (scrollTop < 30) {
+            if (scrollTop < 15) {
                 // Completely hidden at the top of the video intro
                 $heroGlassCard
                     .addClass('opacity-0 pointer-events-none translate-y-10 scale-95')
@@ -130,12 +130,12 @@ $(document).ready(function () {
         }
     }
 
-    // Smooth scroll down to center the hero card perfectly
+    // Smooth scroll down slightly inside video intro bounds to center hero card
     if ($scrollCue.length) {
         $scrollCue.on('click', function () {
             $('html, body').animate({
-                scrollTop: 100
-            }, 600);
+                scrollTop: 40
+            }, 500);
         });
     }
 

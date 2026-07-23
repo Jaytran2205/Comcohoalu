@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- 1. Hero Section (Full-bleed Intro Video Background & Glassmorphism Frosted Content Card) -->
-<section id="hero-section" class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-24 sm:pt-28 pb-16">
+<section id="hero-section" class="relative min-h-[110vh] flex items-center justify-center text-white overflow-hidden pt-20 sm:pt-24 pb-20">
     
     <!-- Video Intro Background Container -->
     <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
