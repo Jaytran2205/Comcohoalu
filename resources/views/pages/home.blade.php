@@ -3,135 +3,147 @@
 @section('title', 'Cơm Cổ Hoa Lư - Tinh Hoa Ẩm Thực Cố Đô Ninh Bình')
 
 @section('content')
-<!-- 1. Hero Section (Full-bleed Heritage Background & Quick Booking Widget) -->
-<section class="relative min-h-[90vh] flex items-center justify-center text-white overflow-hidden pt-28 pb-20">
+<!-- 1. Hero Section (Full-bleed Intro Video Background & Glassmorphism Frosted Content Card) -->
+<section id="hero-section" class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-24 pb-16">
     
-    <!-- Background Media Cover -->
-    <div class="absolute inset-0 z-0 select-none pointer-events-none">
-        <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
-            alt="Cơm Cổ Hoa Lư Không Gian" 
-            class="w-full h-full object-cover object-center scale-[1.01]"
+    <!-- Video Intro Background Container -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
+        <video 
+            id="hero-intro-video"
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
+            class="w-full h-full object-cover object-center scale-[1.03] transition-transform duration-1000 ease-out"
         >
-        <!-- Warm dark gradient overlay for optimal readability -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-black via-black/80 to-[#2C1810]/50 z-10"></div>
-        <div class="absolute inset-0 viet-pattern-bg opacity-10 z-10"></div>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-chef-cooking-a-dish-in-a-restaurant-kitchen-41551-large.mp4" type="video/mp4">
+        </video>
+
+        <!-- Warm Dark Overlay Gradient -->
+        <div id="hero-video-overlay" class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10 transition-opacity duration-700"></div>
+        <div class="absolute inset-0 viet-pattern-bg opacity-15 z-10"></div>
     </div>
 
     <!-- Hero Content Container -->
-    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center space-y-8">
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center">
         
-        <!-- Typography -->
-        <div class="space-y-6 max-w-4xl">
-            <!-- Eyebrow tag -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 border-t border-b border-secondary/45 text-secondary text-[10px] font-bold uppercase tracking-[0.25em] select-none">
-                Di sản ẩm thực cố đô
+        <!-- Semi-transparent Frosted Glass Container ("Thẻ mờ ẩn") -->
+        <div id="hero-glass-card" class="w-full bg-black/45 backdrop-blur-md rounded-2xl border border-white/20 p-6 sm:p-10 md:p-12 shadow-2xl transition-all duration-700 transform opacity-90 scale-[0.99] hover:border-secondary/40">
+            
+            <!-- Typography -->
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <!-- Eyebrow tag -->
+                <div class="inline-flex items-center gap-2 px-5 py-1.5 border-t border-b border-secondary/60 text-secondary text-[11px] sm:text-xs font-bold uppercase tracking-[0.3em] select-none">
+                    Di sản ẩm thực cố đô
+                </div>
+
+                <!-- Main Title (Bespoke Typographic Lockup) -->
+                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold font-serif leading-tight text-white drop-shadow-lg tracking-wide">
+                    Tinh Hoa <span class="font-accent text-secondary text-2xl sm:text-4xl lg:text-6xl inline-block px-1 rotate-[-2deg] tracking-normal font-normal">ẩm thực</span> <br class="hidden sm:inline">
+                    Đất Ngọc 
+                    <span class="relative inline-block text-secondary font-black">
+                        Hoa Lư
+                        <svg class="absolute left-0 right-0 -bottom-2.5 w-full h-2.5 text-secondary" viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
+                            <path d="M0,4 Q25,1 50,4 T100,4" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                        </svg>
+                    </span>
+                </h1>
+
+                <!-- Slogan & Subtext -->
+                <div class="space-y-3 pt-2">
+                    <p class="text-accent text-lg sm:text-2xl text-secondary-light font-accent italic tracking-wide drop-shadow">
+                        “Hương vị truyền thống – Đậm tình cổ hương”
+                    </p>
+                    <p class="text-text-light/90 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto font-sans font-medium">
+                        Thưởng thức cơm niêu chín dẻo bên bếp lửa than hồng và dê núi Ninh Bình ngọt thịt giữa không gian cổ kính, đầm ấm.
+                    </p>
+                </div>
             </div>
 
-            <!-- Main Title (Bespoke Typographic Lockup) -->
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold font-serif leading-tight text-white drop-shadow-md">
-                Tinh Hoa <span class="font-accent text-secondary text-3xl sm:text-4xl lg:text-6xl inline-block px-1 rotate-[-2deg] tracking-normal font-normal">ẩm thực</span> <br>
-                Đất Ngọc 
-                <span class="relative inline-block text-secondary font-black">
-                    Hoa Lư
-                    <svg class="absolute left-0 right-0 -bottom-2.5 w-full h-2.5 text-secondary" viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
-                        <path d="M0,4 Q25,1 50,4 T100,4" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
-                    </svg>
-                </span>
-            </h1>
+            <!-- Quick Booking Bar Widget -->
+            <form action="{{ route('booking.create') }}" method="GET" class="w-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-custom/40 p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-text-primary mt-8 select-none text-left">
+                <!-- Guests select -->
+                <div class="space-y-1.5">
+                    <label for="quick_adults" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
+                        Số lượng khách
+                    </label>
+                    <div class="relative">
+                        <select name="adults" id="quick_adults" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary appearance-none">
+                            <option value="1">1 Người</option>
+                            <option value="2" selected>2 Người</option>
+                            <option value="3">3 Người</option>
+                            <option value="4">4 Người</option>
+                            <option value="5">5 Người</option>
+                            <option value="6">6 Người</option>
+                            <option value="8">7 - 10 Người</option>
+                            <option value="15">Trên 10 Người</option>
+                        </select>
+                        <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="absolute right-3 top-3 text-text-secondary/50 text-[10px] pointer-events-none">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Slogan & Subtext -->
-            <div class="space-y-3 pt-2">
-                <p class="text-accent text-xl sm:text-2xl text-secondary-light font-accent italic tracking-wide">
-                    "Hương vị truyền thống - Đậm tình cố hương"
-                </p>
-                <p class="text-text-light/80 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto font-sans">
-                    Thưởng thức cơm niêu chín dẻo bên bếp lửa than hồng và dê núi Ninh Bình ngọt thịt giữa không gian cổ kính, đầm ấm.
-                </p>
-            </div>
+                <!-- Date picker -->
+                <div class="space-y-1.5">
+                    <label for="quick_date" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
+                        Ngày dùng bữa
+                    </label>
+                    <div class="relative">
+                        <input type="date" name="booking_date" id="quick_date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary">
+                        <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time picker -->
+                <div class="space-y-1.5">
+                    <label for="quick_time" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
+                        Giờ dùng bữa
+                    </label>
+                    <div class="relative">
+                        <select name="booking_time" id="quick_time" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary appearance-none">
+                            <option value="">-- Chọn giờ --</option>
+                            <optgroup label="Khung Giờ Trưa">
+                                <option value="11:00" selected>11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                            </optgroup>
+                            <optgroup label="Khung Giờ Tối">
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                            </optgroup>
+                        </select>
+                        <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="absolute right-3 top-3 text-text-secondary/50 text-[10px] pointer-events-none">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit CTA -->
+                <div class="flex items-end">
+                    <button type="submit" class="w-full py-3 bg-primary hover:bg-secondary border border-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-[0.18em] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2">
+                        <i class="fas fa-calendar-check text-xs"></i> Đặt bàn ngay
+                    </button>
+                </div>
+            </form>
+
         </div>
-
-        <!-- Quick Booking Bar Widget (Links to /dat-ban with query params) -->
-        <form action="{{ route('booking.create') }}" method="GET" class="w-full max-w-4xl bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-custom/40 p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-text-primary mt-4 select-none">
-            <!-- Guests select -->
-            <div class="space-y-1.5 text-left">
-                <label for="quick_adults" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
-                    Số lượng khách
-                </label>
-                <div class="relative">
-                    <select name="adults" id="quick_adults" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary appearance-none">
-                        <option value="1">1 Người</option>
-                        <option value="2" selected>2 Người</option>
-                        <option value="3">3 Người</option>
-                        <option value="4">4 Người</option>
-                        <option value="5">5 Người</option>
-                        <option value="6">6 Người</option>
-                        <option value="8">7 - 10 Người</option>
-                        <option value="15">Trên 10 Người</option>
-                    </select>
-                    <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="absolute right-3 top-3 text-text-secondary/50 text-[10px] pointer-events-none">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Date picker -->
-            <div class="space-y-1.5 text-left">
-                <label for="quick_date" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
-                    Ngày dùng bữa
-                </label>
-                <div class="relative">
-                    <input type="date" name="booking_date" id="quick_date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary">
-                    <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
-                        <i class="far fa-calendar-alt"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Time picker -->
-            <div class="space-y-1.5 text-left">
-                <label for="quick_time" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
-                    Giờ dùng bữa
-                </label>
-                <div class="relative">
-                    <select name="booking_time" id="quick_time" class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-border-custom/60 bg-bg-primary/20 text-xs font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-text-primary appearance-none">
-                        <option value="">-- Chọn giờ --</option>
-                        <optgroup label="Khung Giờ Trưa">
-                            <option value="11:00" selected>11:00</option>
-                            <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option>
-                            <option value="12:30">12:30</option>
-                            <option value="13:00">13:00</option>
-                            <option value="13:30">13:30</option>
-                        </optgroup>
-                        <optgroup label="Khung Giờ Tối">
-                            <option value="18:00">18:00</option>
-                            <option value="18:30">18:30</option>
-                            <option value="19:00">19:00</option>
-                            <option value="19:30">19:30</option>
-                            <option value="20:00">20:00</option>
-                            <option value="20:30">20:30</option>
-                        </optgroup>
-                    </select>
-                    <div class="absolute left-3 top-3 text-secondary text-xs pointer-events-none">
-                        <i class="far fa-clock"></i>
-                    </div>
-                    <div class="absolute right-3 top-3 text-text-secondary/50 text-[10px] pointer-events-none">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Submit CTA -->
-            <div class="flex items-end">
-                <button type="submit" class="w-full py-3.5 bg-primary hover:bg-secondary border border-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-[0.18em] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2">
-                    <i class="fas fa-calendar-check text-xs"></i> Đặt bàn ngay
-                </button>
-            </div>
-        </form>
     </div>
 </section>
 

@@ -85,6 +85,53 @@ $(document).ready(function () {
         if ($adminSidebarBackdrop.length) $adminSidebarBackdrop.on('click', closeAdminSidebar);
     }
 
+    // ── Transparent Header & Hero Glassmorphism Scroll Reveal ──
+    const $siteHeader = $('#site-header');
+    const $heroGlassCard = $('#hero-glass-card');
+
+    function handleScrollEffects() {
+        const scrollTop = $(window).scrollTop();
+
+        // 1. Dynamic Header Transition
+        if ($siteHeader.length) {
+            if ($('#hero-section').length) {
+                if (scrollTop > 40) {
+                    $siteHeader.addClass('header-scrolled').removeClass('header-transparent');
+                } else {
+                    $siteHeader.addClass('header-transparent').removeClass('header-scrolled');
+                }
+            } else {
+                $siteHeader.addClass('header-scrolled').removeClass('header-transparent');
+            }
+        }
+
+        // 2. Hero Content Card Smooth Reveal & Parallax
+        if ($heroGlassCard.length) {
+            if (scrollTop <= 10) {
+                $heroGlassCard.css({
+                    'opacity': '0.90',
+                    'transform': 'scale(0.99) translateY(0px)',
+                    'backdrop-filter': 'blur(10px)'
+                });
+            } else if (scrollTop > 10 && scrollTop < 400) {
+                const progress = Math.min(1, (scrollTop - 10) / 250);
+                const opacity = 0.90 + (0.10 * progress);
+                const scale = 0.99 + (0.01 * progress);
+                const blur = 10 + (6 * progress);
+                const translateY = scrollTop * 0.12;
+
+                $heroGlassCard.css({
+                    'opacity': opacity,
+                    'transform': `scale(${scale}) translateY(${translateY}px)`,
+                    'backdrop-filter': `blur(${blur}px)`
+                });
+            }
+        }
+    }
+
+    $(window).on('scroll resize', handleScrollEffects);
+    handleScrollEffects();
+
     // ── Toast Notification Dismissal ──
     const $toasts = $('.toast-notification');
     if ($toasts.length) {
