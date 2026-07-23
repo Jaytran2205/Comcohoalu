@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- 1. Hero Section (Full-bleed Intro Video Background & Glassmorphism Frosted Content Card) -->
-<section id="hero-section" class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-24 pb-16">
+<section id="hero-section" class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-24 sm:pt-28 pb-16">
     
     <!-- Video Intro Background Container -->
     <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
@@ -29,31 +29,31 @@
     <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center">
         
         <!-- Semi-transparent Frosted Glass Container ("Thẻ mờ ẩn" - Initially hidden, reveals on scroll down) -->
-        <div id="hero-glass-card" class="w-full bg-black/55 backdrop-blur-lg rounded-2xl border border-white/20 p-6 sm:p-10 md:p-12 shadow-2xl transition-all duration-700 transform opacity-0 pointer-events-none translate-y-12 scale-95 hover:border-secondary/40">
+        <div id="hero-glass-card" class="w-full bg-black/60 backdrop-blur-lg rounded-2xl border border-white/20 p-5 sm:p-8 md:p-10 shadow-2xl transition-all duration-700 transform opacity-0 pointer-events-none translate-y-10 scale-95 hover:border-secondary/40">
             
             <!-- Typography -->
-            <div class="space-y-6 max-w-4xl mx-auto">
+            <div class="space-y-4 sm:space-y-5 max-w-4xl mx-auto">
                 <!-- Eyebrow tag -->
-                <div class="inline-flex items-center gap-2 px-5 py-1.5 border-t border-b border-secondary/60 text-secondary text-[11px] sm:text-xs font-bold uppercase tracking-[0.3em] select-none">
+                <div class="inline-flex items-center gap-2 px-4 py-1 border-t border-b border-secondary/60 text-secondary text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] select-none">
                     Di sản ẩm thực cố đô
                 </div>
 
                 <!-- Main Title (Bespoke Typographic Lockup) -->
-                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold font-serif leading-tight text-white drop-shadow-lg tracking-wide">
-                    Tinh Hoa <span class="font-accent text-secondary text-2xl sm:text-4xl lg:text-6xl inline-block px-1 rotate-[-2deg] tracking-normal font-normal">ẩm thực</span> <br class="hidden sm:inline">
+                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold font-serif leading-tight text-white drop-shadow-lg tracking-wide">
+                    Tinh Hoa <span class="font-accent text-secondary text-2xl sm:text-3xl lg:text-5xl inline-block px-1 rotate-[-2deg] tracking-normal font-normal">ẩm thực</span> <br class="hidden sm:inline">
                     Đất Ngọc 
                     <span class="relative inline-block text-secondary font-black">
                         Hoa Lư
-                        <svg class="absolute left-0 right-0 -bottom-2.5 w-full h-2.5 text-secondary" viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
+                        <svg class="absolute left-0 right-0 -bottom-2 w-full h-2 text-secondary" viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
                             <path d="M0,4 Q25,1 50,4 T100,4" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
                         </svg>
                     </span>
                 </h1>
 
                 <!-- Slogan & Subtext -->
-                <div class="space-y-3 pt-2">
-                    <p class="text-accent text-lg sm:text-2xl text-secondary-light font-accent italic tracking-wide drop-shadow">
-                        “Hương vị truyền thống – Đậm tình cổ hương”
+                <div class="space-y-2 pt-1">
+                    <p class="text-accent text-base sm:text-xl text-secondary-light font-accent italic tracking-wide drop-shadow">
+                        “Hương vị truyền thống – Đậm tình cố hương”
                     </p>
                     <p class="text-text-light/90 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto font-sans font-medium">
                         Thưởng thức cơm niêu chín dẻo bên bếp lửa than hồng và dê núi Ninh Bình ngọt thịt giữa không gian cổ kính, đầm ấm.
@@ -62,7 +62,7 @@
             </div>
 
             <!-- Quick Booking Bar Widget -->
-            <form action="{{ route('booking.create') }}" method="GET" class="w-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-custom/40 p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-text-primary mt-8 select-none text-left">
+            <form action="{{ route('booking.create') }}" method="GET" class="w-full bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-custom/40 p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 text-text-primary mt-6 select-none text-left">
                 <!-- Guests select -->
                 <div class="space-y-1.5">
                     <label for="quick_adults" class="block text-[10px] font-bold text-text-secondary uppercase tracking-wider">
