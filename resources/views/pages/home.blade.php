@@ -147,9 +147,9 @@
     </div>
 
     <!-- Scroll Down Cue Indicator (Visible on initial full-screen video intro) -->
-    <div id="scroll-cue" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center space-y-2 cursor-pointer transition-all duration-500 animate-bounce select-none">
-        <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/90 drop-shadow">Cuộn xuống để khám phá</span>
-        <div class="w-8 h-8 rounded-full bg-black/40 border border-white/30 backdrop-blur-xs flex items-center justify-center text-secondary shadow-lg">
+    <div id="scroll-cue" class="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center space-y-2 cursor-pointer transition-all duration-500 animate-bounce select-none">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-white/95 drop-shadow-md">Cuộn xuống để khám phá</span>
+        <div class="w-9 h-9 rounded-full bg-black/50 border border-white/40 backdrop-blur-md flex items-center justify-center text-secondary shadow-xl hover:scale-110 transition-transform">
             <i class="fas fa-chevron-down text-xs"></i>
         </div>
     </div>
