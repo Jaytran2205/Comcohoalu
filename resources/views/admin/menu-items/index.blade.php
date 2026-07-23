@@ -176,11 +176,11 @@
                         <!-- Status -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             @if($item->status->value === 'available')
-                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-success/10 text-success">Đang bán</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-success/10 text-success whitespace-nowrap inline-block">Đang bán</span>
                             @elseif($item->status->value === 'sold_out')
-                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-warning/10 text-warning">Tạm hết</span>
-                            @elseif($item->status->value === 'hidden')
-                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-bg-secondary text-text-secondary">Đã ẩn</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-error/10 text-error whitespace-nowrap inline-block">Hết món</span>
+                            @else
+                                <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-text-secondary/10 text-text-secondary whitespace-nowrap inline-block">Ẩn</span>
                             @endif
                         </td>
                         <!-- Sort Order -->

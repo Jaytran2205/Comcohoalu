@@ -61,49 +61,49 @@
             <thead class="bg-bg-secondary/40 text-[10px] font-bold text-text-secondary uppercase tracking-widest">
                 <tr>
                     <th scope="col" class="px-6 py-4">Tên Set Mâm Cơm</th>
-                    <th scope="col" class="px-6 py-4">Khẩu Phần</th>
-                    <th scope="col" class="px-6 py-4">Giá/Suất</th>
-                    <th scope="col" class="px-6 py-4">Tổng Tiền Mâm</th>
-                    <th scope="col" class="px-6 py-4">Số Món Chi Tiết</th>
-                    <th scope="col" class="px-6 py-4">Trạng Thái</th>
-                    <th scope="col" class="px-6 py-4 text-right">Thao Tác</th>
+                    <th scope="col" class="px-4 py-4 whitespace-nowrap">Khẩu Phần</th>
+                    <th scope="col" class="px-4 py-4 whitespace-nowrap">Giá/Suất</th>
+                    <th scope="col" class="px-4 py-4 whitespace-nowrap">Tổng Tiền Mâm</th>
+                    <th scope="col" class="px-4 py-4 whitespace-nowrap">Số Món Chi Tiết</th>
+                    <th scope="col" class="px-4 py-4 whitespace-nowrap">Trạng Thái</th>
+                    <th scope="col" class="px-6 py-4 text-right whitespace-nowrap">Thao Tác</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-border-custom/10 text-xs">
                 @forelse($setMenus as $set)
                     <tr class="hover:bg-bg-secondary/20 transition-colors">
-                        <td class="px-6 py-4 font-bold text-text-primary">
+                        <td class="px-6 py-4 font-bold text-text-primary min-w-[200px]">
                             <span class="text-sm font-serif text-primary block">{{ $set->name }}</span>
                             <span class="text-[10px] text-text-secondary italic font-normal line-clamp-1">{{ $set->description }}</span>
                         </td>
-                        <td class="px-6 py-4">
-                            <span class="px-2.5 py-1 rounded bg-secondary/15 text-primary-dark font-bold text-[11px]">
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="px-2.5 py-1 rounded bg-secondary/15 text-primary-dark font-bold text-[11px] whitespace-nowrap">
                                 {{ $set->people_count }} Người
                             </span>
                         </td>
-                        <td class="px-6 py-4 font-semibold text-text-secondary">
+                        <td class="px-4 py-4 whitespace-nowrap font-semibold text-text-secondary">
                             {{ number_format($set->price_per_person, 0, ',', '.') }}đ / suất
                         </td>
-                        <td class="px-6 py-4 font-bold text-primary text-sm">
+                        <td class="px-4 py-4 whitespace-nowrap font-bold text-primary text-sm">
                             {{ number_format($set->price, 0, ',', '.') }}đ
                         </td>
-                        <td class="px-6 py-4">
-                            <span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-[10px]">
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-[10px] whitespace-nowrap">
                                 {{ $set->items->count() }} món
                             </span>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-4 py-4 whitespace-nowrap">
                             @if($set->is_active)
-                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-success/15 text-success">
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-success/15 text-success whitespace-nowrap inline-block">
                                     Đang bán
                                 </span>
                             @else
-                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-error/15 text-error">
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-error/15 text-error whitespace-nowrap inline-block">
                                     Ẩn
                                 </span>
                             @endif
                         </td>
-                        <td class="px-6 py-4 text-right space-x-2">
+                        <td class="px-6 py-4 text-right whitespace-nowrap space-x-2">
                             <a href="{{ route('admin.set-menus.edit', $set) }}" class="p-1.5 text-text-secondary hover:text-primary hover:bg-bg-secondary rounded transition-colors inline-block" title="Chỉnh sửa">
                                 <i class="fas fa-edit text-sm"></i>
                             </a>
