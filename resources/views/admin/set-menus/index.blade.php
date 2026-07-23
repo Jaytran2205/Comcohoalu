@@ -81,10 +81,10 @@
                                 {{ $set->people_count }} Người
                             </span>
                         </td>
-                        <td class="px-4 py-4 whitespace-nowrap font-semibold text-text-secondary">
+                        <td class="px-4 py-4 whitespace-nowrap font-semibold text-text-secondary font-sans">
                             {{ number_format($set->price_per_person, 0, ',', '.') }}đ / suất
                         </td>
-                        <td class="px-4 py-4 whitespace-nowrap font-bold text-primary text-sm">
+                        <td class="px-4 py-4 whitespace-nowrap font-bold text-primary text-sm font-sans">
                             {{ number_format($set->price, 0, ',', '.') }}đ
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">

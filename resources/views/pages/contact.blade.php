@@ -43,7 +43,7 @@
                         </div>
                         <div>
                             <span class="font-semibold text-text-primary block text-sm">Điện thoại Hotline:</span>
-                            <a href="tel:{{ str_replace('.', '', $siteSettings['site_hotline'] ?? '0866000000') }}" class="hover:text-primary transition-colors text-base font-bold font-serif text-primary-light">
+                            <a href="tel:{{ str_replace('.', '', $siteSettings['site_hotline'] ?? '0866000000') }}" class="hover:text-primary transition-colors text-base font-bold font-sans tracking-wide text-primary-light">
                                 {{ $siteSettings['site_hotline'] ?? '0866.000.000' }}
                             </a>
                         </div>

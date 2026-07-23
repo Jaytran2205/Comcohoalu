@@ -47,7 +47,7 @@
 
             <!-- Bottom Price & Order -->
             <div class="flex items-center justify-between pt-3 border-t border-border-custom/20">
-                <span class="text-primary-light font-bold text-lg font-serif">
+                <span class="text-primary-light font-bold text-lg font-sans tracking-tight">
                     {{ $item->formatted_price }}
                 </span>
                 <a href="{{ route('booking.create') }}" class="text-secondary hover:text-secondary-dark font-bold text-xs uppercase tracking-wider flex items-center gap-1 transition-all duration-200">

@@ -62,6 +62,14 @@
         width: 100%;
     }
 
+    /* Force Lining Figures (All numbers same height, no jumping oldstyle digits) */
+    html, body, h1, h2, h3, h4, h5, h6, .font-serif, .font-sans, .font-accent {
+        font-variant-numeric: lining-nums tabular-nums !important;
+        -webkit-font-feature-settings: "lnum" 1, "tnum" 1 !important;
+        -moz-font-feature-settings: "lnum" 1, "tnum" 1 !important;
+        font-feature-settings: "lnum" 1, "tnum" 1 !important;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-serif);
     }

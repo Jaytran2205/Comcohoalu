@@ -160,7 +160,7 @@
                             </span>
                         </td>
                         <!-- Price -->
-                        <td class="px-6 py-4 whitespace-nowrap font-bold text-primary font-serif">
+                        <td class="px-6 py-4 whitespace-nowrap font-bold text-primary font-sans">
                             {{ $item->formatted_price }}
                         </td>
                         <!-- Badge -->

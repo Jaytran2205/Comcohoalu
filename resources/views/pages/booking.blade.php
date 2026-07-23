@@ -241,7 +241,7 @@
                     </h3>
                     <div class="space-y-3 text-xs text-text-secondary leading-relaxed">
                         <p>Nếu quý khách muốn đặt tiệc cưới hỏi, hội nghị lớn hoặc đặt bàn nhóm trên 20 người, vui lòng liên hệ trực tiếp qua Hotline:</p>
-                        <p class="text-xl font-bold text-primary font-serif flex items-center justify-center py-2 bg-bg-secondary rounded-lg">
+                        <p class="text-xl font-bold text-primary font-sans tracking-wide flex items-center justify-center py-2 bg-bg-secondary rounded-lg">
                             <i class="fas fa-phone-square-alt text-secondary mr-2"></i>{{ $siteSettings['site_hotline'] ?? '0866.000.000' }}
                         </p>
                         <p>Địa chỉ duy nhất: <br><span class="font-semibold text-text-primary">{{ $siteSettings['site_address'] ?? 'TP Hoa Lư, Ninh Bình' }}</span></p>

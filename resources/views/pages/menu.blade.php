@@ -36,7 +36,7 @@
                                 <h3 class="text-xl font-bold text-primary font-serif">{{ $set->name }}</h3>
                                 <span class="text-[10px] text-text-secondary uppercase tracking-widest mt-1 block">Dành cho {{ $set->pax_range }} người</span>
                             </div>
-                            <span class="text-primary-light font-bold text-lg font-serif">
+                            <span class="text-primary-light font-bold text-lg font-sans tracking-tight">
                                 {{ number_format($set->price, 0, ',', '.') }}đ
                             </span>
                         </div>
