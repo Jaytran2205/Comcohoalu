@@ -52,6 +52,7 @@
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_STORE": "file",
+        "CACHE_PATH": "/tmp/cache",
         "SESSION_DRIVER": "cookie"
     }
 }

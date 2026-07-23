@@ -5,6 +5,11 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 try {
+    // Ensure Vercel writable /tmp/cache directory exists
+    if (!is_dir('/tmp/cache')) {
+        @mkdir('/tmp/cache', 0755, true);
+    }
+
     // Forward requests to the Laravel index.php file
     require __DIR__ . '/../public/index.php';
 } catch (\Throwable $e) {
