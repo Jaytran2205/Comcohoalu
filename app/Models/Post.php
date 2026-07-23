@@ -12,6 +12,16 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::saved(function () {
+            \Illuminate\Support\Facades\Cache::forget('home.latest_posts');
+        });
+        static::deleted(function () {
+            \Illuminate\Support\Facades\Cache::forget('home.latest_posts');
+        });
+    }
+
     protected $fillable = [
         'category_id',
         'author_id',

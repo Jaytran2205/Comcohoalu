@@ -29,11 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Share settings globally in views
         try {
-            if (Schema::hasTable('settings')) {
-                View::share('siteSettings', Setting::allCached());
-            } else {
-                View::share('siteSettings', []);
-            }
+            View::share('siteSettings', Setting::allCached());
         } catch (\Throwable $e) {
             View::share('siteSettings', []);
         }

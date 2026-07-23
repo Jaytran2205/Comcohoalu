@@ -11,6 +11,16 @@ class SetMenu extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::saved(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.set_menus');
+        });
+        static::deleted(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.set_menus');
+        });
+    }
+
     protected $fillable = [
         'name',
         'slug',

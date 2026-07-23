@@ -10,6 +10,16 @@ class MenuBoard extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::saved(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.boards');
+        });
+        static::deleted(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.boards');
+        });
+    }
+
     protected $fillable = [
         'title',
         'image',

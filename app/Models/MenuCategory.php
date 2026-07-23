@@ -11,6 +11,16 @@ class MenuCategory extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::saved(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.categories');
+        });
+        static::deleted(function () {
+            \Illuminate\Support\Facades\Cache::forget('menu.categories');
+        });
+    }
+
     protected $fillable = [
         'name',
         'slug',

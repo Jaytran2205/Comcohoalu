@@ -13,6 +13,16 @@ class MenuItem extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::saved(function () {
+            \Illuminate\Support\Facades\Cache::forget('home.featured_items');
+        });
+        static::deleted(function () {
+            \Illuminate\Support\Facades\Cache::forget('home.featured_items');
+        });
+    }
+
     protected $fillable = [
         'category_id',
         'name',
