@@ -182,8 +182,16 @@ $(document).ready(function () {
     if ($heroVideo.length) {
         const videoEl = $heroVideo[0];
 
+        let revealed = false;
         // Function to smoothly reveal video once playing starts
         function revealVideo() {
+            if (revealed) return;
+            revealed = true;
+            try {
+                videoEl.currentTime = 0; // Force video to start from 0.0 seconds
+            } catch (e) {
+                console.log("Could not seek video:", e);
+            }
             $heroVideo.removeClass('opacity-0').addClass('opacity-100');
             if ($heroPoster.length) {
                 $heroPoster.addClass('opacity-0 pointer-events-none');

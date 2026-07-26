@@ -18,7 +18,6 @@
 
         <video 
             id="hero-intro-video"
-            autoplay 
             loop 
             muted 
             playsinline 
