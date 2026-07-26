@@ -20,9 +20,9 @@
             <source src="{{ asset('images/intro.mp4') }}" type="video/mp4">
         </video>
 
-        <!-- Warm Dark Overlay Gradient -->
-        <div id="hero-video-overlay" class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10 transition-opacity duration-700"></div>
-        <div class="absolute inset-0 viet-pattern-bg opacity-15 z-10"></div>
+        <!-- Warm Dark Overlay Gradient & Pattern (Initially transparent, reveals on scroll) -->
+        <div id="hero-video-overlay" class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/80 z-10 opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+        <div id="hero-video-pattern" class="absolute inset-0 viet-pattern-bg opacity-0 z-10 transition-opacity duration-700 pointer-events-none"></div>
     </div>
 
     <!-- Hero Content Container -->

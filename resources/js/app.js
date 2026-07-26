@@ -89,6 +89,8 @@ $(document).ready(function () {
     const $siteHeader = $('#site-header');
     const $heroGlassCard = $('#hero-glass-card');
     const $scrollCue = $('#scroll-cue');
+    const $heroVideoOverlay = $('#hero-video-overlay');
+    const $heroVideoPattern = $('#hero-video-pattern');
 
     function handleScrollEffects() {
         const scrollTop = $(window).scrollTop();
@@ -106,22 +108,36 @@ $(document).ready(function () {
             }
         }
 
-        // 2. Hero Content Card Reveal (Hidden at top video intro, reveals when scrolling down)
+        // 2. Hero Content Card Reveal & Video Background Dark Overlay Transition
         if ($heroGlassCard.length) {
             if (scrollTop < 15) {
-                // Completely hidden at the top of the video intro
+                // Completely hidden at the top of the video intro - original video colors
                 $heroGlassCard
                     .addClass('opacity-0 pointer-events-none translate-y-8 scale-95')
                     .removeClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
+
+                if ($heroVideoOverlay.length) {
+                    $heroVideoOverlay.addClass('opacity-0').removeClass('opacity-100');
+                }
+                if ($heroVideoPattern.length) {
+                    $heroVideoPattern.addClass('opacity-0').removeClass('opacity-15');
+                }
 
                 if ($scrollCue.length) {
                     $scrollCue.removeClass('opacity-0 pointer-events-none');
                 }
             } else {
-                // Smoothly slide up & fade in centered over the video background
+                // Smoothly slide up & fade in centered over the video background - dark overlays applied
                 $heroGlassCard
                     .removeClass('opacity-0 pointer-events-none translate-y-8 scale-95')
                     .addClass('opacity-100 pointer-events-auto translate-y-0 scale-100');
+
+                if ($heroVideoOverlay.length) {
+                    $heroVideoOverlay.removeClass('opacity-0').addClass('opacity-100');
+                }
+                if ($heroVideoPattern.length) {
+                    $heroVideoPattern.removeClass('opacity-0').addClass('opacity-15');
+                }
 
                 if ($scrollCue.length) {
                     $scrollCue.addClass('opacity-0 pointer-events-none');
