@@ -17,7 +17,7 @@
             poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
             class="w-full h-full object-cover object-center scale-[1.03] transition-transform duration-1000 ease-out"
         >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-chef-cooking-a-dish-in-a-restaurant-kitchen-41551-large.mp4" type="video/mp4">
+            <source src="{{ asset('images/intro.mp4') }}" type="video/mp4">
         </video>
 
         <!-- Warm Dark Overlay Gradient -->
