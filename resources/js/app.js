@@ -176,6 +176,44 @@ $(document).ready(function () {
     });
     handleScrollEffects();
 
+    // ── Instant Video Autoplay Fade-in & Mobile Optimization ──
+    const $heroVideo = $('#hero-intro-video');
+    if ($heroVideo.length) {
+        const videoEl = $heroVideo[0];
+
+        // Function to smoothly reveal video once playing starts
+        function revealVideo() {
+            $heroVideo.removeClass('opacity-0').addClass('opacity-100');
+        }
+
+        // Check if already playing (cached or fast loading)
+        if (videoEl.currentTime > 0 && !videoEl.paused && !videoEl.ended && videoEl.readyState > 2) {
+            revealVideo();
+        } else {
+            // Event listener when video actually starts playing
+            $heroVideo.on('playing ended seeked timeupdate', function () {
+                if (videoEl.currentTime > 0.1) {
+                    revealVideo();
+                }
+            });
+            // Fallback: If it loads data but doesn't auto-play on mobile instantly
+            $heroVideo.on('canplaythrough loadeddata', function () {
+                revealVideo();
+            });
+        }
+
+        // Force play immediately to bypass strict mobile autoplay blocks
+        videoEl.play().then(function () {
+            revealVideo();
+        }).catch(function (error) {
+            console.log("Autoplay was prevented by browser security/low-power mode. Retrying...", error);
+            // Fallback for user interaction play trigger
+            $(document).one('touchstart click scroll', function () {
+                videoEl.play().then(revealVideo);
+            });
+        });
+    }
+
     // ── Toast Notification Dismissal ──
     const $toasts = $('.toast-notification');
     if ($toasts.length) {
