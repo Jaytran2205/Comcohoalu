@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- 1. Hero Section (Full-bleed Intro Video Background & Glassmorphism Frosted Content Card) -->
-<section id="hero-section" class="relative min-h-[110vh] flex items-center justify-center text-white overflow-hidden pt-20 sm:pt-24 pb-20">
+<section id="hero-section" class="relative min-h-[100vh] flex items-center justify-center text-white overflow-hidden pt-20 sm:pt-24 pb-20">
     
     <!-- Video Intro Background Container -->
     <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden bg-bg-dark">
@@ -13,7 +13,7 @@
             id="hero-video-poster"
             src="{{ asset('images/hero-poster.jpg') }}" 
             alt="Nhà hàng Cơm Cổ Hoa Lư Ninh Bình" 
-            class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] transition-opacity duration-1000 z-0"
+            class="absolute inset-0 w-full h-full object-cover lg:object-fill object-center scale-[1.01] transition-opacity duration-1000 z-0"
         >
 
         <video 
@@ -22,7 +22,7 @@
             muted 
             playsinline 
             preload="auto"
-            class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] opacity-0 transition-opacity duration-1000 ease-out z-10"
+            class="absolute inset-0 w-full h-full object-cover lg:object-fill object-center scale-[1.01] opacity-0 transition-opacity duration-1000 ease-out z-10"
         >
             <source src="https://dl.dropboxusercontent.com/scl/fi/cjdofz93qga0ypjhiz1uu/Intro-C-m-C.mp4?rlkey=x29kkszpls1552aktlfnjm1u4&raw=1" type="video/mp4">
         </video>
