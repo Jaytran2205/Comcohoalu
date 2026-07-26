@@ -11,8 +11,8 @@
         <!-- Static Poster Image (Visible from millisecond 0 while video loads) -->
         <img 
             id="hero-video-poster"
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
-            alt="Cơm Cổ Hoa Lư Không Gian" 
+            src="{{ asset('images/hero-poster.png') }}" 
+            alt="Nhà hàng Cơm Cổ Hoa Lư Ninh Bình" 
             class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] transition-opacity duration-1000 z-0"
         >
 
