@@ -178,12 +178,16 @@ $(document).ready(function () {
 
     // ── Instant Video Autoplay Fade-in & Mobile Optimization ──
     const $heroVideo = $('#hero-intro-video');
+    const $heroPoster = $('#hero-video-poster');
     if ($heroVideo.length) {
         const videoEl = $heroVideo[0];
 
         // Function to smoothly reveal video once playing starts
         function revealVideo() {
             $heroVideo.removeClass('opacity-0').addClass('opacity-100');
+            if ($heroPoster.length) {
+                $heroPoster.addClass('opacity-0 pointer-events-none');
+            }
         }
 
         // Check if already playing (cached or fast loading)

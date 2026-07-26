@@ -7,7 +7,15 @@
 <section id="hero-section" class="relative min-h-[110vh] flex items-center justify-center text-white overflow-hidden pt-20 sm:pt-24 pb-20">
     
     <!-- Video Intro Background Container -->
-    <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
+    <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden bg-bg-dark">
+        <!-- Static Poster Image (Visible from millisecond 0 while video loads) -->
+        <img 
+            id="hero-video-poster"
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
+            alt="Cơm Cổ Hoa Lư Không Gian" 
+            class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] transition-opacity duration-1000 z-0"
+        >
+
         <video 
             id="hero-intro-video"
             autoplay 
@@ -15,15 +23,14 @@
             muted 
             playsinline 
             preload="auto"
-            poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
-            class="w-full h-full object-cover object-center scale-[1.03] opacity-0 transition-opacity duration-1000 ease-out"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] opacity-0 transition-opacity duration-1000 ease-out z-10"
         >
             <source src="https://dl.dropboxusercontent.com/scl/fi/cjdofz93qga0ypjhiz1uu/Intro-C-m-C.mp4?rlkey=x29kkszpls1552aktlfnjm1u4&raw=1" type="video/mp4">
         </video>
 
         <!-- Warm Dark Overlay Gradient & Pattern (Initially transparent, reveals on scroll) -->
-        <div id="hero-video-overlay" class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/80 z-10 opacity-0 transition-opacity duration-700 pointer-events-none"></div>
-        <div id="hero-video-pattern" class="absolute inset-0 viet-pattern-bg opacity-0 z-10 transition-opacity duration-700 pointer-events-none"></div>
+        <div id="hero-video-overlay" class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/80 z-20 opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+        <div id="hero-video-pattern" class="absolute inset-0 viet-pattern-bg opacity-0 z-20 transition-opacity duration-700 pointer-events-none"></div>
     </div>
 
     <!-- Hero Content Container -->
