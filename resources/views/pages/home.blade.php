@@ -11,7 +11,7 @@
         <!-- Static Poster Image (Visible from millisecond 0 while video loads) -->
         <img 
             id="hero-video-poster"
-            src="{{ asset('images/hero-poster.png') }}" 
+            src="{{ asset('images/hero-poster.jpg') }}" 
             alt="Nhà hàng Cơm Cổ Hoa Lư Ninh Bình" 
             class="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] transition-opacity duration-1000 z-0"
         >
