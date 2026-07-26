@@ -36,6 +36,11 @@
     <!-- Tailwind & Vite assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <!-- Preload Hero Background Video for instant playback on homepage -->
+    @if(request()->routeIs('home'))
+        <link rel="preload" href="https://dl.dropboxusercontent.com/scl/fi/cjdofz93qga0ypjhiz1uu/Intro-C-m-C.mp4?rlkey=x29kkszpls1552aktlfnjm1u4&raw=1" as="video" type="video/mp4">
+    @endif
+
     <!-- Google Analytics -->
     @if(!empty($siteSettings['google_analytics_code']))
         {!! $siteSettings['google_analytics_code'] !!}
