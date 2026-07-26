@@ -17,7 +17,7 @@
             poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
             class="w-full h-full object-cover object-center scale-[1.03] transition-transform duration-1000 ease-out"
         >
-            <source src="{{ asset('images/intro.mp4') }}" type="video/mp4">
+            <source src="https://dl.dropboxusercontent.com/scl/fi/cjdofz93qga0ypjhiz1uu/Intro-C-m-C.mp4?rlkey=x29kkszpls1552aktlfnjm1u4&raw=1" type="video/mp4">
         </video>
 
         <!-- Warm Dark Overlay Gradient & Pattern (Initially transparent, reveals on scroll) -->
