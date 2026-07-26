@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Schema;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 });
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -95,127 +95,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::post('/run-migrations', function (\Illuminate\Http\Request $request) {
-    // 1. Lấy token từ header X-Migration-Token
-    $token = $request->header('X-Migration-Token');
-    $secretToken = config('services.migration.secret_token');
 
-    // Nếu cấu hình chưa thiết lập token bí mật
-    if (empty($secretToken)) {
-        Log::error('Migration failed: services.migration.secret_token is not set in configuration.');
-        return response('Internal Server Error. Configuration missing.', 500);
-    }
-
-    // 2. So sánh token an toàn bằng hash_equals để chống timing attacks
-    if ($token === null || !hash_equals($secretToken, $token)) {
-        return response('Unauthorized.', 401);
-    }
-
-    // 3. Kiểm tra xem bảng cache_locks có tồn tại hay không trước khi thực thi
-    $useLock = false;
-    try {
-        $useLock = Schema::hasTable('cache_locks');
-    } catch (\Throwable $e) {
-        Log::warning('Database schema check failed for table cache_locks: ' . $e->getMessage() . '. Running without lock checks.');
-    }
-
-    // 4. Khóa chống chạy trùng lặp bằng Cache Lock (nếu bảng cache_locks tồn tại)
-    $lock = null;
-    $lockAcquired = false;
-
-    if ($useLock) {
-        try {
-            $lock = Cache::lock('migration_run_lock', 60);
-            $lockAcquired = $lock->get();
-
-            if (!$lockAcquired) {
-                return response('Another migration run is already in progress.', 429);
-            }
-        } catch (\Throwable $e) {
-            // Chế độ fail-safe: Nếu gặp lỗi khi chạy Lock (ví dụ lỗi dịch vụ cache), chặn không cho migrate
-            Log::error('Cache lock service unavailable: ' . $e->getMessage(), [
-                'exception' => $e
-            ]);
-            return response('Cache lock service unavailable.', 503);
-        }
-    }
-
-    try {
-        $fresh = $request->input('fresh') === '1';
-
-        if ($fresh) {
-            // Chạy migrate:fresh --seed khi tham số fresh được truyền rõ ràng là 1
-            Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
-            $action = 'migrate:fresh --seed';
-        } else {
-            // Mặc định chạy migrate thông thường
-            Artisan::call('migrate', ['--force' => true]);
-            $action = 'migrate';
-        }
-
-        return response()->json([
-            'status' => 'success',
-            'action' => $action,
-            'message' => 'Migration completed successfully.'
-        ]);
-    } catch (\Throwable $e) {
-        // Ghi log lỗi chi tiết trên máy chủ
-        Log::error('Migration failed with exception: ' . $e->getMessage(), [
-            'exception' => $e
-        ]);
-
-        return response('Migration failed, check server logs.', 500);
-    } finally {
-        // Luôn giải phóng lock nếu đã được lấy thành công để không bị treo
-        if ($useLock && $lock && $lockAcquired) {
-            try {
-                $lock->release();
-            } catch (\Throwable $e) {
-                Log::error('Failed to release cache lock: ' . $e->getMessage());
-            }
-        }
-    }
-});
-
-Route::get('/test-connection', function () {
-    $host = env('DB_HOST');
-    $port = env('DB_PORT');
-    $db   = env('DB_DATABASE');
-    $user = env('DB_USERNAME');
-    $pass = env('DB_PASSWORD');
-
-    $results = [];
-    $results['env'] = [
-        'host' => $host,
-        'port' => $port,
-        'db' => $db,
-        'user' => $user,
-        'pass_length' => strlen($pass),
-    ];
-
-    try {
-        $dsn = "pgsql:host=$host;port=$port;dbname=$db";
-        $results['dsn'] = $dsn;
-        
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        ];
-        
-        $pdo = new PDO($dsn, $user, $pass, $options);
-        $results['status'] = 'Success! Connected to database.';
-        
-        $stmt = $pdo->query('SELECT version()');
-        $results['version'] = $stmt->fetchColumn();
-    } catch (\Throwable $e) {
-        $results['status'] = 'Failed';
-        $results['error'] = [
-            'class' => get_class($e),
-            'message' => $e->getMessage(),
-            'trace' => $e->getTraceAsString(),
-        ];
-    }
-    
-    return response()->json($results);
-});
 
 Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');

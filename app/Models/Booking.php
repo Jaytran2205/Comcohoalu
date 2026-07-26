@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Booking extends Model
 {
@@ -43,7 +44,7 @@ class Booking extends Model
     {
         static::creating(function (Booking $booking) {
             if (empty($booking->booking_code)) {
-                $booking->booking_code = 'BK-' . now()->format('Ymd') . '-' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+                $booking->booking_code = 'BK-' . now()->format('Ymd') . '-' . Str::upper(Str::random(8));
             }
         });
     }

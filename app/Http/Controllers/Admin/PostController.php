@@ -45,6 +45,7 @@ class PostController extends Controller
             'meta_description' => ['nullable', 'string', 'max:160'],
         ]);
 
+        $validated['content'] = $this->sanitizeHtml($validated['content']);
         $validated['slug'] = Str::slug($validated['title']);
         $validated['author_id'] = $request->user()->id;
 
@@ -83,6 +84,7 @@ class PostController extends Controller
             'meta_description' => ['nullable', 'string', 'max:160'],
         ]);
 
+        $validated['content'] = $this->sanitizeHtml($validated['content']);
         $validated['slug'] = Str::slug($validated['title']);
 
         // Auto set published_at khi chuyển sang Published
@@ -108,5 +110,26 @@ class PostController extends Controller
         return redirect()
             ->route('admin.posts.index')
             ->with('success', 'Đã xóa bài viết.');
+    }
+
+    /**
+     * Sanitize HTML content to prevent XSS.
+     */
+    private function sanitizeHtml(string $html): string
+    {
+        // 1. Remove script and iframe tags entirely
+        $html = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', '', $html);
+        $html = preg_replace('/<iframe\b[^>]*>(.*?)<\/iframe>/is', '', $html);
+        
+        // 2. Remove inline event handlers
+        $html = preg_replace('/on\w+\s*=\s*(["\'])(.*?)\1/is', '', $html);
+        $html = preg_replace('/on\w+\s*=\s*([^>\s]+)/is', '', $html);
+        
+        // 3. Remove javascript: pseudo-protocol
+        $html = preg_replace('/href\s*=\s*(["\'])\s*javascript:(.*?)\1/is', 'href="#"', $html);
+        $html = preg_replace('/src\s*=\s*(["\'])\s*javascript:(.*?)\1/is', 'src=""', $html);
+        
+        // 4. Whitelist safe tags
+        return strip_tags($html, ['p', 'br', 'b', 'strong', 'i', 'em', 'u', 'ul', 'ol', 'li', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'blockquote', 'div', 'span']);
     }
 }
