@@ -38,7 +38,7 @@
 
     <!-- Preload Hero Background Video for instant playback on homepage -->
     @if(request()->routeIs('home'))
-        <link rel="preload" href="https://dl.dropboxusercontent.com/scl/fi/cjdofz93qga0ypjhiz1uu/Intro-C-m-C.mp4?rlkey=x29kkszpls1552aktlfnjm1u4&raw=1" as="video" type="video/mp4">
+        <link rel="preload" href="{{ asset('images/intro.mp4') }}" as="video" type="video/mp4">
     @endif
 
     <!-- Google Analytics -->
