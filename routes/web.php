@@ -59,6 +59,14 @@ Route::prefix('api')->group(function () {
     Route::get('/menu/filter', [MenuController::class, 'filter'])->name('api.menu.filter');
     Route::get('/menu/search', [MenuController::class, 'search'])->name('api.menu.search');
     Route::get('/menu/{id}', [MenuController::class, 'quickView'])->name('api.menu.quickview');
+    Route::get('/keep-alive', function () {
+        try {
+            \Illuminate\Support\Facades\DB::select('SELECT 1');
+            return response()->json(['status' => 'success', 'message' => 'Supabase connection is active.']);
+        } catch (\Throwable $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    });
 });
 
 /*
