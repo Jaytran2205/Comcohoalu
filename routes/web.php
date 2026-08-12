@@ -55,11 +55,9 @@ Route::get('/category/{slug}', [PostController::class, 'category'])->name('posts
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('api')->group(function () {
-    Route::get('/menu/filter', [MenuController::class, 'filter'])->name('api.menu.filter');
-    Route::get('/menu/search', [MenuController::class, 'search'])->name('api.menu.search');
-    Route::get('/menu/{id}', [MenuController::class, 'quickView'])->name('api.menu.quickview');
-});
+Route::get('/menu/filter', [MenuController::class, 'filter'])->name('api.menu.filter');
+Route::get('/menu/search', [MenuController::class, 'search'])->name('api.menu.search');
+Route::get('/menu/quick-view/{id}', [MenuController::class, 'quickView'])->name('api.menu.quickview');
 
 Route::get('/keep-alive', function () {
     try {

@@ -393,7 +393,7 @@ $(document).ready(function () {
 
         // Show loading modal or dialog
         if (itemId) {
-            $.get(`/api/menu/${itemId}`, function (data) {
+            $.get(`/menu/quick-view/${itemId}`, function (data) {
                 // Resolve image path correctly
                 let dishImage = '/images/default-dish.jpg';
                 if (data.image) {
