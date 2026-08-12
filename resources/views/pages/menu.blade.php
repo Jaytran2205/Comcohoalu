@@ -6,9 +6,9 @@
 @section('content')
 <!-- Breadcrumb Header -->
 @include('partials.breadcrumb', [
-    'title' => 'Thực Đơn Cơm Cổ Hoa Lư',
+    'title' => 'Combo Mâm Cơm Hoa Lư',
     'items' => [
-        ['label' => 'Thực đơn', 'url' => null]
+        ['label' => 'Combo', 'url' => null]
     ]
 ])
 
@@ -19,75 +19,31 @@
     <div class="absolute inset-0 viet-pattern-bg opacity-5"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-xl mx-auto mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-12">
             <span class="text-secondary font-bold text-sm uppercase tracking-widest block">Gợi ý từ bếp trưởng</span>
             <h2 class="text-2xl md:text-3xl font-bold text-primary font-serif mt-2">Mâm Cơm Trọn Vị Cố Đô</h2>
             <div class="w-12 h-1 bg-secondary mx-auto mt-2"></div>
             <p class="text-text-secondary text-xs mt-3">Các set mâm cơm được thiết kế hài hòa, đầy đủ dinh dưỡng, giúp quý khách thưởng thức trọn vẹn hương vị ẩm thực Hoa Lư.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
             @foreach($setMenus as $set)
-                <div class="premium-card group bg-white p-6 md:p-8 flex flex-col justify-between border-t-4 border-t-primary overflow-hidden">
-                    <div>
-                        <!-- Set Menu Image (If Available) -->
-                        @if($set->image)
-                            <div class="relative aspect-[16/10] -mx-6 md:-mx-8 -mt-6 md:-mt-8 mb-6 overflow-hidden bg-bg-secondary">
-                                <img 
-                                    src="{{ str_starts_with($set->image, 'http') ? $set->image : (str_starts_with($set->image, 'images/') ? asset($set->image) : asset('storage/' . $set->image)) }}" 
-                                    alt="{{ $set->name }}" 
-                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                                    loading="lazy"
-                                    onerror="this.parentElement.style.display='none'"
-                                >
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-3 left-4 text-white text-[11px] font-bold font-serif bg-primary/80 px-2.5 py-1 rounded backdrop-blur-sm shadow-sm">
-                                    <i class="fas fa-camera mr-1 text-secondary"></i>Ảnh thực tế mâm cơm
-                                </span>
-                            </div>
-                        @endif
-
-                        <!-- Title & Price -->
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-primary font-serif">{{ $set->name }}</h3>
-                                <span class="text-[10px] text-text-secondary uppercase tracking-widest mt-1 block">Dành cho {{ $set->pax_range }} người</span>
-                            </div>
-                            <span class="text-primary-light font-bold text-lg font-sans tracking-tight">
-                                {{ number_format($set->price, 0, ',', '.') }}đ
-                            </span>
+                <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-border-custom/40 overflow-hidden transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col">
+                    <!-- Full Uncropped Poster Image -->
+                    <div class="relative w-full overflow-hidden bg-bg-secondary">
+                        <img 
+                            src="{{ str_starts_with($set->image, 'http') ? $set->image : (str_starts_with($set->image, 'images/') ? asset($set->image) : asset('storage/' . $set->image)) }}" 
+                            alt="{{ $set->name }}" 
+                            class="w-full h-auto object-contain block group-hover:scale-[1.02] transition-transform duration-500"
+                            loading="lazy"
+                        >
+                        <!-- Button Overlaid at bottom of image -->
+                        <div class="p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center justify-center">
+                            <a href="{{ route('booking.create') }}" class="w-full py-3 text-center bg-primary hover:bg-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 border border-secondary/40">
+                                <i class="fas fa-calendar-check text-secondary group-hover:text-bg-dark"></i>
+                                <span>Đặt mâm này ngay</span>
+                            </a>
                         </div>
-                        
-                        <p class="text-text-secondary text-xs italic mb-6">
-                            "{{ $set->description ?: 'Bữa cơm sum họp ấm cúng mang hương vị truyền thống quê hương Ninh Bình.' }}"
-                        </p>
-
-                        <!-- Items List -->
-                        <div class="space-y-3 mb-8">
-                            <span class="text-xs font-bold text-text-primary uppercase tracking-wider block border-b border-border-custom/20 pb-2">
-                                <i class="fas fa-utensils text-secondary mr-2"></i>Chi tiết mâm cơm:
-                            </span>
-                            <ul class="space-y-2">
-                                @forelse($set->items as $menuItem)
-                                    <li class="flex items-center text-xs text-text-secondary">
-                                        <i class="fas fa-circle text-[6px] text-secondary mr-2.5"></i>
-                                        <span class="font-medium text-text-primary mr-1.5">{{ $menuItem->name }}</span>
-                                        @if($menuItem->pivot && $menuItem->pivot->quantity > 1)
-                                            <span class="text-primary-light font-semibold">(x{{ $menuItem->pivot->quantity }})</span>
-                                        @endif
-                                    </li>
-                                @empty
-                                    <li class="text-xs text-text-secondary italic">Đang cập nhật các món ăn...</li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Book Set -->
-                    <div>
-                        <a href="{{ route('booking.create') }}" class="block w-full py-3 text-center bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-sm">
-                            Đặt mâm này ngay
-                        </a>
                     </div>
                 </div>
             @endforeach

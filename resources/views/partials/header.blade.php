@@ -52,7 +52,7 @@
             
             <a href="{{ route('about') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isAbout ? 'active font-bold' : 'font-semibold' }}">Giới thiệu</a>
             
-            <a href="{{ route('menu') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenu ? 'active font-bold' : 'font-semibold' }}">Thực đơn</a>
+            <a href="{{ route('menu') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenu ? 'active font-bold' : 'font-semibold' }}">Combo</a>
             
             <a href="{{ route('menu.board') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenuBoard ? 'active font-bold' : 'font-semibold' }}">Menu</a>
             
@@ -113,7 +113,7 @@
                 
                 <a href="{{ route('about') }}" class="nav-link block text-lg border-b pb-2 {{ $isAbout ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Giới thiệu</a>
                 
-                <a href="{{ route('menu') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenu ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Thực đơn</a>
+                <a href="{{ route('menu') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenu ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Combo</a>
                 
                 <a href="{{ route('menu.board') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenuBoard ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Menu</a>
                 
