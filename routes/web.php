@@ -61,8 +61,14 @@ Route::prefix('api')->group(function () {
     Route::get('/menu/{id}', [MenuController::class, 'quickView'])->name('api.menu.quickview');
     Route::get('/keep-alive', function () {
         try {
-            \Illuminate\Support\Facades\DB::select('SELECT 1');
-            return response()->json(['status' => 'success', 'message' => 'Supabase connection is active.']);
+            \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+            \Illuminate\Support\Facades\Cache::flush();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Supabase connection is active and migrations executed.',
+                'migrate_output' => trim(\Illuminate\Support\Facades\Artisan::output())
+            ]);
         } catch (\Throwable $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
