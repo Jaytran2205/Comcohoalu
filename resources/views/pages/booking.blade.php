@@ -195,56 +195,78 @@
 
                         <!-- Order Type Selector -->
                         @php
-                            $defaultOrderType = request('set_menu') ? 'combo' : (request('dish') ? 'custom_dishes' : 'table_only');
+                            $defaultOrderType = request('order_type', request('set_menu') ? 'combo' : (request('dish') ? 'custom_dishes' : 'combo'));
                             $preSelectedSetMenu = request('set_menu', old('set_menu_id'));
                         @endphp
+                        <input type="hidden" name="order_type" id="selected-order-type" value="{{ $defaultOrderType }}">
+
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <label class="order-type-btn relative flex items-center p-3 rounded-xl border cursor-pointer transition-all {{ $defaultOrderType === 'combo' ? 'border-primary bg-primary/5 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/50' }}">
-                                <input type="radio" name="order_type" value="combo" class="hidden" {{ $defaultOrderType === 'combo' ? 'checked' : '' }} onchange="toggleOrderType('combo')">
-                                <i class="fas fa-layer-group text-secondary text-base mr-2.5"></i>
+                            <button 
+                                type="button" 
+                                id="btn-type-combo" 
+                                onclick="selectOrderType('combo')" 
+                                class="order-type-btn relative flex items-center p-3.5 rounded-xl border text-left cursor-pointer transition-all {{ $defaultOrderType === 'combo' ? 'border-primary bg-primary/10 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/40' }}"
+                            >
+                                <i class="fas fa-layer-group text-secondary text-lg mr-3 flex-shrink-0"></i>
                                 <div>
-                                    <span class="text-xs block leading-tight">Đặt theo Combo</span>
-                                    <span class="text-[10px] text-text-secondary font-normal">Mâm cơm trọn vị</span>
+                                    <span class="text-xs block font-bold">1. Đặt theo Combo</span>
+                                    <span class="text-[10px] text-text-secondary font-normal">Mâm cơm trọn vị 6 người</span>
                                 </div>
-                            </label>
+                            </button>
 
-                            <label class="order-type-btn relative flex items-center p-3 rounded-xl border cursor-pointer transition-all {{ $defaultOrderType === 'custom_dishes' ? 'border-primary bg-primary/5 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/50' }}">
-                                <input type="radio" name="order_type" value="custom_dishes" class="hidden" {{ $defaultOrderType === 'custom_dishes' ? 'checked' : '' }} onchange="toggleOrderType('custom_dishes')">
-                                <i class="fas fa-list-ul text-secondary text-base mr-2.5"></i>
+                            <button 
+                                type="button" 
+                                id="btn-type-custom_dishes" 
+                                onclick="selectOrderType('custom_dishes')" 
+                                class="order-type-btn relative flex items-center p-3.5 rounded-xl border text-left cursor-pointer transition-all {{ $defaultOrderType === 'custom_dishes' ? 'border-primary bg-primary/10 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/40' }}"
+                            >
+                                <i class="fas fa-list-ul text-secondary text-lg mr-3 flex-shrink-0"></i>
                                 <div>
-                                    <span class="text-xs block leading-tight">Đặt món lẻ</span>
-                                    <span class="text-[10px] text-text-secondary font-normal">Tự chọn từng món</span>
+                                    <span class="text-xs block font-bold">2. Đặt món lẻ trước</span>
+                                    <span class="text-[10px] text-text-secondary font-normal">Tự chọn từng món ăn</span>
                                 </div>
-                            </label>
+                            </button>
 
-                            <label class="order-type-btn relative flex items-center p-3 rounded-xl border cursor-pointer transition-all {{ $defaultOrderType === 'table_only' ? 'border-primary bg-primary/5 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/50' }}">
-                                <input type="radio" name="order_type" value="table_only" class="hidden" {{ $defaultOrderType === 'table_only' ? 'checked' : '' }} onchange="toggleOrderType('table_only')">
-                                <i class="fas fa-chair text-secondary text-base mr-2.5"></i>
+                            <button 
+                                type="button" 
+                                id="btn-type-table_only" 
+                                onclick="selectOrderType('table_only')" 
+                                class="order-type-btn relative flex items-center p-3.5 rounded-xl border text-left cursor-pointer transition-all {{ $defaultOrderType === 'table_only' ? 'border-primary bg-primary/10 text-primary font-bold shadow-xs' : 'border-border-custom/50 bg-white text-text-secondary hover:border-primary/40' }}"
+                            >
+                                <i class="fas fa-chair text-secondary text-lg mr-3 flex-shrink-0"></i>
                                 <div>
-                                    <span class="text-xs block leading-tight">Chỉ đặt chỗ bàn</span>
-                                    <span class="text-[10px] text-text-secondary font-normal">Gọi món khi đến</span>
+                                    <span class="text-xs block font-bold">3. Chỉ đặt chỗ bàn</span>
+                                    <span class="text-[10px] text-text-secondary font-normal">Đến quán mới gọi món</span>
                                 </div>
-                            </label>
+                            </button>
                         </div>
 
                         <!-- 1. Combo Selection Panel -->
-                        <div id="combo-panel" class="{{ $defaultOrderType === 'combo' ? '' : 'hidden' }} space-y-4 pt-2">
-                            <label class="block text-xs font-bold text-text-primary uppercase tracking-wider">
-                                Chọn Combo Mâm Cơm:
-                            </label>
+                        <div id="combo-panel" class="{{ $defaultOrderType === 'combo' ? '' : 'hidden' }} space-y-4 pt-3">
+                            <div class="flex items-center justify-between">
+                                <label class="block text-xs font-bold text-text-primary uppercase tracking-wider">
+                                    <i class="fas fa-check-circle text-secondary mr-1"></i>Chọn Combo Mâm Cơm:
+                                </label>
+                                <span class="text-[11px] text-text-secondary italic">Bấm chọn 1 trong các mâm cơm dưới đây</span>
+                            </div>
+                            
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 @foreach($setMenus as $set)
                                     @php
                                         $isSelected = ($preSelectedSetMenu == $set->id) || (!$preSelectedSetMenu && $loop->first);
                                     @endphp
-                                    <label class="combo-card relative flex flex-col justify-between p-3.5 rounded-xl border cursor-pointer transition-all {{ $isSelected ? 'border-primary bg-primary/5 ring-2 ring-primary/20' : 'border-border-custom/40 bg-white hover:border-primary/40' }}">
-                                        <input type="radio" name="set_menu_id" value="{{ $set->id }}" class="hidden" {{ $isSelected ? 'checked' : '' }} onchange="selectCombo('{{ $set->id }}', {{ $set->price }})">
+                                    <div 
+                                        id="combo-card-{{ $set->id }}" 
+                                        onclick="chooseCombo('{{ $set->id }}', {{ $set->price }})" 
+                                        class="combo-card relative flex flex-col justify-between p-3.5 rounded-xl border-2 cursor-pointer transition-all {{ $isSelected ? 'border-primary bg-primary/5 shadow-md scale-[1.01]' : 'border-border-custom/40 bg-white hover:border-primary/40' }}"
+                                    >
+                                        <input type="radio" name="set_menu_id" id="radio-set-{{ $set->id }}" value="{{ $set->id }}" class="hidden" {{ $isSelected ? 'checked' : '' }}>
                                         <div>
                                             @if($set->image)
                                                 <img 
                                                     src="{{ str_starts_with($set->image, 'http') ? $set->image : (str_starts_with($set->image, 'images/') ? asset($set->image) : asset('storage/' . $set->image)) }}" 
                                                     alt="{{ $set->name }}" 
-                                                    class="w-full h-28 object-cover rounded-lg mb-2.5 border"
+                                                    class="w-full h-32 object-cover rounded-lg mb-2.5 border shadow-2xs"
                                                 >
                                             @endif
                                             <h4 class="font-serif font-bold text-xs text-primary leading-snug">{{ $set->name }}</h4>
@@ -252,14 +274,16 @@
                                         </div>
                                         <div class="mt-3 pt-2 border-t border-border-custom/20 flex justify-between items-center">
                                             <span class="text-xs font-bold text-primary-light font-sans">{{ number_format($set->price, 0, ',', '.') }}đ</span>
-                                            <span class="combo-check-icon text-xs text-primary {{ $isSelected ? '' : 'hidden' }}"><i class="fas fa-check-circle"></i></span>
+                                            <span class="combo-check-badge text-[11px] font-bold text-primary flex items-center {{ $isSelected ? '' : 'hidden' }}">
+                                                <i class="fas fa-check-circle mr-1 text-secondary"></i>Đã chọn
+                                            </span>
                                         </div>
-                                    </label>
+                                    </div>
                                 @endforeach
                             </div>
 
-                            <div class="flex items-center space-x-3 pt-2">
-                                <label for="combo_quantity" class="text-xs font-semibold text-text-primary">Số lượng mâm cơm:</label>
+                            <div class="flex items-center space-x-3 pt-2 bg-bg-secondary/30 p-3 rounded-lg border border-border-custom/20">
+                                <label for="combo_quantity" class="text-xs font-semibold text-text-primary">Số lượng mâm cơm muốn đặt:</label>
                                 <input 
                                     type="number" 
                                     name="combo_quantity" 
@@ -268,17 +292,20 @@
                                     max="20" 
                                     value="{{ old('combo_quantity', 1) }}" 
                                     class="w-20 px-3 py-1.5 rounded-lg border border-border-custom bg-white text-text-primary text-center font-bold text-xs focus:ring-2 focus:ring-primary/20"
-                                    onchange="updateEstimatedTotal()"
                                 >
                             </div>
                         </div>
 
                         <!-- 2. Individual Dishes Selection Panel -->
-                        <div id="dishes-panel" class="{{ $defaultOrderType === 'custom_dishes' ? '' : 'hidden' }} space-y-4 pt-2">
-                            <label class="block text-xs font-bold text-text-primary uppercase tracking-wider">
-                                Chọn Món Ăn Lẻ Trước:
-                            </label>
-                            <div class="max-h-72 overflow-y-auto pr-1 space-y-4 divide-y divide-border-custom/10 border border-border-custom/30 rounded-xl p-3 bg-bg-secondary/20">
+                        <div id="dishes-panel" class="{{ $defaultOrderType === 'custom_dishes' ? '' : 'hidden' }} space-y-4 pt-3">
+                            <div class="flex items-center justify-between">
+                                <label class="block text-xs font-bold text-text-primary uppercase tracking-wider">
+                                    <i class="fas fa-check-circle text-secondary mr-1"></i>Chọn Món Ăn Lẻ Trước:
+                                </label>
+                                <span class="text-[11px] text-text-secondary italic">Bấm (+) hoặc (-) để chọn số lượng món</span>
+                            </div>
+
+                            <div class="max-h-80 overflow-y-auto pr-1 space-y-4 divide-y divide-border-custom/10 border border-border-custom/30 rounded-xl p-3 bg-bg-secondary/20">
                                 @foreach($categories as $category)
                                     @if($category->items->isNotEmpty())
                                         <div class="pt-3 first:pt-0">
@@ -291,7 +318,7 @@
                                                             <span class="text-[10px] text-text-secondary font-sans">{{ number_format($dish->price, 0, ',', '.') }}đ</span>
                                                         </div>
                                                         <div class="flex items-center space-x-1.5 flex-shrink-0">
-                                                            <button type="button" class="w-6 h-6 rounded bg-bg-secondary hover:bg-border-custom text-text-primary flex items-center justify-center text-xs" onclick="adjustDishQty({{ $dish->id }}, -1, {{ $dish->price }})">-</button>
+                                                            <button type="button" class="w-6 h-6 rounded bg-bg-secondary hover:bg-border-custom text-text-primary font-bold flex items-center justify-center text-xs" onclick="adjustDishQty({{ $dish->id }}, -1)">-</button>
                                                             <input 
                                                                 type="number" 
                                                                 name="dishes[{{ $dish->id }}]" 
@@ -302,7 +329,7 @@
                                                                 class="w-10 text-center text-xs font-bold bg-transparent border-0 p-0 focus:ring-0"
                                                                 readonly
                                                             >
-                                                            <button type="button" class="w-6 h-6 rounded bg-primary hover:bg-primary-dark text-white flex items-center justify-center text-xs" onclick="adjustDishQty({{ $dish->id }}, 1, {{ $dish->price }})">+</button>
+                                                            <button type="button" class="w-6 h-6 rounded bg-primary hover:bg-primary-dark text-white font-bold flex items-center justify-center text-xs" onclick="adjustDishQty({{ $dish->id }}, 1)">+</button>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -398,17 +425,20 @@
     </div>
 </section>
 
-@push('scripts')
+@section('scripts')
 <script>
-    function toggleOrderType(type) {
-        document.querySelectorAll('.order-type-btn').forEach(btn => {
-            const radio = btn.querySelector('input[type="radio"]');
-            if (radio && radio.value === type) {
-                btn.classList.add('border-primary', 'bg-primary/5', 'text-primary', 'font-bold', 'shadow-xs');
-                btn.classList.remove('border-border-custom/50', 'bg-white', 'text-text-secondary');
-            } else {
-                btn.classList.remove('border-primary', 'bg-primary/5', 'text-primary', 'font-bold', 'shadow-xs');
-                btn.classList.add('border-border-custom/50', 'bg-white', 'text-text-secondary');
+    function selectOrderType(type) {
+        document.getElementById('selected-order-type').value = type;
+
+        const types = ['combo', 'custom_dishes', 'table_only'];
+        types.forEach(t => {
+            const btn = document.getElementById('btn-type-' + t);
+            if (btn) {
+                if (t === type) {
+                    btn.className = 'order-type-btn relative flex items-center p-3.5 rounded-xl border text-left cursor-pointer transition-all border-primary bg-primary/10 text-primary font-bold shadow-xs';
+                } else {
+                    btn.className = 'order-type-btn relative flex items-center p-3.5 rounded-xl border text-left cursor-pointer transition-all border-border-custom/50 bg-white text-text-secondary hover:border-primary/40';
+                }
             }
         });
 
@@ -427,23 +457,26 @@
         }
     }
 
-    function selectCombo(id, price) {
+    function chooseCombo(id, price) {
         document.querySelectorAll('.combo-card').forEach(card => {
+            card.className = 'combo-card relative flex flex-col justify-between p-3.5 rounded-xl border-2 cursor-pointer transition-all border-border-custom/40 bg-white hover:border-primary/40';
+            const badge = card.querySelector('.combo-check-badge');
+            if (badge) badge.classList.add('hidden');
             const radio = card.querySelector('input[type="radio"]');
-            const checkIcon = card.querySelector('.combo-check-icon');
-            if (radio && radio.value == id) {
-                card.classList.add('border-primary', 'bg-primary/5', 'ring-2', 'ring-primary/20');
-                card.classList.remove('border-border-custom/40', 'bg-white');
-                if (checkIcon) checkIcon.classList.remove('hidden');
-            } else {
-                card.classList.remove('border-primary', 'bg-primary/5', 'ring-2', 'ring-primary/20');
-                card.classList.add('border-border-custom/40', 'bg-white');
-                if (checkIcon) checkIcon.classList.add('hidden');
-            }
+            if (radio) radio.checked = false;
         });
+
+        const activeCard = document.getElementById('combo-card-' + id);
+        if (activeCard) {
+            activeCard.className = 'combo-card relative flex flex-col justify-between p-3.5 rounded-xl border-2 cursor-pointer transition-all border-primary bg-primary/5 shadow-md scale-[1.01]';
+            const badge = activeCard.querySelector('.combo-check-badge');
+            if (badge) badge.classList.remove('hidden');
+            const radio = activeCard.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
     }
 
-    function adjustDishQty(dishId, delta, price) {
+    function adjustDishQty(dishId, delta) {
         const input = document.getElementById('dish-qty-' + dishId);
         if (!input) return;
         let current = parseInt(input.value) || 0;
@@ -451,5 +484,4 @@
         input.value = current;
     }
 </script>
-@endpush
 @endsection
