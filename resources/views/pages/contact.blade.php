@@ -175,7 +175,7 @@
                             rows="5" 
                             required
                             placeholder="Nhập nội dung tin nhắn hoặc ý kiến đóng góp của bạn (tối thiểu 10 ký tự)..."
-                            class="w-full px-4 py-3 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary transition-all text-xs"
+                            class="w-full px-4 py-3 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary transition-all text-xs resize-none"
                         >{{ old('message') }}</textarea>
                         @error('message')
                             <span class="text-error text-xs mt-1 block">{{ $message }}</span>

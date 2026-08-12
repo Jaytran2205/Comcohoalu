@@ -352,7 +352,7 @@
                             id="special_requests" 
                             rows="4" 
                             placeholder="Ví dụ: Ghế ăn cho trẻ nhỏ, phòng VIP, trang trí bàn kỷ niệm ngày cưới, các món ăn muốn chuẩn bị trước..."
-                            class="w-full px-4 py-3 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary transition-all text-xs"
+                            class="w-full px-4 py-3 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary transition-all text-xs resize-none"
                         >{{ old('special_requests') }}</textarea>
                         @error('special_requests')
                             <span class="text-error text-xs mt-1 block">{{ $message }}</span>

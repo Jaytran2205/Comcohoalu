@@ -222,3 +222,8 @@ header#site-header.header-scrolled .nav-link-item.active {
 header#site-header.header-scrolled #mobile-menu-btn {
     color: #4A2810 !important;
 }
+
+/* Global Lock for Textarea Resize */
+textarea {
+    resize: none !important;
+}

@@ -236,7 +236,7 @@
                             id="admin_notes" 
                             rows="4" 
                             placeholder="Nhập số bàn đã xếp, thông tin ghi nhớ..."
-                            class="w-full px-3 py-2 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary text-xs"
+                            class="w-full px-3 py-2 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary text-xs resize-none"
                         >{{ old('admin_notes', $booking->admin_notes) }}</textarea>
                     </div>
 
