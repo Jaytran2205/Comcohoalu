@@ -33,7 +33,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/ve-chung-toi', [AboutController::class, 'index'])->name('about');
+Route::redirect('/ve-chung-toi', '/')->name('about');
+Route::redirect('/gioi-thieu', '/');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/thuc-don-anh', [MenuController::class, 'menuBoard'])->name('menu.board');
 

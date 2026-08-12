@@ -192,12 +192,6 @@
                         <span class="text-xs text-text-secondary">Công thức chế biến ngàn năm</span>
                     </div>
                 </div>
-
-                <div class="pt-6">
-                    <a href="{{ route('about') }}" class="inline-flex items-center text-primary hover:text-primary-dark font-bold text-sm uppercase tracking-wider group transition-all">
-                        Tìm hiểu thêm câu chuyện <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition-transform"></i>
-                    </a>
-                </div>
             </div>
 
             <!-- Right: Beautiful Layout Collage -->
@@ -282,76 +276,6 @@
             <a href="{{ route('menu') }}" class="inline-block px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] text-xs uppercase tracking-wider">
                 <i class="fas fa-utensils mr-2"></i> Khám phá toàn bộ thực đơn
             </a>
-        </div>
-
-    </div>
-</section>
-
-<!-- 4. Restaurant Ambiance (Không gian quán - 3-Column Clean Showcase Grid) -->
-<section class="py-20 bg-bg-primary relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-serif leading-tight">Góc Nhìn Cổ Kính & Ấm Cúng</h2>
-            <div class="w-12 h-1 bg-secondary rounded-full mx-auto"></div>
-            <p class="text-text-secondary text-sm md:text-base leading-relaxed max-w-xl mx-auto">
-                Mỗi góc bàn, mỗi ngọn đèn đều mang hơi thở mộc mạc cổ xưa của cung điện Tràng An, đem lại không gian dùng bữa đầm ấm và yên bình.
-            </p>
-        </div>
-
-        <!-- Spaces Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Space 1 -->
-            <div class="group relative h-[28rem] overflow-hidden rounded-xl border border-border-custom/30 shadow-md">
-                <img 
-                    src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=800&auto=format&fit=crop" 
-                    alt="Đại Sảnh Cổ Kính" 
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-6 text-white space-y-2 select-none">
-                    <span class="text-secondary text-[10px] font-bold uppercase tracking-widest">Không gian 01</span>
-                    <h3 class="font-serif font-bold text-xl drop-shadow-sm">Đại Sảnh Cổ Kính</h3>
-                    <p class="text-white/80 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-sm">
-                        Không gian gỗ ấm cúng lợp ngói đỏ truyền thống, thích hợp cho các bữa tiệc sum họp gia đình và gặp gỡ bạn bè thân tình.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Space 2 -->
-            <div class="group relative h-[28rem] overflow-hidden rounded-xl border border-border-custom/30 shadow-md">
-                <img 
-                    src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=800&auto=format&fit=crop" 
-                    alt="Phòng VIP Vương Triều" 
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-6 text-white space-y-2 select-none">
-                    <span class="text-secondary text-[10px] font-bold uppercase tracking-widest">Không gian 02</span>
-                    <h3 class="font-serif font-bold text-xl drop-shadow-sm">Phòng VIP Vương Triều</h3>
-                    <p class="text-white/80 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-sm">
-                        Sự riêng tư sang trọng tái hiện phong cách cung điện hoàng gia Hoa Lư cổ, thích hợp tiếp đãi đối tác và khách quý.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Space 3 -->
-            <div class="group relative h-[28rem] overflow-hidden rounded-xl border border-border-custom/30 shadow-md">
-                <img 
-                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" 
-                    alt="Sân Vườn Yên Bình" 
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-6 text-white space-y-2 select-none">
-                    <span class="text-secondary text-[10px] font-bold uppercase tracking-widest">Không gian 03</span>
-                    <h3 class="font-serif font-bold text-xl drop-shadow-sm">Sân Vườn Yên Bình</h3>
-                    <p class="text-white/80 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-sm">
-                        Không gian ăn uống ngoài trời khoáng đạt mát mẻ bên lũy tre xanh mộc mạc, hòa cùng làn gió thiên nhiên dịu mát.
-                    </p>
-                </div>
-            </div>
         </div>
 
     </div>

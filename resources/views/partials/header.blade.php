@@ -32,7 +32,6 @@
         <nav class="hidden xl:flex items-center space-x-1.5 2xl:space-x-2.5">
             @php
                 $isHome = request()->routeIs('home');
-                $isAbout = request()->routeIs('about');
                 $isMenu = request()->routeIs('menu');
                 $isMenuBoard = request()->routeIs('menu.board');
                 
@@ -49,8 +48,6 @@
             @endphp
 
             <a href="{{ route('home') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isHome ? 'active font-bold' : 'font-semibold' }}">Trang chủ</a>
-            
-            <a href="{{ route('about') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isAbout ? 'active font-bold' : 'font-semibold' }}">Giới thiệu</a>
             
             <a href="{{ route('menu') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenu ? 'active font-bold' : 'font-semibold' }}">Combo</a>
             
@@ -110,8 +107,6 @@
             <!-- Links list -->
             <nav class="px-6 py-8 flex flex-col space-y-5 bg-bg-primary">
                 <a href="{{ route('home') }}" class="nav-link block text-lg border-b pb-2 {{ $isHome ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Trang chủ</a>
-                
-                <a href="{{ route('about') }}" class="nav-link block text-lg border-b pb-2 {{ $isAbout ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Giới thiệu</a>
                 
                 <a href="{{ route('menu') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenu ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Combo</a>
                 
