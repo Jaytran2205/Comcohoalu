@@ -49,7 +49,7 @@
                 </div>
                 <div>
                     <span class="text-text-secondary/70 block mb-1">Giờ đến dùng bữa</span>
-                    <span class="font-bold text-text-primary">{{ $booking->booking_time }}</span>
+                    <span class="font-bold text-text-primary">{{ substr($booking->booking_time, 0, 5) }}</span>
                 </div>
                 <div>
                     <span class="text-text-secondary/70 block mb-1">Số lượng người lớn</span>

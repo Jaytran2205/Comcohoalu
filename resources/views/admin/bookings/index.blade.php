@@ -114,7 +114,7 @@
                         </td>
                         <!-- Booking Time -->
                         <td class="px-6 py-4 whitespace-nowrap font-semibold text-primary">
-                            {{ $booking->booking_time }}
+                            {{ substr($booking->booking_time, 0, 5) }}
                         </td>
                         <!-- Pax counts -->
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -139,7 +139,7 @@
                         </td>
                         <!-- Created Date -->
                         <td class="px-6 py-4 whitespace-nowrap text-[10px]">
-                            {{ $booking->created_at->format('d/m/Y H:i') }}
+                            {{ $booking->created_at->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i') }}
                         </td>
                         <!-- Action Buttons -->
                         <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">

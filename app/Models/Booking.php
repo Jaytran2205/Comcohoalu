@@ -36,7 +36,6 @@ class Booking extends Model
 
     protected $casts = [
         'booking_date' => 'date',
-        'booking_time' => 'datetime:H:i',
         'adults' => 'integer',
         'children' => 'integer',
         'combo_quantity' => 'integer',

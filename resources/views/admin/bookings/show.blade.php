@@ -49,7 +49,7 @@
                         </div>
                         <div>
                             <span class="text-text-secondary/70 block mb-1">Ngày gửi yêu cầu</span>
-                            <span class="font-semibold text-text-primary">{{ $booking->created_at->format('d/m/Y H:i:s') }}</span>
+                            <span class="font-semibold text-text-primary">{{ $booking->created_at->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s') }}</span>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                         </div>
                         <div>
                             <span class="text-text-secondary/70 block mb-1">Giờ dùng bữa</span>
-                            <span class="font-bold text-primary">{{ $booking->booking_time }}</span>
+                            <span class="font-bold text-primary">{{ substr($booking->booking_time, 0, 5) }}</span>
                         </div>
                         <div>
                             <span class="text-text-secondary/70 block mb-1">Số lượng khách</span>
@@ -186,11 +186,11 @@
                     </h4>
                     <div class="flex justify-between">
                         <span>Nhân viên duyệt đơn:</span>
-                        <span class="font-semibold text-text-primary">{{ $booking->confirmer->name ?? 'Hệ thống' }}</span>
+                        <span class="font-semibold text-text-primary">{{ $booking->confirmedBy->name ?? 'Hệ thống' }}</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Thời điểm xác nhận:</span>
-                        <span class="font-semibold text-text-primary">{{ $booking->confirmed_at->format('d/m/Y H:i:s') }}</span>
+                        <span class="font-semibold text-text-primary">{{ $booking->confirmed_at->timezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s') }}</span>
                     </div>
                 </div>
             @endif

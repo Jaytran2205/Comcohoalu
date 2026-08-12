@@ -95,6 +95,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // Quản lý bài viết
     Route::resource('posts', Admin\PostController::class);
 
+    // Báo cáo & Thống kê doanh thu, món bán chạy, xuất Excel
+    Route::get('/reports', [Admin\ReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/export-excel', [Admin\ReportController::class, 'exportExcel'])->name('reports.export');
+
     // Cấu hình nhà hàng (admin only)
     Route::middleware(\App\Http\Middleware\EnsureUserIsAdmin::class)->group(function () {
         Route::get('/settings', [Admin\SettingController::class, 'edit'])->name('settings');

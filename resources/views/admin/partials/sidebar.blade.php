@@ -82,6 +82,15 @@
             QUẢN LÝ BÀI VIẾT
         </a>
 
+        <!-- Reports Link -->
+        <a 
+            href="{{ route('admin.reports.index') }}" 
+            class="flex items-center px-4 py-3 rounded-lg text-xs font-semibold tracking-wider transition-all {{ request()->is('admin/reports*') ? 'bg-primary text-white shadow-md' : 'text-text-light/75 hover:bg-white/5 hover:text-white' }}"
+        >
+            <i class="fas fa-chart-pie mr-3 text-sm {{ request()->is('admin/reports*') ? 'text-white' : 'text-secondary/80' }}"></i>
+            BÁO CÁO &amp; THỐNG KÊ
+        </a>
+
         <!-- Settings Link (Admin Only) -->
         @if(Auth::user() && Auth::user()->isAdmin())
             <div class="pt-4 mt-4 border-t border-white/5">
@@ -184,6 +193,14 @@
             >
                 <i class="fas fa-newspaper mr-3 text-sm {{ request()->is('admin/posts*') ? 'text-white' : 'text-secondary/80' }}"></i>
                 QUẢN LÝ BÀI VIẾT
+            </a>
+
+            <a 
+                href="{{ route('admin.reports.index') }}" 
+                class="flex items-center px-4 py-3 rounded-lg text-xs font-semibold tracking-wider transition-all {{ request()->is('admin/reports*') ? 'bg-primary text-white shadow-md' : 'text-text-light/75 hover:bg-white/5 hover:text-white' }}"
+            >
+                <i class="fas fa-chart-pie mr-3 text-sm {{ request()->is('admin/reports*') ? 'text-white' : 'text-secondary/80' }}"></i>
+                BÁO CÁO &amp; THỐNG KÊ
             </a>
 
             @if(Auth::user() && Auth::user()->isAdmin())
