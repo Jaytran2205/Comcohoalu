@@ -194,68 +194,18 @@ class MenuSeeder extends Seeder
             return $item;
         };
 
-        // --- Set 150K Set 1 ---
-        $set150k_1 = SetMenu::create([
-            'name' => 'Set 150k - Thực đơn 1',
-            'slug' => 'set-150k-thuc-don-1',
-            'description' => 'Set mâm cơm gia đình 150k/suất ấm cúng với các món truyền thống đặc sắc.',
+        // --- 1. Set 200K (Đầu tiên) ---
+        $set200k = SetMenu::create([
+            'name' => 'Combo 200k/người/bàn 6 - Set 1',
+            'slug' => 'combo-200k-nguoi-ban-6-set-1',
+            'description' => 'Mâm cơm đặc sản 200k/người bàn 6 gồm: Dê tái chanh/xào lăn, Gà xào gừng, Cá chép giòn xào ngồng tỏi, Cá chuối kho tộ, Sườn xào, Củ quả luộc, Canh ngao, Cơm trắng.',
             'people_count' => 6,
-            'price_per_person' => 150000,
+            'price_per_person' => 200000,
+            'image' => 'images/set-menus/set-200k.jpg',
             'is_active' => true,
             'sort_order' => 1
         ]);
-        $items150k_1 = [
-            'Bò xào măng trúc' => 1,
-            'Thịt rang cháy cạnh' => 1,
-            'Đậu sốt cà chua' => 1,
-            'Ếch rang muối' => 1,
-            'Bắp cải luộc' => 1,
-            'Trứng rán' => 1,
-            'Cơm trắng' => 2,
-            'Canh cua + Cà gém' => 1,
-        ];
-        foreach ($items150k_1 as $name => $qty) {
-            if ($it = $findItem($name)) {
-                $set150k_1->items()->attach($it->id, ['quantity' => $qty]);
-            }
-        }
-
-        // --- Set 150K Set 2 ---
-        $set150k_2 = SetMenu::create([
-            'name' => 'Set 150k - Thực đơn 2',
-            'slug' => 'set-150k-thuc-don-2',
-            'description' => 'Bữa cơm trọn vị 150k/suất kết hợp tôm thịt cá canh đầy đủ dinh dưỡng.',
-            'people_count' => 6,
-            'price_per_person' => 150000,
-            'is_active' => true,
-            'sort_order' => 2
-        ]);
-        $items150k_2 = [
-            'Bò xào ngồng tỏi' => 1,
-            'Thịt trưng mắm tép' => 1,
-            'Gà chiên mắm' => 1,
-            'Cá chuối kho tộ' => 1,
-            'Củ quả luộc' => 1,
-            'Canh ngao chua' => 1,
-            'Cơm trắng' => 2,
-        ];
-        foreach ($items150k_2 as $name => $qty) {
-            if ($it = $findItem($name)) {
-                $set150k_2->items()->attach($it->id, ['quantity' => $qty]);
-            }
-        }
-
-        // --- Set 200K Set 1 ---
-        $set200k_1 = SetMenu::create([
-            'name' => 'Set 200k - Thực đơn 1',
-            'slug' => 'set-200k-thuc-don-1',
-            'description' => 'Mâm cơm đặc sản 200k/suất chứa dê tái chanh sả thơm và cá chép giòn ngọt lịm.',
-            'people_count' => 6,
-            'price_per_person' => 200000,
-            'is_active' => true,
-            'sort_order' => 3
-        ]);
-        $items200k_1 = [
+        $items200k = [
             'Dê tái chanh' => 1,
             'Gà xáo gừng' => 1,
             'Cá chép giòn xào ngồng tỏi' => 1,
@@ -265,50 +215,51 @@ class MenuSeeder extends Seeder
             'Canh ngao chua' => 1,
             'Cơm trắng' => 2,
         ];
-        foreach ($items200k_1 as $name => $qty) {
+        foreach ($items200k as $name => $qty) {
             if ($it = $findItem($name)) {
-                $set200k_1->items()->attach($it->id, ['quantity' => $qty]);
+                $set200k->items()->attach($it->id, ['quantity' => $qty]);
             }
         }
 
-        // --- Set 200K Set 2 ---
-        $set200k_2 = SetMenu::create([
-            'name' => 'Set 200k - Thực đơn 2',
-            'slug' => 'set-200k-thuc-don-2',
-            'description' => 'Thực đơn tiệc 200k/suất đậm vị quê hương với dê xào lăn và mực tươi xào thập cẩm.',
+        // --- 2. Set 150K (Tiếp theo) ---
+        $set150k = SetMenu::create([
+            'name' => 'Combo 150k/người/bàn 6 - Set 1',
+            'slug' => 'combo-150k-nguoi-ban-6-set-1',
+            'description' => 'Mâm cơm truyền thống gia đình 150k/người bàn 6 gồm: Bò xào măng trúc, Thịt rang, Đậu sốt cà chua, Ếch rang muối, Bắp cải luộc, Trứng rán, Cơm trắng, Canh cua.',
             'people_count' => 6,
-            'price_per_person' => 200000,
+            'price_per_person' => 150000,
+            'image' => 'images/set-menus/set-150k.jpg',
             'is_active' => true,
-            'sort_order' => 4
+            'sort_order' => 2
         ]);
-        $items200k_2 = [
-            'Dê xào lăn' => 1,
-            'Mực xào thập cẩm' => 1,
+        $items150k = [
+            'Bò xào măng trúc' => 1,
             'Thịt rang cháy cạnh' => 1,
             'Đậu sốt cà chua' => 1,
             'Ếch rang muối' => 1,
-            'Củ quả luộc' => 1,
-            'Gà chiên mắm' => 1,
-            'Canh ngao chua' => 1,
+            'Bắp cải luộc' => 1,
+            'Trứng rán' => 1,
             'Cơm trắng' => 2,
+            'Canh cua + Cà gém' => 1,
         ];
-        foreach ($items200k_2 as $name => $qty) {
+        foreach ($items150k as $name => $qty) {
             if ($it = $findItem($name)) {
-                $set200k_2->items()->attach($it->id, ['quantity' => $qty]);
+                $set150k->items()->attach($it->id, ['quantity' => $qty]);
             }
         }
 
-        // --- Set 250K Set 1 ---
-        $set250k_1 = SetMenu::create([
-            'name' => 'Set 250k - Thực đơn 1',
-            'slug' => 'set-250k-thuc-don-1',
-            'description' => 'Mâm tiệc thượng hạng 250k/suất hội tụ cá tầm rang muối, dê xào lăn núi đá Ninh Bình.',
+        // --- 3. Set 250K (Tiếp theo) ---
+        $set250k = SetMenu::create([
+            'name' => 'Combo 250k/người/bàn 6 - Set 1',
+            'slug' => 'combo-250k-nguoi-ban-6-set-1',
+            'description' => 'Mâm tiệc thượng hạng 250k/người bàn 6 gồm: Cá tầm rang muối, Ếch xào măng/Bò xào măng, Gà chiên mắm, Dê xào lăn/Dê chao, Thịt rang, Rau luộc, Cá thu sốt cà chua, Canh + Cơm.',
             'people_count' => 6,
             'price_per_person' => 250000,
+            'image' => 'images/set-menus/set-250k.jpg',
             'is_active' => true,
-            'sort_order' => 5
+            'sort_order' => 3
         ]);
-        $items250k_1 = [
+        $items250k = [
             'Cá tầm rang muối' => 1,
             'Ếch xào măng' => 1,
             'Gà chiên mắm' => 1,
@@ -319,38 +270,9 @@ class MenuSeeder extends Seeder
             'Canh ngao chua' => 1,
             'Cơm trắng' => 2,
         ];
-        foreach ($items250k_1 as $name => $qty) {
+        foreach ($items250k as $name => $qty) {
             if ($it = $findItem($name)) {
-                $set250k_1->items()->attach($it->id, ['quantity' => $qty]);
-            }
-        }
-
-        // --- Set 250K Set 2 ---
-        $set250k_2 = SetMenu::create([
-            'name' => 'Set 250k - Thực đơn 2',
-            'slug' => 'set-250k-thuc-don-2',
-            'description' => 'Bàn tiệc VIP 250k/suất đặc sắc từ Dê chao mắc mật, Chả ốc truyền thống, Gà rang muối thơm giòn.',
-            'people_count' => 6,
-            'price_per_person' => 250000,
-            'is_active' => true,
-            'sort_order' => 6
-        ]);
-        $items250k_2 = [
-            'Bò xào ngồng tỏi' => 1,
-            'Dê chao mắc mật' => 1,
-            'Gà rang muối' => 1,
-            'Chả ốc' => 1,
-            'Tôm đồng rang' => 1,
-            'Đậu tẩm hành' => 1,
-            'Củ quả luộc' => 1,
-            'Ngô chiên bơ' => 1,
-            'Thịt chao giềng' => 1,
-            'Canh ngao chua' => 1,
-            'Cơm trắng' => 2,
-        ];
-        foreach ($items250k_2 as $name => $qty) {
-            if ($it = $findItem($name)) {
-                $set250k_2->items()->attach($it->id, ['quantity' => $qty]);
+                $set250k->items()->attach($it->id, ['quantity' => $qty]);
             }
         }
     }

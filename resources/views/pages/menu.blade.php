@@ -28,8 +28,25 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             @foreach($setMenus as $set)
-                <div class="premium-card bg-white p-6 md:p-8 flex flex-col justify-between border-t-4 border-t-primary">
+                <div class="premium-card group bg-white p-6 md:p-8 flex flex-col justify-between border-t-4 border-t-primary overflow-hidden">
                     <div>
+                        <!-- Set Menu Image (If Available) -->
+                        @if($set->image)
+                            <div class="relative aspect-[16/10] -mx-6 md:-mx-8 -mt-6 md:-mt-8 mb-6 overflow-hidden bg-bg-secondary">
+                                <img 
+                                    src="{{ str_starts_with($set->image, 'http') ? $set->image : (str_starts_with($set->image, 'images/') ? asset($set->image) : asset('storage/' . $set->image)) }}" 
+                                    alt="{{ $set->name }}" 
+                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                                    loading="lazy"
+                                    onerror="this.parentElement.style.display='none'"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-3 left-4 text-white text-[11px] font-bold font-serif bg-primary/80 px-2.5 py-1 rounded backdrop-blur-sm shadow-sm">
+                                    <i class="fas fa-camera mr-1 text-secondary"></i>Ảnh thực tế mâm cơm
+                                </span>
+                            </div>
+                        @endif
+
                         <!-- Title & Price -->
                         <div class="flex justify-between items-start mb-4">
                             <div>

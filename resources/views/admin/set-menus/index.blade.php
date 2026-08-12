@@ -72,9 +72,19 @@
             <tbody class="divide-y divide-border-custom/10 text-xs">
                 @forelse($setMenus as $set)
                     <tr class="hover:bg-bg-secondary/20 transition-colors">
-                        <td class="px-6 py-4 font-bold text-text-primary min-w-[200px]">
-                            <span class="text-sm font-serif text-primary block">{{ $set->name }}</span>
-                            <span class="text-[10px] text-text-secondary italic font-normal line-clamp-1">{{ $set->description }}</span>
+                        <td class="px-6 py-4 font-bold text-text-primary min-w-[240px]">
+                            <div class="flex items-center space-x-3">
+                                <img 
+                                    src="{{ $set->image ? (str_starts_with($set->image, 'http') ? $set->image : (str_starts_with($set->image, 'images/') ? asset($set->image) : asset('storage/' . $set->image))) : asset('images/default-dish.jpg') }}" 
+                                    alt="{{ $set->name }}" 
+                                    class="w-14 h-14 object-cover rounded-lg border border-border-custom/50 shadow-sm flex-shrink-0"
+                                    onerror="this.src='{{ asset('images/default-dish.jpg') }}'"
+                                >
+                                <div>
+                                    <span class="text-sm font-serif text-primary block">{{ $set->name }}</span>
+                                    <span class="text-[10px] text-text-secondary italic font-normal line-clamp-1">{{ $set->description }}</span>
+                                </div>
+                            </div>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">
                             <span class="px-2.5 py-1 rounded bg-secondary/15 text-primary-dark font-bold text-[11px] whitespace-nowrap">

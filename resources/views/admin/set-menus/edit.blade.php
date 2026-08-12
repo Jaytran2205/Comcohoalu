@@ -76,6 +76,33 @@
                 <textarea name="description" id="description" rows="3" class="w-full px-4 py-2.5 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary text-xs">{{ old('description', $setMenu->description) }}</textarea>
             </div>
 
+            <!-- Image Upload Field -->
+            <div>
+                <label for="image" class="block text-xs font-bold text-text-primary uppercase tracking-wider mb-2">
+                    Hình Ảnh Thực Tế Mâm Cơm
+                </label>
+                @if($setMenu->image)
+                    <div class="mb-3 flex items-center space-x-3 p-3 bg-bg-secondary/40 rounded-lg border border-border-custom/30">
+                        <img 
+                            src="{{ str_starts_with($setMenu->image, 'http') ? $setMenu->image : (str_starts_with($setMenu->image, 'images/') ? asset($setMenu->image) : asset('storage/' . $setMenu->image)) }}" 
+                            alt="{{ $setMenu->name }}" 
+                            class="w-20 h-20 object-cover rounded-lg border border-border-custom shadow-sm"
+                        >
+                        <div>
+                            <span class="text-xs font-bold text-text-primary block">Ảnh hiện tại</span>
+                            <span class="text-[10px] text-text-secondary block break-all">{{ $setMenu->image }}</span>
+                        </div>
+                    </div>
+                @endif
+                <div class="flex items-center space-x-4">
+                    <input type="file" name="image" id="image" accept="image/*" class="w-full text-xs text-text-secondary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-primary file:text-white hover:file:bg-primary-dark cursor-pointer">
+                </div>
+                <p class="text-[10px] text-text-secondary mt-1">Chọn ảnh mới để thay đổi ảnh hiện tại. Định dạng: JPG, PNG, WEBP. Tối đa 4MB.</p>
+                @error('image')
+                    <span class="text-error text-xs mt-1 block">{{ $message }}</span>
+                @enderror
+            </div>
+
             <!-- Items Selection Grid -->
             <div>
                 <label class="block text-xs font-bold text-text-primary uppercase tracking-wider mb-2">

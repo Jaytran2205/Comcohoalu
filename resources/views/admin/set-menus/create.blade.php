@@ -72,6 +72,20 @@
                 <textarea name="description" id="description" rows="3" placeholder="Ví dụ: Set mâm cơm gia đình ấm cúng..." class="w-full px-4 py-2.5 rounded-lg border border-border-custom bg-bg-primary/20 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary text-xs">{{ old('description') }}</textarea>
             </div>
 
+            <!-- Image Upload Field -->
+            <div>
+                <label for="image" class="block text-xs font-bold text-text-primary uppercase tracking-wider mb-2">
+                    Hình Ảnh Thực Tế Mâm Cơm (Tùy chọn)
+                </label>
+                <div class="flex items-center space-x-4">
+                    <input type="file" name="image" id="image" accept="image/*" class="w-full text-xs text-text-secondary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-primary file:text-white hover:file:bg-primary-dark cursor-pointer">
+                </div>
+                <p class="text-[10px] text-text-secondary mt-1">Định dạng hỗ trợ: JPG, PNG, WEBP. Dung lượng tối đa: 4MB.</p>
+                @error('image')
+                    <span class="text-error text-xs mt-1 block">{{ $message }}</span>
+                @enderror
+            </div>
+
             <!-- Items Selection Grid -->
             <div>
                 <label class="block text-xs font-bold text-text-primary uppercase tracking-wider mb-2">
