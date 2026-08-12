@@ -12,6 +12,7 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         $bookings = Booking::query()
+            ->with(['setMenu', 'confirmedBy'])
             ->when($request->filled('date'), fn ($q) => $q->whereDate('booking_date', $request->date))
             ->when($request->filled('status'), fn ($q) => $q->where('status', $request->status))
             ->orderByDesc('created_at')
@@ -24,6 +25,7 @@ class BookingController extends Controller
 
     public function show(Booking $booking)
     {
+        $booking->load(['setMenu.items', 'confirmedBy']);
         return view('admin.bookings.show', compact('booking'));
     }
 

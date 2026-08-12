@@ -65,6 +65,7 @@
                 <tr>
                     <th scope="col" class="px-6 py-4">Mã Đơn</th>
                     <th scope="col" class="px-6 py-4">Khách Hàng</th>
+                    <th scope="col" class="px-6 py-4">Thực Đơn Đặt</th>
                     <th scope="col" class="px-6 py-4">Ngày Dùng Bữa</th>
                     <th scope="col" class="px-6 py-4">Giờ Đến</th>
                     <th scope="col" class="px-6 py-4">Số Khách</th>
@@ -84,6 +85,28 @@
                         <td class="px-6 py-4">
                             <div class="font-semibold text-text-primary">{{ $booking->customer_name }}</div>
                             <div class="text-[10px] text-text-secondary/70">{{ $booking->customer_phone }}</div>
+                        </td>
+                        <!-- Ordered Menu / Combo -->
+                        <td class="px-6 py-4">
+                            @if($booking->order_type === 'combo' || $booking->setMenu)
+                                <div class="inline-flex flex-col">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">
+                                        <i class="fas fa-layer-group mr-1 text-secondary"></i>{{ $booking->setMenu->name ?? 'Combo Mâm Cơm' }}
+                                    </span>
+                                    <span class="text-[9px] text-text-secondary mt-0.5">{{ $booking->combo_quantity ?? 1 }} mâm • {{ number_format($booking->estimated_total, 0, ',', '.') }}đ</span>
+                                </div>
+                            @elseif(!empty($booking->ordered_items))
+                                <div class="inline-flex flex-col">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary/20 text-bg-dark border border-secondary/30">
+                                        <i class="fas fa-utensils mr-1 text-primary"></i>Món lẻ ({{ count($booking->ordered_items) }} món)
+                                    </span>
+                                    <span class="text-[9px] text-text-secondary mt-0.5">{{ number_format($booking->estimated_total, 0, ',', '.') }}đ</span>
+                                </div>
+                            @else
+                                <span class="px-2 py-0.5 rounded text-[9px] font-medium bg-bg-secondary text-text-secondary/80">
+                                    Chỉ đặt bàn
+                                </span>
+                            @endif
                         </td>
                         <!-- Booking Date -->
                         <td class="px-6 py-4 whitespace-nowrap text-text-primary">

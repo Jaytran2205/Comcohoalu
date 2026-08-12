@@ -39,7 +39,7 @@
                         >
                         <!-- Button Overlaid at bottom of image -->
                         <div class="p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center justify-center">
-                            <a href="{{ route('booking.create') }}" class="w-full py-3 text-center bg-primary hover:bg-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 border border-secondary/40">
+                            <a href="{{ route('booking.create', ['set_menu' => $set->id]) }}" class="w-full py-3 text-center bg-primary hover:bg-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 border border-secondary/40">
                                 <i class="fas fa-calendar-check text-secondary group-hover:text-bg-dark"></i>
                                 <span>Đặt mâm này ngay</span>
                             </a>

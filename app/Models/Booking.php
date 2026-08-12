@@ -19,6 +19,11 @@ class Booking extends Model
         'booking_time',
         'adults',
         'children',
+        'set_menu_id',
+        'combo_quantity',
+        'ordered_items',
+        'estimated_total',
+        'order_type',
         'customer_name',
         'customer_phone',
         'customer_email',
@@ -34,6 +39,9 @@ class Booking extends Model
         'booking_time' => 'datetime:H:i',
         'adults' => 'integer',
         'children' => 'integer',
+        'combo_quantity' => 'integer',
+        'ordered_items' => 'array',
+        'estimated_total' => 'integer',
         'status' => BookingStatus::class,
         'confirmed_at' => 'datetime',
     ];
@@ -50,6 +58,11 @@ class Booking extends Model
     }
 
     // ── Relationships ──
+
+    public function setMenu(): BelongsTo
+    {
+        return $this->belongsTo(SetMenu::class);
+    }
 
     public function confirmedBy(): BelongsTo
     {

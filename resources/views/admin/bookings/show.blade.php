@@ -84,6 +84,100 @@
                 </div>
             </div>
 
+            <!-- Order / Menu Details Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-border-custom/30 overflow-hidden">
+                <div class="px-6 py-4 bg-bg-secondary/40 border-b border-border-custom/20 flex justify-between items-center">
+                    <h3 class="font-serif font-bold text-sm text-primary flex items-center">
+                        <i class="fas fa-utensils text-secondary mr-2"></i> CHI TIẾT THỰC ĐƠN / COMBO ĐÃ ĐẶT
+                    </h3>
+                    @if($booking->estimated_total > 0)
+                        <span class="text-xs font-bold text-secondary-dark font-serif">
+                            Tổng tạm tính: {{ number_format($booking->estimated_total, 0, ',', '.') }}đ
+                        </span>
+                    @endif
+                </div>
+
+                <div class="p-6 text-xs">
+                    @if($booking->order_type === 'combo' || $booking->setMenu)
+                        <!-- Combo Information -->
+                        <div class="p-4 rounded-xl bg-bg-primary/20 border border-border-custom/40 space-y-4">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex items-center space-x-3">
+                                    @if($booking->setMenu && $booking->setMenu->image)
+                                        <img 
+                                            src="{{ str_starts_with($booking->setMenu->image, 'http') ? $booking->setMenu->image : (str_starts_with($booking->setMenu->image, 'images/') ? asset($booking->setMenu->image) : asset('storage/' . $booking->setMenu->image)) }}" 
+                                            alt="{{ $booking->setMenu->name }}" 
+                                            class="w-16 h-16 object-cover rounded-lg border border-border-custom/50 shadow-sm flex-shrink-0"
+                                        >
+                                    @endif
+                                    <div>
+                                        <span class="text-[10px] font-bold text-secondary uppercase tracking-wider block">Combo Mâm Cơm</span>
+                                        <h4 class="text-sm font-serif font-bold text-primary">{{ $booking->setMenu->name ?? 'Combo Mâm Cơm Đã Chọn' }}</h4>
+                                        <span class="text-[11px] text-text-secondary">
+                                            Khẩu phần {{ $booking->setMenu->people_count ?? 6 }} người • {{ number_format($booking->setMenu->price_per_person ?? 0, 0, ',', '.') }}đ / suất
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[11px] font-bold text-text-primary block">Số lượng mâm: <span class="text-primary text-sm font-bold">{{ $booking->combo_quantity ?? 1 }}</span></span>
+                                    <span class="text-sm font-bold text-primary-light font-sans">{{ number_format($booking->estimated_total, 0, ',', '.') }}đ</span>
+                                </div>
+                            </div>
+
+                            @if($booking->setMenu && $booking->setMenu->items->isNotEmpty())
+                                <div class="pt-3 border-t border-border-custom/20">
+                                    <span class="text-[10px] font-bold text-text-secondary uppercase tracking-wider block mb-2">Các món ăn trong set mâm:</span>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        @foreach($booking->setMenu->items as $item)
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white text-text-primary text-[11px] font-medium border border-border-custom/30 shadow-2xs">
+                                                <i class="fas fa-check-circle text-secondary text-[9px] mr-1.5"></i>
+                                                {{ $item->name }}
+                                                @if($item->pivot && $item->pivot->quantity > 1)
+                                                    <span class="text-primary font-bold ml-1">(x{{ $item->pivot->quantity }})</span>
+                                                @endif
+                                            </span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    @elseif(!empty($booking->ordered_items) && is_array($booking->ordered_items))
+                        <!-- Individual Dishes Information -->
+                        <div class="border border-border-custom/30 rounded-xl overflow-hidden shadow-2xs">
+                            <table class="min-w-full divide-y divide-border-custom/20 text-left">
+                                <thead class="bg-bg-secondary/40 text-[10px] font-bold uppercase tracking-wider text-text-secondary">
+                                    <tr>
+                                        <th class="px-4 py-2.5">Món ăn đã đặt trước</th>
+                                        <th class="px-3 py-2.5 text-center">Số lượng</th>
+                                        <th class="px-3 py-2.5 text-right">Đơn giá</th>
+                                        <th class="px-4 py-2.5 text-right">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border-custom/10 text-xs">
+                                    @foreach($booking->ordered_items as $item)
+                                        <tr class="hover:bg-bg-secondary/20">
+                                            <td class="px-4 py-2.5 font-semibold text-text-primary">{{ $item['name'] ?? '' }}</td>
+                                            <td class="px-3 py-2.5 text-center font-bold text-primary">{{ $item['quantity'] ?? 1 }}</td>
+                                            <td class="px-3 py-2.5 text-right text-text-secondary font-sans">{{ number_format($item['price'] ?? 0, 0, ',', '.') }}đ</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-primary font-sans">{{ number_format(($item['subtotal'] ?? (($item['price'] ?? 0) * ($item['quantity'] ?? 1))), 0, ',', '.') }}đ</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr class="bg-bg-secondary/30 font-bold">
+                                        <td colspan="3" class="px-4 py-3 text-right uppercase tracking-wider text-[11px] text-text-secondary">Tổng cộng:</td>
+                                        <td class="px-4 py-3 text-right text-primary text-sm font-sans">{{ number_format($booking->estimated_total, 0, ',', '.') }}đ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <div class="py-6 text-center text-text-secondary">
+                            <i class="fas fa-chair text-3xl text-border-custom mb-2 block"></i>
+                            <p class="italic text-xs">Khách hàng chỉ đặt giữ chỗ bàn trước, chưa chọn trước món ăn hoặc combo (sẽ gọi món trực tiếp khi đến nhà hàng).</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
             <!-- Confirmation Log Details -->
             @if($booking->confirmed_at)
                 <div class="bg-white rounded-xl shadow-sm border border-border-custom/30 p-5 text-xs text-text-secondary space-y-2.5">

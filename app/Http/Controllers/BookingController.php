@@ -19,8 +19,12 @@ class BookingController extends Controller
     public function create()
     {
         $settings = Setting::getGroup('booking');
+        $setMenus = \App\Models\SetMenu::active()->ordered()->with('items')->get();
+        $categories = \App\Models\MenuCategory::active()->ordered()->with(['items' => function($q) {
+            $q->available()->ordered();
+        }])->get();
 
-        return view('pages.booking', compact('settings'));
+        return view('pages.booking', compact('settings', 'setMenus', 'categories'));
     }
 
     /**
@@ -43,8 +47,54 @@ class BookingController extends Controller
                 ]);
         }
 
+        $data = $request->validated();
+        $orderType = $request->input('order_type', 'table_only');
+        $setMenuId = $request->input('set_menu_id');
+        $comboQuantity = max(1, (int)$request->input('combo_quantity', 1));
+        $estimatedTotal = 0;
+        $orderedItems = null;
+
+        if ($orderType === 'combo' && $setMenuId) {
+            $setMenu = \App\Models\SetMenu::with('items')->find($setMenuId);
+            if ($setMenu) {
+                $estimatedTotal = $setMenu->price * $comboQuantity;
+            }
+        } elseif ($orderType === 'custom_dishes') {
+            $dishesInput = $request->input('dishes', []);
+            $itemsList = [];
+            if (is_array($dishesInput)) {
+                foreach ($dishesInput as $dishId => $qty) {
+                    $qty = (int) $qty;
+                    if ($qty > 0) {
+                        $dish = \App\Models\MenuItem::find($dishId);
+                        if ($dish) {
+                            $subtotal = $dish->price * $qty;
+                            $estimatedTotal += $subtotal;
+                            $itemsList[] = [
+                                'id' => $dish->id,
+                                'name' => $dish->name,
+                                'price' => $dish->price,
+                                'quantity' => $qty,
+                                'subtotal' => $subtotal,
+                            ];
+                        }
+                    }
+                }
+            }
+            if (!empty($itemsList)) {
+                $orderedItems = $itemsList;
+            } else {
+                $orderType = 'table_only';
+            }
+        }
+
         $booking = Booking::create([
-            ...$request->validated(),
+            ...$data,
+            'set_menu_id' => ($orderType === 'combo') ? $setMenuId : null,
+            'combo_quantity' => ($orderType === 'combo') ? $comboQuantity : 1,
+            'ordered_items' => $orderedItems,
+            'estimated_total' => $estimatedTotal,
+            'order_type' => $orderType,
             'status' => BookingStatus::Pending,
         ]);
 

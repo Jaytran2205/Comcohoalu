@@ -61,6 +61,32 @@
                 </div>
             </div>
 
+            @if($booking->order_type === 'combo' || $booking->setMenu)
+                <div class="border-t border-border-custom/20 pt-3 text-xs bg-bg-secondary/30 p-3 rounded-lg">
+                    <span class="text-text-secondary/70 block mb-1 font-semibold">Combo mâm cơm đã chọn:</span>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">{{ $booking->setMenu->name ?? 'Combo Mâm Cơm' }} (x{{ $booking->combo_quantity ?? 1 }} mâm)</span>
+                        <span class="font-bold text-secondary-dark font-sans">{{ number_format($booking->estimated_total, 0, ',', '.') }}đ</span>
+                    </div>
+                </div>
+            @elseif(!empty($booking->ordered_items) && is_array($booking->ordered_items))
+                <div class="border-t border-border-custom/20 pt-3 text-xs bg-bg-secondary/30 p-3 rounded-lg space-y-1.5">
+                    <span class="text-text-secondary/70 block font-semibold">Món ăn đặt trước ({{ count($booking->ordered_items) }} món):</span>
+                    <ul class="divide-y divide-border-custom/10">
+                        @foreach($booking->ordered_items as $item)
+                            <li class="flex justify-between py-1 text-[11px]">
+                                <span>{{ $item['name'] }} (x{{ $item['quantity'] }})</span>
+                                <span class="font-medium font-sans">{{ number_format(($item['price'] ?? 0) * ($item['quantity'] ?? 1), 0, ',', '.') }}đ</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="flex justify-between font-bold pt-1 border-t border-border-custom/20">
+                        <span>Tổng tạm tính:</span>
+                        <span class="text-primary font-sans">{{ number_format($booking->estimated_total, 0, ',', '.') }}đ</span>
+                    </div>
+                </div>
+            @endif
+
             @if($booking->special_requests)
                 <div class="border-t border-border-custom/20 pt-3 text-xs">
                     <span class="text-text-secondary/70 block mb-1">Yêu cầu đặc biệt</span>
