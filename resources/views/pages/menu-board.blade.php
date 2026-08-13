@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Thực Đơn Tương Tác 3D - Cơm Cổ Hoa Lư')
-@section('meta_description', 'Trải nghiệm sách lật thực đơn 3D đôi cao cấp độc đáo của nhà hàng Cơm Cổ Hoa Lư. Tương tác lật trang chân thực.')
+@section('meta_description', 'Trải nghiệm sách lật thực đơn 3D đôi cao cấp độc đáo của nhà hàng Cơm Cổ Hoa Lư. Tối ưu hóa tuyệt hảo cho máy tính và thiết bị di động.')
 
 @section('content')
 <!-- Breadcrumb Header -->
@@ -12,16 +12,16 @@
     ]
 ])
 
-<section class="py-16 bg-[#16120e] relative overflow-hidden min-h-[90vh] flex flex-col justify-between text-white">
+<section class="py-12 bg-[#16120e] relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-white">
     <!-- Ambient Lighting & Wooden Table Background -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3a271c]/40 via-[#16120e] to-[#0a0807] z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3a271c]/35 via-[#16120e] to-[#0a0807] z-0"></div>
     
     <!-- Top Intro & Toggle -->
     <div class="max-w-7xl mx-auto px-4 text-center z-10 space-y-4">
-        <h2 class="text-3xl md:text-4xl font-serif font-bold text-secondary">Thực Đơn Bản Sách Lật 3D</h2>
+        <h2 class="text-2xl md:text-4xl font-serif font-bold text-secondary">Thực Đơn Bản Sách Lật 3D</h2>
         <div class="w-16 h-0.5 bg-secondary mx-auto"></div>
-        <p class="text-text-light/60 text-xs sm:text-sm max-w-md mx-auto">
-            Vuốt hoặc nhấp vào mép trang để lật mở thực đơn đôi độc đáo.
+        <p class="text-text-light/60 text-xs max-w-md mx-auto">
+            Vuốt hoặc nhấp vào mép trang để lật mở thực đơn. Tối ưu hiển thị sắc nét trên cả điện thoại và máy tính.
         </p>
 
         <!-- Mode Switcher -->
@@ -37,16 +37,16 @@
         </div>
     </div>
 
-    <!-- ======================= 1. MODE: 3D DUAL-PAGE FLIPBOOK ======================= -->
-    <div id="view-mode-flip" class="w-full flex flex-col items-center justify-center my-8 z-10 space-y-8 select-none">
+    <!-- ======================= 1. MODE: 3D FLIPBOOK ======================= -->
+    <div id="view-mode-flip" class="w-full flex flex-col items-center justify-center my-6 z-10 space-y-6 select-none">
         
-        <!-- Book Wrapper with scaling for mobile support -->
-        <div class="book-scale-wrapper w-full max-w-4xl px-4 flex items-center justify-center">
+        <!-- A. DESKTOP / TABLET DUAL-PAGE VIEW (Shown on >= 640px) -->
+        <div class="hidden sm:flex book-scale-wrapper w-full max-w-4xl px-4 items-center justify-center">
             <div class="book-container">
-                <div class="book" id="book-3d">
+                <div class="book" id="book-3d-desktop">
                     
                     <!-- Cover Page / Sheet 1 -->
-                    <div class="paper-sheet z-[30]" id="sheet1">
+                    <div class="paper-sheet z-[30]" id="dsheet1">
                         <!-- Front (Bìa Menu - Page 1) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Thực Đơn" class="w-full h-full object-fill">
@@ -60,7 +60,7 @@
                     </div>
 
                     <!-- Page 3 & 4 / Sheet 2 -->
-                    <div class="paper-sheet z-[20]" id="sheet2">
+                    <div class="paper-sheet z-[20]" id="dsheet2">
                         <!-- Front (Dê núi Ninh Bình - Page 3) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Dê Núi" class="w-full h-full object-fill">
@@ -74,7 +74,7 @@
                     </div>
 
                     <!-- Page 5 / Sheet 3 -->
-                    <div class="paper-sheet z-[10]" id="sheet3">
+                    <div class="paper-sheet z-[10]" id="dsheet3">
                         <!-- Front (Món Gà - Page 5) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món Gà" class="w-full h-full object-fill">
@@ -95,26 +95,59 @@
             </div>
         </div>
 
+        <!-- B. MOBILE SINGLE-PAGE VIEW (Shown on < 640px) -->
+        <div class="flex sm:hidden w-full max-w-[340px] px-4 items-center justify-center">
+            <div class="relative w-full aspect-[3/4.2] bg-white rounded-xl shadow-2xl border-4 border-amber-900/30 overflow-hidden" id="book-3d-mobile-container">
+                <!-- Leather spine spine visual on left -->
+                <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-amber-950 via-amber-900 to-transparent z-30 opacity-70"></div>
+                
+                <!-- Stack of Pages -->
+                <div class="relative w-full h-full" id="mobile-pages-stack">
+                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-10 active" data-idx="1">
+                        <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Trang 1" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="2">
+                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 2" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="3">
+                        <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 3" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="4">
+                        <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 4" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="5">
+                        <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 5" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                </div>
+
+                <!-- Page Number Tag for Mobile -->
+                <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md z-30 font-semibold" id="mobile-page-indicator">
+                    Trang 1 / 5
+                </div>
+            </div>
+        </div>
+
         <!-- Navigation Buttons and Controls -->
         <div class="flex flex-col items-center space-y-4">
             <div class="flex items-center space-x-6">
-                <button onclick="flipBack()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
+                <button onclick="handlePrev()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
                     <i class="fas fa-chevron-left mr-2"></i> Trang Trước
                 </button>
                 <div class="flex items-center space-x-2" id="flipbook-dots">
-                    <span onclick="jumpToSheet(0)" class="w-2.5 h-2.5 rounded-full bg-secondary cursor-pointer transition-all duration-300"></span>
-                    <span onclick="jumpToSheet(1)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
-                    <span onclick="jumpToSheet(2)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
-                    <span onclick="jumpToSheet(3)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
+                    <span onclick="handleJump(0)" class="w-2.5 h-2.5 rounded-full bg-secondary cursor-pointer transition-all duration-300"></span>
+                    <span onclick="handleJump(1)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
+                    <span onclick="handleJump(2)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
+                    <span onclick="handleJump(3)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
                 </div>
-                <button onclick="flipForward()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
+                <button onclick="handleNext()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
                     Trang Sau <i class="fas fa-chevron-right ml-2"></i>
                 </button>
             </div>
 
-            <p class="text-white/40 text-[11px] sm:text-xs text-center flex items-center gap-1.5">
+            <p class="text-white/40 text-[10px] sm:text-xs text-center flex items-center gap-1.5 px-4">
                 <i class="fas fa-hand-pointer text-secondary"></i>
-                <span>Nhấp trực tiếp vào mép sách để lật trang hoặc vuốt ngang trên màn hình điện thoại</span>
+                <span class="hidden sm:inline">Nhấp vào trang sách để lật trang hoặc vuốt ngang trên màn hình điện thoại</span>
+                <span class="inline sm:hidden">Chạm vào trang sách để lật hoặc vuốt ngang màn hình</span>
             </p>
         </div>
     </div>
@@ -197,7 +230,7 @@
     </div>
 </section>
 
-<!-- Zoom Lightbox Modal (For Grid Mode) -->
+<!-- Zoom Lightbox Modal -->
 <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/95 flex flex-col justify-between p-4 select-none">
     <div class="flex justify-between items-center text-white/80 p-2 sm:p-4">
         <span class="text-xs font-semibold uppercase tracking-wider"><i class="fas fa-search-plus mr-2 text-secondary"></i>Đang Xem Thực Đơn</span>
@@ -295,94 +328,228 @@
         transform: rotateY(-180deg);
     }
 
-    /* Responsive scaling behavior for small/mobile devices */
-    @media (max-width: 768px) {
-        .book-container {
-            width: 320px;
-            height: 440px;
+    /* Mobile Page Deck Flip styles */
+    .mobile-page {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s;
+    }
+
+    /* Turning forward fold (rotating left) */
+    .mobile-page-turn-forward {
+        animation: mTurnForward 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+    
+    /* Turning backward unfold (rotating right) */
+    .mobile-page-turn-backward {
+        animation: mTurnBackward 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    @keyframes mTurnForward {
+        0% {
+            transform: rotateY(0deg);
+            opacity: 1;
+            z-index: 10;
         }
-        .paper-sheet {
-            width: 100%;
-            left: 0;
-            transform-origin: left center;
+        100% {
+            transform: rotateY(-120deg);
+            opacity: 0;
+            z-index: 0;
         }
-        .back-face {
-            border-radius: 0 12px 12px 0;
-            border-right: none;
-            border-left: 2px solid rgba(0,0,0,0.1);
+    }
+
+    @keyframes mTurnBackward {
+        0% {
+            transform: rotateY(-120deg);
+            opacity: 0;
+            z-index: 0;
+        }
+        100% {
+            transform: rotateY(0deg);
+            opacity: 1;
+            z-index: 10;
         }
     }
 </style>
 
 <script>
-    const sheets = [
-        document.getElementById('sheet1'),
-        document.getElementById('sheet2'),
-        document.getElementById('sheet3')
+    // ─── A. DESKTOP BOOK LOGIC ───
+    const dsheets = [
+        document.getElementById('dsheet1'),
+        document.getElementById('dsheet2'),
+        document.getElementById('dsheet3')
     ];
-    
-    let currentSheetIndex = 0; // Starts with cover (sheet 0) active
-    const totalSheets = sheets.length;
+    let dCurrentIndex = 0; 
+    const totalDSheets = dsheets.length;
 
-    // Flip book forward
-    function flipForward() {
-        if (currentSheetIndex < totalSheets) {
-            sheets[currentSheetIndex].classList.add('flipped');
-            // Z-index correction to overlay flipped pages correctly
-            sheets[currentSheetIndex].style.zIndex = 30 + currentSheetIndex;
-            currentSheetIndex++;
+    function flipForwardDesktop() {
+        if (dCurrentIndex < totalDSheets) {
+            dsheets[dCurrentIndex].classList.add('flipped');
+            dsheets[dCurrentIndex].style.zIndex = 30 + dCurrentIndex;
+            dCurrentIndex++;
             updateDots();
         }
     }
 
-    // Flip book back
-    function flipBack() {
-        if (currentSheetIndex > 0) {
-            currentSheetIndex--;
-            sheets[currentSheetIndex].classList.remove('flipped');
-            // Restore original structural z-indexes
-            sheets[currentSheetIndex].style.zIndex = 30 - currentSheetIndex;
+    function flipBackDesktop() {
+        if (dCurrentIndex > 0) {
+            dCurrentIndex--;
+            dsheets[dCurrentIndex].classList.remove('flipped');
+            dsheets[dCurrentIndex].style.zIndex = 30 - dCurrentIndex;
             updateDots();
         }
     }
 
-    // Direct sheet navigation jump
-    function jumpToSheet(targetIdx) {
-        if (targetIdx === currentSheetIndex) return;
-
-        if (targetIdx > currentSheetIndex) {
-            while (currentSheetIndex < targetIdx) {
-                flipForward();
-            }
-        } else {
-            while (currentSheetIndex > targetIdx) {
-                flipBack();
-            }
-        }
-    }
-
-    // Attach click events on the pages themselves to trigger flipping
-    sheets.forEach((sheet, idx) => {
+    dsheets.forEach((sheet, idx) => {
         sheet.addEventListener('click', function(e) {
-            // Determine if clicking on the left or right side of the book container
-            const rect = this.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            
             if (sheet.classList.contains('flipped')) {
-                // If it's already flipped, clicking on it (which is now on the left) flips it back
-                flipBack();
+                flipBackDesktop();
             } else {
-                // If it's not flipped, clicking on it (which is on the right) flips it forward
-                flipForward();
+                flipForwardDesktop();
             }
         });
     });
 
-    // Update Dots indicator
+    // ─── B. MOBILE BOOK LOGIC ───
+    let mCurrentPage = 1;
+    const totalMPages = 5;
+    let isTransitioningMobile = false;
+
+    function mobileNext() {
+        if (mCurrentPage >= totalMPages || isTransitioningMobile) return;
+        isTransitioningMobile = true;
+
+        const currentEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
+        mCurrentPage++;
+        const nextEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
+
+        nextEl.classList.remove('pointer-events-none', 'opacity-0');
+        nextEl.style.zIndex = '5';
+        nextEl.style.transform = 'rotateY(0deg)';
+
+        currentEl.className = "mobile-page absolute inset-0 w-full h-full origin-left mobile-page-turn-forward";
+        
+        setTimeout(() => {
+            currentEl.classList.add('pointer-events-none', 'opacity-0');
+            currentEl.style.zIndex = '0';
+            nextEl.style.zIndex = '10';
+            nextEl.classList.add('active');
+            currentEl.classList.remove('active');
+            updateIndicatorsMobile();
+            isTransitioningMobile = false;
+        }, 580);
+    }
+
+    function mobilePrev() {
+        if (mCurrentPage <= 1 || isTransitioningMobile) return;
+        isTransitioningMobile = true;
+
+        const currentEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
+        mCurrentPage--;
+        const prevEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
+
+        prevEl.classList.remove('pointer-events-none', 'opacity-0');
+        prevEl.style.zIndex = '15';
+        prevEl.className = "mobile-page absolute inset-0 w-full h-full origin-left mobile-page-turn-backward";
+
+        setTimeout(() => {
+            currentEl.classList.add('pointer-events-none', 'opacity-0');
+            currentEl.style.zIndex = '0';
+            prevEl.style.zIndex = '10';
+            prevEl.classList.add('active');
+            currentEl.classList.remove('active');
+            updateIndicatorsMobile();
+            isTransitioningMobile = false;
+        }, 580);
+    }
+
+    function updateIndicatorsMobile() {
+        document.getElementById('mobile-page-indicator').innerText = `Trang ${mCurrentPage} / ${totalMPages}`;
+        updateDots();
+    }
+
+    // Swipe support for mobile stack
+    const mBookContainer = document.getElementById('book-3d-mobile-container');
+    if (mBookContainer) {
+        let mStartX = 0;
+        let mEndX = 0;
+        
+        mBookContainer.addEventListener('touchstart', e => {
+            mStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        mBookContainer.addEventListener('touchend', e => {
+            mEndX = e.changedTouches[0].screenX;
+            const threshold = 40;
+            if (mStartX - mEndX > threshold) {
+                mobileNext();
+            } else if (mEndX - mStartX > threshold) {
+                mobilePrev();
+            }
+        }, {passive: true});
+    }
+
+    // ─── C. GLOBAL CONTROL SYNC ───
+    
+    // Determine screen type
+    function isMobileScreen() {
+        return window.innerWidth < 640;
+    }
+
+    function handleNext() {
+        if (isMobileScreen()) {
+            mobileNext();
+        } else {
+            flipForwardDesktop();
+        }
+    }
+
+    function handlePrev() {
+        if (isMobileScreen()) {
+            mobilePrev();
+        } else {
+            flipBackDesktop();
+        }
+    }
+
+    function handleJump(targetIndex) {
+        if (isMobileScreen()) {
+            // Mobile Page Jump (targetIndex ranges from 0 to 3, map to page 1 to 5)
+            const targetPage = targetIndex + 1;
+            if (targetPage === mCurrentPage || isTransitioningMobile) return;
+
+            if (targetPage > mCurrentPage) {
+                mobileNext();
+                if (targetPage > mCurrentPage) {
+                    setTimeout(() => handleJump(targetIndex), 600);
+                }
+            } else {
+                mobilePrev();
+                if (targetPage < mCurrentPage) {
+                    setTimeout(() => handleJump(targetIndex), 600);
+                }
+            }
+        } else {
+            // Desktop Sheet Jump
+            if (targetIndex === dCurrentIndex) return;
+            if (targetIndex > dCurrentIndex) {
+                while (dCurrentIndex < targetIndex) {
+                    flipForwardDesktop();
+                }
+            } else {
+                while (dCurrentIndex > targetIndex) {
+                    flipBackDesktop();
+                }
+            }
+        }
+    }
+
     function updateDots() {
         const dots = document.querySelectorAll('#flipbook-dots span');
+        const activeIndex = isMobileScreen() ? (mCurrentPage - 1) : dCurrentIndex;
+        
         dots.forEach((dot, idx) => {
-            if (idx === currentSheetIndex) {
+            if (idx === activeIndex) {
                 dot.className = "w-2.5 h-2.5 rounded-full bg-secondary cursor-pointer transition-all duration-300";
             } else {
                 dot.className = "w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60";
@@ -390,27 +557,23 @@
         });
     }
 
-    // Swipe gestures on mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const bookEl = document.getElementById('book-3d');
-    
-    bookEl.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    bookEl.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const threshold = 50;
-        if (touchStartX - touchEndX > threshold) {
-            flipForward();
-        } else if (touchEndX - touchStartX > threshold) {
-            flipBack();
-        }
+    // Swipe support for desktop
+    const dBookEl = document.getElementById('book-3d-desktop');
+    if (dBookEl) {
+        let dStartX = 0;
+        let dEndX = 0;
+        dBookEl.addEventListener('touchstart', e => {
+            dStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        dBookEl.addEventListener('touchend', e => {
+            dEndX = e.changedTouches[0].screenX;
+            const threshold = 40;
+            if (dStartX - dEndX > threshold) {
+                flipForwardDesktop();
+            } else if (dEndX - dStartX > threshold) {
+                flipBackDesktop();
+            }
+        }, {passive: true});
     }
 
     // Mode Switcher function
@@ -458,5 +621,8 @@
             closeZoom();
         }
     });
+
+    // Auto update dot index when switching view modes/resizing
+    window.addEventListener('resize', updateDots);
 </script>
 @endsection
