@@ -8,29 +8,22 @@
 @include('partials.breadcrumb', [
     'title' => 'Thực Đơn Chi Tiết',
     'items' => [
-        ['label' => 'Thực Đơn Chi Tiết', 'url' => null]
-    ]
-])
-
-<section class="py-12 bg-[#16120e] relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-white">
-    <!-- Ambient Lighting & Wooden Table Background -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#3a271c]/35 via-[#16120e] to-[#0a0807] z-0"></div>
+   <section class="py-12 bg-bg-primary relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-text-primary">
+    <!-- Decorative background elements -->
+    <div class="absolute inset-0 viet-pattern-bg opacity-[0.03] z-0 pointer-events-none"></div>
     
     <!-- Top Intro & Toggle -->
     <div class="max-w-7xl mx-auto px-4 text-center z-10 space-y-4">
-        <h2 class="text-2xl md:text-4xl font-serif font-bold text-secondary">Thực Đơn Bản Sách Lật 3D</h2>
+        <h2 class="text-2xl md:text-4xl font-serif font-bold text-primary">Thực Đơn Bản Sách Lật 3D</h2>
         <div class="w-16 h-0.5 bg-secondary mx-auto"></div>
-        <p class="text-text-light/60 text-xs max-w-md mx-auto">
-            Vuốt hoặc nhấp vào mép trang để lật mở thực đơn. Tối ưu hiển thị sắc nét trên cả điện thoại và máy tính.
-        </p>
 
         <!-- Mode Switcher -->
-        <div class="inline-flex p-1 bg-white/5 rounded-xl border border-white/10 shadow-lg">
-            <button id="btn-mode-flip" onclick="switchMode('flip')" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-secondary text-bg-dark shadow-md">
+        <div class="inline-flex p-1 bg-bg-secondary rounded-xl border border-border-custom/40 shadow-xs">
+            <button id="btn-mode-flip" onclick="switchMode('flip')" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-xs">
                 <i class="fas fa-book-open"></i>
                 <span>Sách Lật 3D</span>
             </button>
-            <button id="btn-mode-grid" onclick="switchMode('grid')" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-light/60 hover:text-white">
+            <button id="btn-mode-grid" onclick="switchMode('grid')" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-secondary hover:text-primary">
                 <i class="fas fa-th-large"></i>
                 <span>Dạng Lưới</span>
             </button>
@@ -130,22 +123,22 @@
         <!-- Navigation Buttons and Controls -->
         <div class="flex flex-col items-center space-y-4">
             <div class="flex items-center space-x-6">
-                <button onclick="handlePrev()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
+                <button onclick="handlePrev()" class="px-5 py-2.5 rounded-full bg-white hover:bg-primary hover:text-white border border-border-custom flex items-center justify-center text-text-primary transition-all shadow-xs focus:outline-none text-xs font-bold uppercase tracking-wider">
                     <i class="fas fa-chevron-left mr-2"></i> Trang Trước
                 </button>
                 <div class="flex items-center space-x-2" id="flipbook-dots">
-                    <span onclick="handleJump(0)" class="w-2.5 h-2.5 rounded-full bg-secondary cursor-pointer transition-all duration-300"></span>
-                    <span onclick="handleJump(1)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
-                    <span onclick="handleJump(2)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
-                    <span onclick="handleJump(3)" class="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60"></span>
+                    <span onclick="handleJump(0)" class="w-2.5 h-2.5 rounded-full bg-primary cursor-pointer transition-all duration-300"></span>
+                    <span onclick="handleJump(1)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
+                    <span onclick="handleJump(2)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
+                    <span onclick="handleJump(3)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
                 </div>
-                <button onclick="handleNext()" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-secondary hover:text-bg-dark border border-white/10 flex items-center justify-center text-white transition-all shadow-md focus:outline-none text-xs font-bold uppercase tracking-wider">
+                <button onclick="handleNext()" class="px-5 py-2.5 rounded-full bg-white hover:bg-primary hover:text-white border border-border-custom flex items-center justify-center text-text-primary transition-all shadow-xs focus:outline-none text-xs font-bold uppercase tracking-wider">
                     Trang Sau <i class="fas fa-chevron-right ml-2"></i>
                 </button>
             </div>
 
-            <p class="text-white/40 text-[10px] sm:text-xs text-center flex items-center gap-1.5 px-4">
-                <i class="fas fa-hand-pointer text-secondary"></i>
+            <p class="text-text-secondary/70 text-[10px] sm:text-xs text-center flex items-center gap-1.5 px-4">
+                <i class="fas fa-hand-pointer text-primary/70"></i>
                 <span class="hidden sm:inline">Nhấp vào trang sách để lật trang hoặc vuốt ngang trên màn hình điện thoại</span>
                 <span class="inline sm:hidden">Chạm vào trang sách để lật hoặc vuốt ngang màn hình</span>
             </p>
@@ -157,75 +150,75 @@
         
         <!-- 1. Cover Page -->
         <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-white/15 bg-[#1a1410] shadow-xl hover:border-secondary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_3.jpg') }}')">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_3.jpg') }}')">
                 <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Menu" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-secondary text-bg-dark text-[11px] font-bold rounded-lg shadow-md">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to bìa menu
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-semibold text-sm text-secondary/90">Trang 1: Bìa Thực Đơn</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 1: Bìa Thực Đơn</h3>
         </div>
 
         <!-- 2. Khai Vị -->
         <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-white/15 bg-[#1a1410] shadow-xl hover:border-secondary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
                 <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-secondary text-bg-dark text-[11px] font-bold rounded-lg shadow-md">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-semibold text-sm text-secondary/90">Trang 2: Khai Vị - Bò - Hải Sản</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Khai Vị - Bò - Hải Sản</h3>
         </div>
 
         <!-- 3. Dê Núi -->
         <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-white/15 bg-[#1a1410] shadow-xl hover:border-secondary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
                 <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-secondary text-bg-dark text-[11px] font-bold rounded-lg shadow-md">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-semibold text-sm text-secondary/90">Trang 3: Đặc Sản Dê Núi</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Đặc Sản Dê Núi</h3>
         </div>
 
         <!-- 4. Món Cá -->
         <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-white/15 bg-[#1a1410] shadow-xl hover:border-secondary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
                 <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món cá" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-secondary text-bg-dark text-[11px] font-bold rounded-lg shadow-md">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-semibold text-sm text-secondary/90">Trang 4: Món Cá - Tôm - Cua</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Món Cá - Tôm - Cua</h3>
         </div>
 
         <!-- 5. Món Lợn Gà -->
         <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border-2 border-white/15 bg-[#1a1410] shadow-xl hover:border-secondary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
                 <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Gà lợn" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-secondary text-bg-dark text-[11px] font-bold rounded-lg shadow-md">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-semibold text-sm text-secondary/90">Trang 5: Món Gà - Thịt Lợn</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Món Gà - Thịt Lợn</h3>
         </div>
 
     </div>
 
     <!-- Bottom Footer CTA -->
-    <div class="w-full text-center z-10 py-6 border-t border-white/5 bg-black/25">
-        <a href="{{ route('booking.create') }}" class="px-8 py-3 bg-secondary hover:bg-secondary-dark text-bg-dark font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg transition-all">
-            <i class="fas fa-calendar-alt mr-1.5"></i> Đặt bàn dùng món ngay
+    <div class="w-full text-center z-10 py-6 border-t border-border-custom/30 bg-bg-secondary/40">
+        <a href="{{ route('booking.create') }}" class="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all inline-flex items-center">
+            <i class="fas fa-calendar-alt mr-2 text-secondary"></i> Đặt bàn dùng món ngay
         </a>
     </div>
 </section>
@@ -292,7 +285,7 @@
         backface-visibility: hidden;
         overflow: hidden;
         border-radius: 0 12px 12px 0;
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+        box-shadow: 4px 10px 30px rgba(44, 24, 16, 0.15);
         background: #fbf9f5;
     }
 
@@ -526,9 +519,9 @@
         
         dots.forEach((dot, idx) => {
             if (idx === activeIndex) {
-                dot.className = "w-2.5 h-2.5 rounded-full bg-secondary cursor-pointer transition-all duration-300";
+                dot.className = "w-2.5 h-2.5 rounded-full bg-primary cursor-pointer transition-all duration-300";
             } else {
-                dot.className = "w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-all duration-300 hover:bg-secondary/60";
+                dot.className = "w-2 h-2 rounded-full bg-border-custom/80 cursor-pointer transition-all duration-300 hover:bg-primary/50";
             }
         });
     }
@@ -560,13 +553,13 @@
         const gridView = document.getElementById('view-mode-grid');
 
         if (mode === 'flip') {
-            flipBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-secondary text-bg-dark shadow-md";
-            gridBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-light/60 hover:text-white";
+            flipBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-xs";
+            gridBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-secondary hover:text-primary";
             flipView.classList.remove('hidden');
             gridView.classList.add('hidden');
         } else {
-            gridBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-secondary text-bg-dark shadow-md";
-            flipBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-light/60 hover:text-white";
+            gridBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-xs";
+            flipBtn.className = "flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-text-secondary hover:text-primary";
             gridView.classList.remove('hidden');
             flipView.classList.add('hidden');
         }
