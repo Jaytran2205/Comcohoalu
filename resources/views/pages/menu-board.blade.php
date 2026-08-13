@@ -30,7 +30,7 @@
         </div>
 
         <!-- Responsive Grid Layout -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pt-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
             
             <!-- 1. Cover Page -->
             <div class="space-y-3 text-center">
@@ -38,7 +38,7 @@
                     <img 
                         src="{{ asset('images/menu/media_3.jpg') }}" 
                         alt="Bìa Menu Cơm Cổ Hoa Lư" 
-                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     >
                     <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
@@ -58,7 +58,7 @@
                     <img 
                         src="{{ asset('images/menu/media_4.jpg') }}" 
                         alt="Menu Khai vị, Hải sản, Món bò" 
-                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     >
                     <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
@@ -78,7 +78,7 @@
                     <img 
                         src="{{ asset('images/menu/media_1.jpg') }}" 
                         alt="Menu Đặc sản Dê Núi Ninh Bình" 
-                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     >
                     <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
@@ -98,7 +98,7 @@
                     <img 
                         src="{{ asset('images/menu/media_2.jpg') }}" 
                         alt="Menu Món cá, Tôm cua ốc ếch" 
-                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     >
                     <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
@@ -118,7 +118,7 @@
                     <img 
                         src="{{ asset('images/menu/media_5.jpg') }}" 
                         alt="Menu Món thịt lợn, Món gà" 
-                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     >
                     <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
