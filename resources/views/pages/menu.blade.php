@@ -72,11 +72,11 @@
             </div>
 
             <!-- Categories Buttons Filter -->
-            <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
+            <div class="flex overflow-x-auto scrollbar-none whitespace-nowrap gap-2 w-full md:w-auto justify-start md:justify-end pb-3 md:pb-0 select-none -mx-4 px-4 md:mx-0 md:px-0">
                 <button 
                     type="button" 
                     data-category-id="" 
-                    class="category-filter-btn px-4 py-2 bg-primary text-white border border-primary hover:bg-primary hover:text-white rounded-full text-xs font-semibold tracking-wide shadow-sm transition-all"
+                    class="category-filter-btn px-4 py-2 bg-primary text-white border border-primary hover:bg-primary hover:text-white rounded-full text-xs font-semibold tracking-wide shadow-sm transition-all flex-shrink-0"
                 >
                     Tất cả
                 </button>
@@ -84,7 +84,7 @@
                     <button 
                         type="button" 
                         data-category-id="{{ $cat->id }}" 
-                        class="category-filter-btn px-4 py-2 bg-white text-text-secondary border border-border-custom hover:border-primary hover:text-primary rounded-full text-xs font-semibold tracking-wide shadow-sm transition-all"
+                        class="category-filter-btn px-4 py-2 bg-white text-text-secondary border border-border-custom hover:border-primary hover:text-primary rounded-full text-xs font-semibold tracking-wide shadow-sm transition-all flex-shrink-0"
                     >
                         {{ $cat->name }}
                     </button>

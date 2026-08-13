@@ -17,13 +17,13 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         <!-- Logo -->
-        <a href="{{ route('home') }}" class="flex items-center space-x-2.5 flex-shrink-0 group">
+        <a href="{{ route('home') }}" class="flex items-center space-x-2 flex-shrink-0 group">
             <img 
                 src="{{ asset('images/logo.jpg') }}" 
                 alt="Logo Cơm Cổ Hoa Lư" 
-                class="w-10 h-10 object-contain rounded-full border border-secondary/20 shadow-sm transition-transform duration-300 group-hover:scale-105"
+                class="w-8 h-8 min-[375px]:w-10 min-[375px]:h-10 object-contain rounded-full border border-secondary/20 shadow-sm transition-transform duration-300 group-hover:scale-105"
             >
-            <span class="logo-brand-text text-lg md:text-xl font-bold font-serif tracking-wide whitespace-nowrap transition-colors duration-300">
+            <span class="logo-brand-text text-sm min-[375px]:text-base sm:text-lg md:text-xl font-bold font-serif tracking-wide whitespace-nowrap transition-colors duration-300">
                 Cơm Cổ <span class="text-secondary">Hoa Lư</span>
             </span>
         </a>

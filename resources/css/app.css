@@ -227,3 +227,19 @@ header#site-header.header-scrolled #mobile-menu-btn {
 textarea {
     resize: none !important;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+    -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Global Responsive iframe constraints (Google Maps, etc.) */
+iframe, video, embed, object {
+    max-width: 100% !important;
+}

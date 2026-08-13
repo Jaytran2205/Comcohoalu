@@ -110,7 +110,8 @@ $(document).ready(function () {
 
         // 2. Hero Content Card Reveal & Video Background Dark Overlay Transition
         if ($heroGlassCard.length) {
-            if (scrollTop < 15) {
+            const isMobile = window.innerWidth < 768;
+            if (scrollTop < 15 && !isMobile) {
                 // Completely hidden at the top of the video intro - original video colors
                 $heroGlassCard
                     .addClass('opacity-0 pointer-events-none translate-y-8 scale-95')
