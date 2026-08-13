@@ -12,138 +12,126 @@
     ]
 ])
 
-<!-- Section Selection & Navigation -->
-<div class="bg-bg-secondary/40 border-b border-border-custom/20 sticky top-16 z-30 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 overflow-x-auto scrollbar-none select-none">
-        <div class="flex items-center space-x-1.5 whitespace-nowrap text-xs">
-            <button onclick="scrollToPage('menu-page-cover')" class="px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary hover:bg-primary hover:text-white font-bold transition-all">
-                <i class="fas fa-book-open mr-1"></i> Bìa Menu
-            </button>
-            <button onclick="scrollToPage('menu-page-khai-vi')" class="px-4 py-2 rounded-full border border-border-custom/50 bg-white text-text-secondary hover:border-primary/50 hover:text-primary font-semibold transition-all">
-                <i class="fas fa-cookie-bite mr-1"></i> Khai Vị - Bò - Hải Sản
-            </button>
-            <button onclick="scrollToPage('menu-page-de-nui')" class="px-4 py-2 rounded-full border border-border-custom/50 bg-white text-text-secondary hover:border-primary/50 hover:text-primary font-semibold transition-all">
-                <i class="fas fa-mountain mr-1"></i> Dê Núi Ninh Bình
-            </button>
-            <button onclick="scrollToPage('menu-page-ca-tom')" class="px-4 py-2 rounded-full border border-border-custom/50 bg-white text-text-secondary hover:border-primary/50 hover:text-primary font-semibold transition-all">
-                <i class="fas fa-fish mr-1"></i> Món Cá - Tôm - Cua
-            </button>
-            <button onclick="scrollToPage('menu-page-lon-ga')" class="px-4 py-2 rounded-full border border-border-custom/50 bg-white text-text-secondary hover:border-primary/50 hover:text-primary font-semibold transition-all">
-                <i class="fas fa-feather mr-1"></i> Thịt Lợn - Món Gà
-            </button>
-        </div>
-
-        <a href="{{ route('booking.create') }}" class="px-5 py-2 bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm whitespace-nowrap flex-shrink-0 transition-transform active:scale-95">
-            <i class="fas fa-calendar-alt mr-1.5"></i> Đặt bàn dùng bữa
-        </a>
-    </div>
-</div>
-
-<section class="py-12 bg-bg-primary relative">
-    <div class="max-w-4xl mx-auto px-4 space-y-16">
+<section class="py-16 bg-bg-primary relative">
+    <div class="max-w-7xl mx-auto px-4 space-y-12">
         
         <!-- Intro text -->
-        <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
-            <h2 class="text-2xl md:text-3xl font-serif font-bold text-primary">Menu Chi Tiết Nhà Hàng</h2>
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+            <h2 class="text-3xl font-serif font-bold text-primary">Thực Đơn Bản Ảnh Chi Tiết</h2>
             <div class="w-12 h-0.5 bg-secondary mx-auto"></div>
-            <p class="text-text-secondary text-xs leading-relaxed">
-                Bấm vào từng trang thực đơn để xem ở kích thước phóng to, sắc nét hơn. Cam kết nguyên liệu tự nhiên tươi ngon chuẩn vị cố đô Hoa Lư.
+            <p class="text-text-secondary text-sm leading-relaxed max-w-xl mx-auto">
+                Nhấp chuột hoặc chạm vào trang thực đơn bất kỳ để phóng to xem rõ giá tiền và chi tiết món ăn.
             </p>
-        </div>
-
-        <!-- 1. Cover Page -->
-        <div id="menu-page-cover" class="space-y-4 text-center scroll-mt-28">
-            <span class="inline-block px-3 py-1 bg-secondary/15 text-secondary-dark font-serif font-bold text-xs rounded-full">
-                Trang 1 / 5
-            </span>
-            <div class="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-4 border-border-custom bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_3.jpg') }}')">
-                <img 
-                    src="{{ asset('images/menu/media_3.jpg') }}" 
-                    alt="Bìa Menu Cơm Cổ Hoa Lư" 
-                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                >
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span class="px-4 py-2 bg-black/60 backdrop-blur-xs text-white text-xs font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
-                </div>
+            <div class="pt-2">
+                <a href="{{ route('booking.create') }}" class="inline-flex items-center px-6 py-2.5 bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all transform active:scale-95">
+                    <i class="fas fa-calendar-alt mr-2"></i> Đặt bàn dùng bữa ngay
+                </a>
             </div>
         </div>
 
-        <!-- 2. Khai Vị - Bò - Hải Sản -->
-        <div id="menu-page-khai-vi" class="space-y-4 text-center scroll-mt-28">
-            <span class="inline-block px-3 py-1 bg-secondary/15 text-secondary-dark font-serif font-bold text-xs rounded-full">
-                Trang 2 / 5
-            </span>
-            <div class="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-4 border-border-custom bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
-                <img 
-                    src="{{ asset('images/menu/media_4.jpg') }}" 
-                    alt="Menu Khai vị, Hải sản, Món bò" 
-                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                >
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span class="px-4 py-2 bg-black/60 backdrop-blur-xs text-white text-xs font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
+        <!-- Responsive Grid Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pt-4">
+            
+            <!-- 1. Cover Page -->
+            <div class="space-y-3 text-center">
+                <div class="relative rounded-xl overflow-hidden border-2 border-border-custom bg-white shadow-md hover:shadow-xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_3.jpg') }}')">
+                    <img 
+                        src="{{ asset('images/menu/media_3.jpg') }}" 
+                        alt="Bìa Menu Cơm Cổ Hoa Lư" 
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
+                            <i class="fas fa-search-plus mr-1.5 text-secondary"></i> Phóng to bìa menu
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-sm text-primary">Trang 1: Bìa Thực Đơn</h3>
+                    <span class="text-[10px] text-text-secondary uppercase">Cơm Cổ Hoa Lư</span>
                 </div>
             </div>
-        </div>
 
-        <!-- 3. Dê Núi Ninh Bình -->
-        <div id="menu-page-de-nui" class="space-y-4 text-center scroll-mt-28">
-            <span class="inline-block px-3 py-1 bg-secondary/15 text-secondary-dark font-serif font-bold text-xs rounded-full">
-                Trang 3 / 5
-            </span>
-            <div class="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-4 border-border-custom bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
-                <img 
-                    src="{{ asset('images/menu/media_1.jpg') }}" 
-                    alt="Menu Đặc sản Dê Núi Ninh Bình" 
-                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                >
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span class="px-4 py-2 bg-black/60 backdrop-blur-xs text-white text-xs font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
+            <!-- 2. Khai Vị - Bò - Hải Sản -->
+            <div class="space-y-3 text-center">
+                <div class="relative rounded-xl overflow-hidden border-2 border-border-custom bg-white shadow-md hover:shadow-xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
+                    <img 
+                        src="{{ asset('images/menu/media_4.jpg') }}" 
+                        alt="Menu Khai vị, Hải sản, Món bò" 
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
+                            <i class="fas fa-search-plus mr-1.5 text-secondary"></i> Phóng to thực đơn
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Khai Vị - Bò - Hải Sản</h3>
+                    <span class="text-[10px] text-text-secondary uppercase">Khoai chiên, Ngô chiên, Mực, Cá thu...</span>
                 </div>
             </div>
-        </div>
 
-        <!-- 4. Món Cá - Tôm - Cua - Ốc - Ếch -->
-        <div id="menu-page-ca-tom" class="space-y-4 text-center scroll-mt-28">
-            <span class="inline-block px-3 py-1 bg-secondary/15 text-secondary-dark font-serif font-bold text-xs rounded-full">
-                Trang 4 / 5
-            </span>
-            <div class="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-4 border-border-custom bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
-                <img 
-                    src="{{ asset('images/menu/media_2.jpg') }}" 
-                    alt="Menu Món cá, Tôm cua ốc ếch" 
-                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                >
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span class="px-4 py-2 bg-black/60 backdrop-blur-xs text-white text-xs font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
+            <!-- 3. Dê Núi Ninh Bình -->
+            <div class="space-y-3 text-center">
+                <div class="relative rounded-xl overflow-hidden border-2 border-border-custom bg-white shadow-md hover:shadow-xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
+                    <img 
+                        src="{{ asset('images/menu/media_1.jpg') }}" 
+                        alt="Menu Đặc sản Dê Núi Ninh Bình" 
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
+                            <i class="fas fa-search-plus mr-1.5 text-secondary"></i> Phóng to thực đơn
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Đặc Sản Dê Núi</h3>
+                    <span class="text-[10px] text-text-secondary uppercase">Dê tái chanh, Dê chao, Dê ủ trấu...</span>
                 </div>
             </div>
-        </div>
 
-        <!-- 5. Món Thịt Lợn - Món Gà -->
-        <div id="menu-page-lon-ga" class="space-y-4 text-center scroll-mt-28">
-            <span class="inline-block px-3 py-1 bg-secondary/15 text-secondary-dark font-serif font-bold text-xs rounded-full">
-                Trang 5 / 5
-            </span>
-            <div class="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-4 border-border-custom bg-white shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
-                <img 
-                    src="{{ asset('images/menu/media_5.jpg') }}" 
-                    alt="Menu Món thịt lợn, Món gà" 
-                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                >
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span class="px-4 py-2 bg-black/60 backdrop-blur-xs text-white text-xs font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
+            <!-- 4. Món Cá - Tôm - Cua -->
+            <div class="space-y-3 text-center">
+                <div class="relative rounded-xl overflow-hidden border-2 border-border-custom bg-white shadow-md hover:shadow-xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
+                    <img 
+                        src="{{ asset('images/menu/media_2.jpg') }}" 
+                        alt="Menu Món cá, Tôm cua ốc ếch" 
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
+                            <i class="fas fa-search-plus mr-1.5 text-secondary"></i> Phóng to thực đơn
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Món Cá - Tôm - Cua</h3>
+                    <span class="text-[10px] text-text-secondary uppercase">Cá chuối, Cá tầm, Ếch đồng, Chả ốc...</span>
                 </div>
             </div>
+
+            <!-- 5. Món Thịt Lợn - Món Gà -->
+            <div class="space-y-3 text-center">
+                <div class="relative rounded-xl overflow-hidden border-2 border-border-custom bg-white shadow-md hover:shadow-xl transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
+                    <img 
+                        src="{{ asset('images/menu/media_5.jpg') }}" 
+                        alt="Menu Món thịt lợn, Món gà" 
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="px-3.5 py-2 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-lg shadow-md flex items-center">
+                            <i class="fas fa-search-plus mr-1.5 text-secondary"></i> Phóng to thực đơn
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Món Gà - Thịt Lợn</h3>
+                    <span class="text-[10px] text-text-secondary uppercase">Gà rang muối, Sườn xào, Thịt chưng mắm tép...</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -171,13 +159,6 @@
 </div>
 
 <script>
-    function scrollToPage(id) {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-
     function openZoom(src) {
         const modal = document.getElementById('lightbox-modal');
         const img = document.getElementById('lightbox-img');
