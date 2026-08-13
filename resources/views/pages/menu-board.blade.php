@@ -8,7 +8,11 @@
 @include('partials.breadcrumb', [
     'title' => 'Thực Đơn Chi Tiết',
     'items' => [
-   <section class="py-12 bg-bg-primary relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-text-primary">
+        ['label' => 'Thực Đơn Chi Tiết', 'url' => null]
+    ]
+])
+
+<section class="py-12 bg-bg-primary relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-text-primary">
     <!-- Decorative background elements -->
     <div class="absolute inset-0 viet-pattern-bg opacity-[0.03] z-0 pointer-events-none"></div>
     
