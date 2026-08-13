@@ -103,19 +103,19 @@
                 
                 <!-- Stack of Pages -->
                 <div class="relative w-full h-full" id="mobile-pages-stack">
-                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-10 active" data-idx="1">
+                    <div class="mobile-page active-page" data-idx="1">
                         <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Trang 1" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
-                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="2">
+                    <div class="mobile-page" data-idx="2">
                         <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 2" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
-                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="3">
+                    <div class="mobile-page" data-idx="3">
                         <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 3" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
-                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="4">
+                    <div class="mobile-page" data-idx="4">
                         <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 4" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
-                    <div class="mobile-page absolute inset-0 w-full h-full transition-all duration-500 origin-left z-0 pointer-events-none opacity-0" data-idx="5">
+                    <div class="mobile-page" data-idx="5">
                         <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 5" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                 </div>
@@ -327,48 +327,34 @@
     .paper-sheet.flipped {
         transform: rotateY(-180deg);
     }
-
     /* Mobile Page Deck Flip styles */
     .mobile-page {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: left center;
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s, z-index 0.6s;
+        transform: rotateY(0deg);
+        opacity: 0;
+        z-index: 0;
+        pointer-events: none;
         transform-style: preserve-3d;
         backface-visibility: hidden;
-        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s;
-    }
-
-    /* Turning forward fold (rotating left) */
-    .mobile-page-turn-forward {
-        animation: mTurnForward 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
     }
     
-    /* Turning backward unfold (rotating right) */
-    .mobile-page-turn-backward {
-        animation: mTurnBackward 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    .mobile-page.active-page {
+        opacity: 1;
+        z-index: 10;
+        pointer-events: auto;
+        transform: rotateY(0deg);
     }
-
-    @keyframes mTurnForward {
-        0% {
-            transform: rotateY(0deg);
-            opacity: 1;
-            z-index: 10;
-        }
-        100% {
-            transform: rotateY(-120deg);
-            opacity: 0;
-            z-index: 0;
-        }
-    }
-
-    @keyframes mTurnBackward {
-        0% {
-            transform: rotateY(-120deg);
-            opacity: 0;
-            z-index: 0;
-        }
-        100% {
-            transform: rotateY(0deg);
-            opacity: 1;
-            z-index: 10;
-        }
+    
+    .mobile-page.turned-page {
+        transform: rotateY(-120deg);
+        opacity: 0;
+        z-index: 0;
+        pointer-events: none;
     }
 </style>
 
@@ -423,21 +409,15 @@
         mCurrentPage++;
         const nextEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
 
-        nextEl.classList.remove('pointer-events-none', 'opacity-0');
-        nextEl.style.zIndex = '5';
-        nextEl.style.transform = 'rotateY(0deg)';
-
-        currentEl.className = "mobile-page absolute inset-0 w-full h-full origin-left mobile-page-turn-forward";
+        // Turn current page away
+        currentEl.className = "mobile-page turned-page";
+        // Activate next page
+        nextEl.className = "mobile-page active-page";
         
         setTimeout(() => {
-            currentEl.classList.add('pointer-events-none', 'opacity-0');
-            currentEl.style.zIndex = '0';
-            nextEl.style.zIndex = '10';
-            nextEl.classList.add('active');
-            currentEl.classList.remove('active');
             updateIndicatorsMobile();
             isTransitioningMobile = false;
-        }, 580);
+        }, 600);
     }
 
     function mobilePrev() {
@@ -448,19 +428,15 @@
         mCurrentPage--;
         const prevEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
 
-        prevEl.classList.remove('pointer-events-none', 'opacity-0');
-        prevEl.style.zIndex = '15';
-        prevEl.className = "mobile-page absolute inset-0 w-full h-full origin-left mobile-page-turn-backward";
+        // Reset current page to unreached stack state
+        currentEl.className = "mobile-page";
+        // Turn prev page back to active front face
+        prevEl.className = "mobile-page active-page";
 
         setTimeout(() => {
-            currentEl.classList.add('pointer-events-none', 'opacity-0');
-            currentEl.style.zIndex = '0';
-            prevEl.style.zIndex = '10';
-            prevEl.classList.add('active');
-            currentEl.classList.remove('active');
             updateIndicatorsMobile();
             isTransitioningMobile = false;
-        }, 580);
+        }, 600);
     }
 
     function updateIndicatorsMobile() {
