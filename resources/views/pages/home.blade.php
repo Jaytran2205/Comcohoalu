@@ -219,7 +219,7 @@
                 
                 <div class="space-y-4">
                     <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
-                        <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Mâm cơm gia đình truyền thống" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/set-menus/home_mam_com.png') }}" alt="Mâm cơm gia đình truyền thống" class="w-full h-full object-cover">
                     </div>
                     <div class="rounded-xl overflow-hidden shadow-md h-40 bg-primary/20 flex flex-col justify-center items-center text-center p-6 text-primary border border-primary/10">
                         <i class="fas fa-utensils text-3xl text-secondary mb-2"></i>
@@ -235,7 +235,7 @@
                         <span class="text-[10px] uppercase text-bg-dark/70 mt-1">Chuẩn vị địa phương</span>
                     </div>
                     <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
-                        <img src="{{ asset('images/dishes/de-xao.jpg') }}" alt="Đặc sản dê Ninh Bình" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/dishes/home_de_nuoi.jpg') }}" alt="Đặc sản dê Ninh Bình" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
