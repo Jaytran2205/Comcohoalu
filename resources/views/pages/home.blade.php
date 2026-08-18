@@ -170,28 +170,46 @@
             <!-- Left: Text -->
             <div class="space-y-6">
                 <div class="space-y-3">
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-serif leading-tight">Nơi Gìn Giữ <br>Hương Vị Niêu Cơm Đất Cổ</h2>
+                    <span class="text-secondary font-bold text-xs uppercase tracking-widest block">Giới thiệu nhà hàng</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-serif leading-tight">Cơm Cổ Hoa Lư <br><span class="text-secondary-dark">Tinh Hoa Ẩm Thực Cố Đô</span></h2>
                     <div class="w-12 h-1 bg-secondary rounded-full"></div>
                 </div>
                 
                 <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-                    Nằm ở vùng đất di sản cố đô Hoa Lư - Ninh Bình, <strong>Cơm Cổ Hoa Lư</strong> được sinh ra với sứ mệnh gìn giữ và tôn vinh những giá trị ẩm thực truyền thống Việt Nam. Chúng tôi khôi phục nguyên vẹn cách nấu cơm niêu đất cổ truyền, giữ lửa than hồng cháy đượm để tạo nên hạt cơm chín dẻo, thơm lừng và lớp cháy vàng giòn tan rụm.
+                    Tọa lạc ngay trung tâm <strong>Phố Cổ Hoa Lư</strong>, nhà hàng là điểm dừng chân lý tưởng, thuận tiện cho các đoàn khách du lịch và gia đình khi đến với Ninh Bình.
                 </p>
 
-                <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-                    Bên cạnh niêu cơm giản dị, các món ăn từ dê núi chăn thả tự nhiên trên núi đá Ninh Bình được chế biến công phu theo những bí quyết gia truyền từ ngàn xưa, mang đến cho thực khách những trải nghiệm ẩm thực vô giá.
-                </p>
+                <!-- Bullet list with beautiful traditional icons -->
+                <ul class="space-y-4 text-text-secondary text-sm sm:text-base">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/15 text-primary flex items-center justify-center mr-3 mt-0.5 text-xs">
+                            <i class="fas fa-utensils"></i>
+                        </span>
+                        <div>
+                            <strong>Cơm gia đình truyền thống:</strong> Mâm cơm ấm cúng, đậm đà bản sắc cố đô.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/15 text-primary flex items-center justify-center mr-3 mt-0.5 text-xs">
+                            <i class="fas fa-leaf"></i>
+                        </span>
+                        <div>
+                            <strong>Đặc sản dê đủ món:</strong> Tươi ngon, chế biến chuẩn vị địa phương.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/15 text-primary flex items-center justify-center mr-3 mt-0.5 text-xs">
+                            <i class="fas fa-fire-alt"></i>
+                        </span>
+                        <div>
+                            <strong>Lẩu đồng quê:</strong> Thanh ngọt, đậm vị quê nhà.
+                        </div>
+                    </li>
+                </ul>
 
-                <div class="grid grid-cols-2 gap-6 pt-4">
-                    <div class="border-l-4 border-secondary pl-4">
-                        <span class="block text-2xl font-bold text-primary font-serif">100%</span>
-                        <span class="text-xs text-text-secondary">Nguyên liệu địa phương tươi sạch</span>
-                    </div>
-                    <div class="border-l-4 border-secondary pl-4">
-                        <span class="block text-2xl font-bold text-primary font-serif">Gia Truyền</span>
-                        <span class="text-xs text-text-secondary">Công thức chế biến ngàn năm</span>
-                    </div>
-                </div>
+                <p class="text-text-secondary text-sm sm:text-base leading-relaxed pt-2">
+                    Không gian rộng rãi, thoáng mát, sẵn sàng phục vụ các đoàn tour lớn và tiệc sum họp. Ghé Cơm Cổ Hoa Lư để thưởng thức trọn vẹn phong vị đất kinh kỳ!
+                </p>
             </div>
 
             <!-- Right: Beautiful Layout Collage -->
@@ -200,24 +218,24 @@
                 <div class="absolute -inset-4 bg-secondary/10 rounded-3xl -z-10 transform -rotate-2"></div>
                 
                 <div class="space-y-4">
-                    <div class="rounded-xl overflow-hidden shadow-md h-64">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop" alt="Ẩm thực Hoa Lư" class="w-full h-full object-cover">
+                    <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
+                        <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Mâm cơm gia đình truyền thống" class="w-full h-full object-cover">
                     </div>
                     <div class="rounded-xl overflow-hidden shadow-md h-40 bg-primary/20 flex flex-col justify-center items-center text-center p-6 text-primary border border-primary/10">
-                        <i class="fas fa-fire-alt text-3xl text-secondary mb-2"></i>
-                        <span class="font-serif font-bold text-base">Cơm Niêu Đất Sét</span>
-                        <span class="text-[10px] uppercase text-text-secondary mt-1">Nung lò than hồng</span>
+                        <i class="fas fa-utensils text-3xl text-secondary mb-2"></i>
+                        <span class="font-serif font-bold text-base">Cơm Gia Đình</span>
+                        <span class="text-[10px] uppercase text-text-secondary mt-1">Đậm đà bản sắc cố đô</span>
                     </div>
                 </div>
                 
                 <div class="space-y-4 pt-8">
                     <div class="rounded-xl overflow-hidden shadow-md h-40 bg-secondary flex flex-col justify-center items-center text-center p-6 text-bg-dark">
                         <i class="fas fa-leaf text-3xl text-bg-dark/80 mb-2"></i>
-                        <span class="font-serif font-bold text-base">Sạch tự nhiên</span>
-                        <span class="text-[10px] uppercase text-bg-dark/70 mt-1">Dê núi chăn thả</span>
+                        <span class="font-serif font-bold text-base">Đặc Sản Dê Núi</span>
+                        <span class="text-[10px] uppercase text-bg-dark/70 mt-1">Chuẩn vị địa phương</span>
                     </div>
-                    <div class="rounded-xl overflow-hidden shadow-md h-64">
-                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop" alt="Nguyên liệu tươi sạch" class="w-full h-full object-cover">
+                    <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
+                        <img src="{{ asset('images/dishes/de-xao.jpg') }}" alt="Đặc sản dê Ninh Bình" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
