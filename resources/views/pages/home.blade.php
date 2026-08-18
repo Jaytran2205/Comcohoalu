@@ -63,7 +63,7 @@
                         “Hương vị truyền thống – Đậm tình cố hương”
                     </p>
                     <p class="text-text-light/90 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto font-sans font-medium">
-                        Thưởng thức cơm niêu chín dẻo bên bếp lửa than hồng và dê núi Ninh Bình ngọt thịt giữa không gian cổ kính, đầm ấm.
+                        Thưởng thức mâm cơm truyền thống ấm cúng và đặc sản dê núi Ninh Bình ngọt thịt giữa không gian cổ kính, đầm ấm.
                     </p>
                 </div>
             </div>
@@ -412,7 +412,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
         <h2 class="text-3xl md:text-4xl font-bold font-serif text-secondary tracking-wide">Đặt Bàn Thưởng Thức Ngay Hôm Nay</h2>
         <p class="text-text-light/80 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Nhà hàng mở cửa phục vụ Trưa (10:00 - 14:00) và Tối (17:00 - 22:00). Quý khách nên đặt bàn trước ít nhất 30 phút để chúng tôi chuẩn bị niêu cơm và các món ngon một cách chu đáo nhất.
+            Nhà hàng mở cửa phục vụ Trưa (10:00 - 14:00) và Tối (17:00 - 22:00). Quý khách nên đặt bàn trước ít nhất 30 phút để chúng tôi chuẩn bị các món ngon một cách chu đáo nhất.
         </p>
         <div class="pt-4">
             <a href="{{ route('booking.create') }}" class="inline-block px-8 py-4 bg-secondary hover:bg-secondary-dark text-bg-dark font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]">

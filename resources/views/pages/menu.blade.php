@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Thực Đơn Nhà Hàng - Cơm Cổ Hoa Lư')
-@section('meta_description', 'Khám phá danh sách các món ngon đặc sắc Ninh Bình: cơm niêu đất than hồng vàng giòn, dê núi Tràng An chăn thả tự nhiên, và các set mâm cơm gia đình tại Cơm Cổ Hoa Lư.')
+@section('meta_description', 'Khám phá danh sách các món ngon đặc sắc Ninh Bình: dê núi Tràng An chăn thả tự nhiên, và các set mâm cơm gia đình tại Cơm Cổ Hoa Lư.')
 
 @section('content')
 <!-- Breadcrumb Header -->

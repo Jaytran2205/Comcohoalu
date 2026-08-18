@@ -12,8 +12,8 @@
 
     <!-- SEO Meta Tags -->
     <title>@yield('title', $siteSettings['site_name'] ?? 'Cơm Cổ Hoa Lư') - {{ $siteSettings['site_slogan'] ?? 'Hương vị cổ truyền Hoa Lư' }}</title>
-    <meta name="description" content="@yield('meta_description', 'Nhà hàng Cơm Cổ Hoa Lư mang đến trải nghiệm ẩm thực đặc sắc Ninh Bình với cơm niêu than hồng, dê núi và các món ăn đặc sản đậm đà hương vị truyền thống.')">
-    <meta name="keywords" content="cơm cổ hoa lư, cơm niêu ninh bình, đặc sản ninh bình, dê núi ninh bình, nhà hàng hoa lư">
+    <meta name="description" content="@yield('meta_description', 'Nhà hàng Cơm Cổ Hoa Lư mang đến trải nghiệm ẩm thực đặc sắc Ninh Bình với cơm gia đình truyền thống, dê núi và các món ăn đặc sản đậm đà hương vị quê hương.')">
+    <meta name="keywords" content="cơm cổ hoa lư, cơm gia đình ninh bình, đặc sản ninh bình, dê núi ninh bình, nhà hàng hoa lư">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->

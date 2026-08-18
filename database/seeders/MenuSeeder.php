@@ -100,12 +100,12 @@ class MenuSeeder extends Seeder
         $createItem($catRauCanh->id, 'Bắp cải luộc', 60000, 'Rau bắp cải luộc chấm trứng dầm nước tương.', 5);
 
         // Món Cá (Ảnh 2)
-        $createItem($catCa->id, 'Cá chuối kho tộ', 120000, 'Cá quả chuối kho niêu đất đậm đà hương vị đồng quê.', 1, 'best_seller', true);
+        $createItem($catCa->id, 'Cá chuối kho tộ', 120000, 'Cá quả chuối kho tộ đậm đà hương vị đồng quê.', 1, 'best_seller', true);
         $createItem($catCa->id, 'Cá chép giòn xào ngồng tỏi', 200000, 'Cá chép giòn thái lát xào ngồng tỏi giòn sần sật ngọt lịm.', 2);
         $createItem($catCa->id, 'Cá chép giòn xào cần', 200000, 'Cá chép giòn xào cần tỏi tây thơm lừng đậm đà.', 3);
         $createItem($catCa->id, 'Cá tầm rang muối', 240000, 'Cá tầm cắt khúc rang muối giòn tan thơm bùi đặc sắc.', 4, 'specialty', true);
         $createItem($catCa->id, 'Cá tầm chao giềng', 240000, 'Cá tầm ướp riềng nghệ chao dầu giòn rụm đậm hương quê.', 5);
-        $createItem($catCa->id, 'Cá chạch kho niêu đất (Đặc biệt)', 180000, 'Cá chạch đồng kho mục xương trong niêu đất truyền thống.', 6, 'specialty', true);
+        $createItem($catCa->id, 'Cá chạch kho tộ (Đặc biệt)', 180000, 'Cá chạch đồng kho tộ mục xương truyền thống đậm đà.', 6, 'specialty', true);
 
         // Tôm - Cua - Ốc - Ếch (Ảnh 2)
         $createItem($catTomCuaOcEch->id, 'Tôm đồng rang', 110000, 'Tôm đồng rang cháy cạnh giòn ngọt mặn mà.', 1);
@@ -154,7 +154,7 @@ class MenuSeeder extends Seeder
 
         // Cơm - Mì (Món phụ hỗ trợ)
         $createItem($catComMi->id, 'Cơm trắng', 20000, 'Cơm trắng gạo tám dẻo thơm ăn kèm món kho.', 1);
-        $createItem($catComMi->id, 'Cơm niêu cháy', 50000, 'Cơm niêu đất nung than hồng cháy giòn rụm vàng ươm.', 2, 'specialty', true);
+        $createItem($catComMi->id, 'Cơm cháy kho quẹt', 50000, 'Cơm cháy giòn rụm vàng ươm ăn kèm nước sốt kho quẹt đậm đà.', 2, 'specialty', true);
 
 
         // ── 3. Populate Set Menus ──
