@@ -7,8 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
-    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('favicon.png') }}">
 
     <!-- SEO Meta Tags -->
     <title>@yield('title', $siteSettings['site_name'] ?? 'Cơm Cổ Hoa Lư') - {{ $siteSettings['site_slogan'] ?? 'Hương vị cổ truyền Hoa Lư' }}</title>
