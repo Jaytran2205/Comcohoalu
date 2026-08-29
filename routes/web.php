@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
 Route::get('/ping', fn () => 'pong');
+Route::get('/test-db', function () {
+    try {
+        $count = \App\Models\MenuItem::count();
+        return "SUCCESS: Connected to database. Menu items count: $count";
+    } catch (\Throwable $e) {
+        return "ERROR: " . $e->getMessage() . "\n" . $e->getTraceAsString();
+    }
+});
 
 /*
 |--------------------------------------------------------------------------
