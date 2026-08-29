@@ -77,6 +77,14 @@ class MenuSeeder extends Seeder
                 $imagePath = 'images/dishes/de-xao-lan.png';
             } elseif ($name === 'Chân dê hầm thuốc bắc') {
                 $imagePath = 'images/dishes/chan-de-ham.png';
+            } elseif ($name === 'Cá chuối kho tộ') {
+                $imagePath = 'images/dishes/ca-chuoi-kho-to.png';
+            } elseif ($name === 'Tôm đồng rang') {
+                $imagePath = 'images/dishes/tom-dong-rang.png';
+            } elseif ($name === 'Cá chép giòn xào cần') {
+                $imagePath = 'images/dishes/chep-gion-xao-can.png';
+            } elseif ($name === 'Cá tầm rang muối') {
+                $imagePath = 'images/dishes/ca-tam-rang-muoi.png';
             }
             // Category defaults
             elseif ($catId === $catDeNui->id) {
