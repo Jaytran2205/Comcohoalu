@@ -54,13 +54,34 @@ class MenuSeeder extends Seeder
         $catComMi = MenuCategory::create(['name' => 'Cơm - Mì', 'slug' => 'com-mi', 'icon' => 'fa-bowl-rice', 'sort_order' => 12]);
 
         // Helper function to create items quickly
-        $createItem = function($catId, $name, $price, $desc = '', $sort = 0, $badge = 'none', $featured = false) {
+        $createItem = function($catId, $name, $price, $desc = '', $sort = 0, $badge = 'none', $featured = false) use ($catDeNui, $catRauCanh, $catDauTrung, $catThit, $catHaiSan, $catComMi) {
+            // Map real images to categories
+            $imagePath = 'images/default-dish.jpg';
+            if ($catId === $catDeNui->id) {
+                $imagePath = 'images/dishes/home_de_nuoi.jpg';
+            } elseif ($catId === $catRauCanh->id) {
+                if (str_contains(strtolower($name), 'rau') || str_contains(strtolower($name), 'canh')) {
+                    $imagePath = 'images/dishes/rau-muong.jpg';
+                } else {
+                    $imagePath = 'images/dishes/rau-cu-kho-quet.jpg';
+                }
+            } elseif ($catId === $catDauTrung->id) {
+                $imagePath = 'images/dishes/dau-sot.jpg';
+            } elseif ($catId === $catThit->id) {
+                $imagePath = 'images/dishes/thit-luoc.jpg';
+            } elseif ($catId === $catHaiSan->id) {
+                $imagePath = 'images/dishes/tom-xao.jpg';
+            } else {
+                $imagePath = 'images/set-menus/home_mam_com.png';
+            }
+
             return MenuItem::create([
                 'category_id' => $catId,
                 'name' => $name,
                 'slug' => Str::slug($name),
                 'description' => $desc,
                 'price' => $price,
+                'image' => $imagePath,
                 'badge' => $badge,
                 'is_featured' => $featured,
                 'sort_order' => $sort

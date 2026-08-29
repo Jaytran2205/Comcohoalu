@@ -6,7 +6,7 @@
         <!-- Dish Image & Badge -->
         <div class="relative overflow-hidden aspect-[4/3] bg-bg-secondary">
             <img 
-                src="{{ $item->image ? (str_starts_with($item->image, 'http') ? $item->image : asset('storage/' . $item->image)) : asset('images/default-dish.jpg') }}" 
+                src="{{ $item->image ? (str_starts_with($item->image, 'http') ? $item->image : asset($item->image)) : asset('images/default-dish.jpg') }}" 
                 alt="{{ $item->name }}" 
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onerror="this.src='{{ asset('images/default-dish.jpg') }}'"
@@ -29,6 +29,11 @@
                     {{ $item->badge->label() }}
                 </span>
             @endif
+
+            <!-- Illustration Disclaimer -->
+            <span class="absolute bottom-2 right-2 px-1.5 py-0.5 text-[8px] text-white/80 bg-black/45 rounded backdrop-blur-[1px] pointer-events-none tracking-wider select-none">
+                *Hình ảnh chỉ mang tính chất minh họa
+            </span>
         </div>
 
         <!-- Details -->

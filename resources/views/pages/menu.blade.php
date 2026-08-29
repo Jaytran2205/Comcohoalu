@@ -37,6 +37,10 @@
                             class="w-full h-auto object-contain block group-hover:scale-[1.02] transition-transform duration-500"
                             loading="lazy"
                         >
+                        <!-- Illustration Disclaimer -->
+                        <span class="absolute top-3 right-3 px-1.5 py-0.5 text-[8px] text-white/80 bg-black/45 rounded backdrop-blur-[1px] pointer-events-none tracking-wider select-none z-10">
+                            *Hình ảnh chỉ mang tính chất minh họa
+                        </span>
                         <!-- Button Overlaid at bottom of image -->
                         <div class="p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center justify-center">
                             <a href="{{ route('booking.create', ['set_menu' => $set->id]) }}" class="w-full py-3 text-center bg-primary hover:bg-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 border border-secondary/40">

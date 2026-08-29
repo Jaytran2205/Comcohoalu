@@ -411,6 +411,7 @@ $(document).ready(function () {
                                 <div class="relative h-64 md:h-full min-h-[250px]">
                                     <img src="${dishImage}" alt="${data.name}" class="absolute inset-0 w-full h-full object-cover">
                                     ${data.badge ? `<span class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded bg-secondary text-bg-dark">${data.badge}</span>` : ''}
+                                    <span class="absolute bottom-3 right-3 px-1.5 py-0.5 text-[8px] text-white/80 bg-black/45 rounded backdrop-blur-[1px] pointer-events-none tracking-wider select-none">*Hình ảnh chỉ mang tính chất minh họa</span>
                                 </div>
                                 <div class="p-6 md:p-8 flex flex-col justify-between">
                                     <div>
