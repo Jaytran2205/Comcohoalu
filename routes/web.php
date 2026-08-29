@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
-Route::get('/ping', fn () => 'pong');
-Route::get('/test-db', function () {
-    try {
-        $count = \App\Models\MenuItem::count();
-        return "SUCCESS: Connected to database. Menu items count: $count";
-    } catch (\Throwable $e) {
-        return "ERROR: " . $e->getMessage() . "\n" . $e->getTraceAsString();
-    }
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -73,12 +64,11 @@ Route::get('/menu/quick-view/{id}', [MenuController::class, 'quickView'])->name(
 Route::get('/keep-alive', function () {
     try {
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'PostSeeder', '--force' => true]);
         \Illuminate\Support\Facades\Cache::flush();
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Supabase connection is active, migrations and seeding executed.',
+            'message' => 'Supabase connection is active and migrations executed.',
             'migrate_output' => trim(\Illuminate\Support\Facades\Artisan::output())
         ]);
     } catch (\Throwable $e) {
