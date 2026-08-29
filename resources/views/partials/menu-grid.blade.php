@@ -4,11 +4,12 @@
 @forelse($menuItems as $item)
     <div class="premium-card group flex flex-col justify-between h-full bg-white overflow-hidden p-3.5">
         <!-- Dish Image & Badge -->
-        <div class="relative overflow-hidden aspect-square rounded-lg bg-bg-secondary border border-border-custom/30">
+        <div class="relative overflow-hidden rounded-lg bg-bg-secondary border border-border-custom/30" style="aspect-ratio: 1 / 1; width: 100%;">
             <img 
                 src="{{ $item->image ? (str_starts_with($item->image, 'http') ? $item->image : asset($item->image)) : asset('images/default-dish.jpg') }}" 
                 alt="{{ $item->name }}" 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="transition-transform duration-500 group-hover:scale-105"
+                style="width: 100%; height: 100%; object-fit: cover;"
                 onerror="this.src='{{ asset('images/default-dish.jpg') }}'"
             >
             
