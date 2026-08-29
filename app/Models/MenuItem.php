@@ -73,6 +73,32 @@ class MenuItem extends Model
         return $query->orderBy('sort_order')->orderBy('name');
     }
 
+    public function scopeWithCustomImage(Builder $query): Builder
+    {
+        return $query->whereIn('image', [
+            'images/dishes/khoai-tay-chien.png',
+            'images/dishes/ngo-chien.png',
+            'images/dishes/muc-chien.png',
+            'images/dishes/ca-thu-sot-ca.png',
+            'images/dishes/bo-xao-ngong-toi.png',
+            'images/dishes/bo-xao-mang-truc.png',
+            'images/dishes/tiet-canh-de.png',
+            'images/dishes/de-xao-lan.png',
+            'images/dishes/chan-de-ham.png',
+            'images/dishes/ca-chuoi-kho-to.png',
+            'images/dishes/tom-dong-rang.png',
+            'images/dishes/chep-gion-xao-can.png',
+            'images/dishes/ca-tam-rang-muoi.png',
+            'images/dishes/cua-dong-rang.png',
+            'images/dishes/cha-oc.png',
+            'images/dishes/thit-chao-rieng.png',
+            'images/dishes/thit-rang.png',
+            'images/dishes/thit-mam-tep.png',
+            'images/dishes/ga-rang-muoi.png',
+            'images/dishes/ga-luoc.png'
+        ]);
+    }
+
     // ── Accessors ──
 
     public function getFormattedPriceAttribute(): string

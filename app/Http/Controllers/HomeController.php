@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $featuredItems = MenuItem::available()
-            ->featured()
+            ->withCustomImage()
             ->ordered()
             ->with('category')
             ->take(10)
