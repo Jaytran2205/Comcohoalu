@@ -18,6 +18,8 @@ class MenuController extends Controller
         $categories = MenuCategory::active()->ordered()->get();
 
         $items = MenuItem::available()
+            ->whereNotNull('image')
+            ->where('image', '!=', 'images/default-dish.jpg')
             ->ordered()
             ->with('category')
             ->paginate(12);
@@ -49,6 +51,8 @@ class MenuController extends Controller
         $search = $request->string('search')->trim();
 
         $items = MenuItem::available()
+            ->whereNotNull('image')
+            ->where('image', '!=', 'images/default-dish.jpg')
             ->when($categoryId, function ($q) use ($categoryId) {
                 $q->byCategory($categoryId);
             })
@@ -78,6 +82,8 @@ class MenuController extends Controller
         $search = $request->string('q')->trim();
 
         $items = MenuItem::available()
+            ->whereNotNull('image')
+            ->where('image', '!=', 'images/default-dish.jpg')
             ->when($categoryId, function ($q) use ($categoryId) {
                 $q->byCategory($categoryId);
             })

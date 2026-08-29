@@ -93,6 +93,12 @@ class MenuSeeder extends Seeder
                 $imagePath = 'images/dishes/thit-chao-rieng.png';
             } elseif ($name === 'Thịt rang') {
                 $imagePath = 'images/dishes/thit-rang.png';
+            } elseif ($name === 'Thịt chưng mắm tép (Đặc biệt)') {
+                $imagePath = 'images/dishes/thit-mam-tep.png';
+            } elseif ($name === 'Gà rang muối') {
+                $imagePath = 'images/dishes/ga-rang-muoi.png';
+            } elseif ($name === 'Gà luộc (Đặt trước)') {
+                $imagePath = 'images/dishes/ga-luoc.png';
             }
             // Category defaults
             elseif ($catId === $catDeNui->id) {
@@ -199,7 +205,7 @@ class MenuSeeder extends Seeder
         $createItem($catThit->id, 'Thịt chao riềng', 130000, 'Thịt heo tẩm riềng nghệ chiên chao dầu vàng giòn thơm.', 1);
         $createItem($catThit->id, 'Thịt rang', 120000, 'Thịt ba chỉ rang cháy cạnh giòn ngọt mỡ hành.', 2);
         $createItem($catThit->id, 'Sườn xào chua ngọt', 140000, 'Sườn heo xào chua ngọt sốt sánh quyện mềm ngon đậm vị.', 3);
-        $createItem($catThit->id, 'Thịt trưng mắm tép (Đặc biệt)', 120000, 'Thịt heo băm xào mắm tép chưng đặc sản Ninh Bình.', 4, 'specialty', true);
+        $createItem($catThit->id, 'Thịt chưng mắm tép (Đặc biệt)', 120000, 'Thịt heo băm xào mắm tép chưng đặc sản Ninh Bình.', 4, 'specialty', true);
         $createItem($catThit->id, 'Nầm chiên mắm', 180000, 'Nầm chiên nước mắm tỏi ớt giòn sần sật béo ngậy.', 5);
 
         // Món Gà (Ảnh 5)
