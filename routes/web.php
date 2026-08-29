@@ -63,11 +63,12 @@ Route::get('/menu/quick-view/{id}', [MenuController::class, 'quickView'])->name(
 Route::get('/keep-alive', function () {
     try {
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'PostSeeder', '--force' => true]);
         \Illuminate\Support\Facades\Cache::flush();
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Supabase connection is active and migrations executed.',
+            'message' => 'Supabase connection is active, migrations and seeding executed.',
             'migrate_output' => trim(\Illuminate\Support\Facades\Artisan::output())
         ]);
     } catch (\Throwable $e) {

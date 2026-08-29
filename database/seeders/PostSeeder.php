@@ -68,11 +68,13 @@ class PostSeeder extends Seeder
             ],
         ];
 
+        $authorId = $admin ? $admin->id : (User::first()->id ?? 1);
+
         foreach ($posts as $post) {
             Post::updateOrCreate(
                 ['slug' => $post['slug']],
                 array_merge($post, [
-                    'author_id' => $admin->id,
+                    'author_id' => $authorId,
                     'status' => PostStatus::Published,
                     'published_at' => now()->subDays(rand(1, 30)),
                 ])
