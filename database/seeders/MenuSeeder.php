@@ -85,6 +85,14 @@ class MenuSeeder extends Seeder
                 $imagePath = 'images/dishes/chep-gion-xao-can.png';
             } elseif ($name === 'Cá tầm rang muối') {
                 $imagePath = 'images/dishes/ca-tam-rang-muoi.png';
+            } elseif ($name === 'Cua đồng rang lá chanh') {
+                $imagePath = 'images/dishes/cua-dong-rang.png';
+            } elseif ($name === 'Chả ốc') {
+                $imagePath = 'images/dishes/cha-oc.png';
+            } elseif ($name === 'Thịt chao riềng') {
+                $imagePath = 'images/dishes/thit-chao-rieng.png';
+            } elseif ($name === 'Thịt rang') {
+                $imagePath = 'images/dishes/thit-rang.png';
             }
             // Category defaults
             elseif ($catId === $catDeNui->id) {
@@ -161,7 +169,7 @@ class MenuSeeder extends Seeder
         // Tôm - Cua - Ốc - Ếch (Ảnh 2)
         $createItem($catTomCuaOcEch->id, 'Tôm đồng rang', 110000, 'Tôm đồng rang cháy cạnh giòn ngọt mặn mà.', 1);
         $createItem($catTomCuaOcEch->id, 'Tôm đồng chao lá chanh', 120000, 'Tôm đồng chao giòn rụm thơm nức mùi lá chanh.', 2);
-        $createItem($catTomCuaOcEch->id, 'Cua rang muối', 150000, 'Cua đồng rang muối khô giòn tan thơm ngậy bổ dưỡng.', 3);
+        $createItem($catTomCuaOcEch->id, 'Cua đồng rang lá chanh', 150000, 'Cua đồng rang lá chanh giòn tan thơm ngậy bổ dưỡng.', 3);
         $createItem($catTomCuaOcEch->id, 'Chả ốc', 130000, 'Chả ốc nhồi lá lốt hấp hoặc nướng giòn sần sật.', 4, 'best_seller', true);
         $createItem($catTomCuaOcEch->id, 'Ếch rang muối', 180000, 'Thịt ếch đồng chiên giòn lắc muối thơm bùi ngậy.', 5);
         $createItem($catTomCuaOcEch->id, 'Ếch xào măng', 180000, 'Ếch xào măng củ chua cay đậm đà cực kỳ hao cơm.', 6);
@@ -188,7 +196,7 @@ class MenuSeeder extends Seeder
         $createItem($catLau->id, 'Lẩu cá tầm', 800000, 'Lẩu cá tầm tươi sống chua cay kiểu Tây Bắc sần sật giòn.', 4);
 
         // Món Thịt Lợn (Ảnh 5)
-        $createItem($catThit->id, 'Thịt chao giềng', 130000, 'Thịt heo tẩm riềng nghệ chiên chao dầu vàng giòn thơm.', 1);
+        $createItem($catThit->id, 'Thịt chao riềng', 130000, 'Thịt heo tẩm riềng nghệ chiên chao dầu vàng giòn thơm.', 1);
         $createItem($catThit->id, 'Thịt rang', 120000, 'Thịt ba chỉ rang cháy cạnh giòn ngọt mỡ hành.', 2);
         $createItem($catThit->id, 'Sườn xào chua ngọt', 140000, 'Sườn heo xào chua ngọt sốt sánh quyện mềm ngon đậm vị.', 3);
         $createItem($catThit->id, 'Thịt trưng mắm tép (Đặc biệt)', 120000, 'Thịt heo băm xào mắm tép chưng đặc sản Ninh Bình.', 4, 'specialty', true);
