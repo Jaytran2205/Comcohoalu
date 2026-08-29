@@ -57,7 +57,21 @@ class MenuSeeder extends Seeder
         $createItem = function($catId, $name, $price, $desc = '', $sort = 0, $badge = 'none', $featured = false) use ($catDeNui, $catRauCanh, $catDauTrung, $catThit, $catHaiSan, $catComMi) {
             // Map real images to categories
             $imagePath = 'images/default-dish.jpg';
-            if ($catId === $catDeNui->id) {
+            
+            // Exact dish name overrides from user uploaded photos
+            if ($name === 'Khoai tây chiên') {
+                $imagePath = 'images/dishes/khoai-tay-chien.png';
+            } elseif ($name === 'Ngô chiên bơ') {
+                $imagePath = 'images/dishes/ngo-chien.png';
+            } elseif ($name === 'Mực chiên bơ') {
+                $imagePath = 'images/dishes/muc-chien.png';
+            } elseif ($name === 'Cá thu sốt cà chua') {
+                $imagePath = 'images/dishes/ca-thu-sot-ca.png';
+            } elseif ($name === 'Bò xào ngồng tỏi') {
+                $imagePath = 'images/dishes/bo-xao-ngong-toi.png';
+            }
+            // Category defaults
+            elseif ($catId === $catDeNui->id) {
                 $imagePath = 'images/dishes/home_de_nuoi.jpg';
             } elseif ($catId === $catRauCanh->id) {
                 if (str_contains(strtolower($name), 'rau') || str_contains(strtolower($name), 'canh')) {
