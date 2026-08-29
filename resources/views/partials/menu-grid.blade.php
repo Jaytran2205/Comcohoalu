@@ -2,9 +2,9 @@
     $menuItems = $menuItems ?? $items ?? [];
 @endphp
 @forelse($menuItems as $item)
-    <div class="premium-card group flex flex-col justify-between h-full bg-white overflow-hidden">
+    <div class="premium-card group flex flex-col justify-between h-full bg-white overflow-hidden p-3.5">
         <!-- Dish Image & Badge -->
-        <div class="relative overflow-hidden aspect-[4/3] bg-bg-secondary">
+        <div class="relative overflow-hidden aspect-square rounded-lg bg-bg-secondary border border-border-custom/30">
             <img 
                 src="{{ $item->image ? (str_starts_with($item->image, 'http') ? $item->image : asset($item->image)) : asset('images/default-dish.jpg') }}" 
                 alt="{{ $item->name }}" 
@@ -25,7 +25,7 @@
 
             <!-- Badge -->
             @if($item->badge && $item->badge !== \App\Enums\MenuItemBadge::None)
-                <span class="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded bg-secondary text-bg-dark shadow-sm">
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider rounded bg-secondary text-bg-dark shadow-sm">
                     {{ $item->badge->label() }}
                 </span>
             @endif
@@ -37,26 +37,26 @@
         </div>
 
         <!-- Details -->
-        <div class="p-5 flex-grow flex flex-col justify-between">
+        <div class="pt-4 flex-grow flex flex-col justify-between">
             <div>
-                <span class="text-[10px] font-bold text-secondary uppercase tracking-widest block mb-1">
+                <span class="text-[9px] font-bold text-secondary uppercase tracking-widest block mb-1">
                     {{ $item->category->name }}
                 </span>
-                <h3 class="text-lg font-bold text-primary hover:text-primary-light transition-colors line-clamp-1 mb-2 font-serif">
+                <h3 class="text-base font-bold text-primary hover:text-primary-light transition-colors line-clamp-1 mb-1.5 font-serif">
                     {{ $item->name }}
                 </h3>
-                <p class="text-text-secondary text-xs line-clamp-2 leading-relaxed mb-4">
+                <p class="text-text-secondary text-xs line-clamp-2 leading-relaxed mb-3">
                     {{ $item->description ?: 'Món ăn truyền thống đặc sắc được chế biến tỉ mỉ từ những nguyên liệu tươi ngon nhất của vùng đất Hoa Lư, Ninh Bình.' }}
                 </p>
             </div>
 
             <!-- Bottom Price & Order -->
-            <div class="flex items-center justify-between pt-3 border-t border-border-custom/20">
-                <span class="text-primary-light font-bold text-lg font-sans tracking-tight">
+            <div class="flex items-center justify-between pt-2.5 border-t border-border-custom/20">
+                <span class="text-primary-light font-bold text-base font-sans tracking-tight">
                     {{ $item->formatted_price }}
                 </span>
-                <a href="{{ route('booking.create') }}" class="text-secondary hover:text-secondary-dark font-bold text-xs uppercase tracking-wider flex items-center gap-1 transition-all duration-200">
-                    Đặt bàn <i class="fas fa-arrow-right text-[10px]"></i>
+                <a href="{{ route('booking.create') }}" class="text-secondary hover:text-secondary-dark font-bold text-[10px] uppercase tracking-wider flex items-center gap-1 transition-all duration-200">
+                    Đặt bàn <i class="fas fa-arrow-right text-[8px]"></i>
                 </a>
             </div>
         </div>
