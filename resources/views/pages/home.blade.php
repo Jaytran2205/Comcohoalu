@@ -219,7 +219,7 @@
                 
                 <div class="space-y-4">
                     <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
-                        <img src="{{ asset('images/set-menus/home_mam_com.png') }}" alt="Mâm cơm gia đình truyền thống" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/set-menus/mam-com-co-do.png') }}" alt="Mâm cơm gia đình truyền thống" class="w-full h-full object-cover animate-pulse-slow">
                     </div>
                     <div class="rounded-xl overflow-hidden shadow-md h-40 bg-primary/20 flex flex-col justify-center items-center text-center p-6 text-primary border border-primary/10">
                         <i class="fas fa-utensils text-3xl text-secondary mb-2"></i>
@@ -235,7 +235,7 @@
                         <span class="text-[10px] uppercase text-bg-dark/70 mt-1">Chuẩn vị địa phương</span>
                     </div>
                     <div class="rounded-xl overflow-hidden shadow-md h-64 border border-border-custom/30 bg-bg-secondary">
-                        <img src="{{ asset('images/dishes/home_de_nuoi.jpg') }}" alt="Đặc sản dê Ninh Bình" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/dishes/lau-de-thap-cam.png') }}" alt="Đặc sản dê Ninh Bình" class="w-full h-full object-cover animate-pulse-slow">
                     </div>
                 </div>
             </div>
@@ -296,6 +296,95 @@
             </a>
         </div>
 
+    </div>
+</section>
+
+<!-- 4. Special Offers & Restaurant Space Section -->
+<section class="py-20 bg-bg-primary relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <span class="text-secondary font-bold text-xs uppercase tracking-widest block">Không Gian & Ưu Đãi</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary font-serif leading-tight">Chương Trình Khuyến Mãi & Không Gian Quán</h2>
+            <div class="w-12 h-1 bg-secondary mx-auto mt-2"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <!-- Promotion Banner 1 -->
+            <div class="group bg-white rounded-2xl border border-border-custom/30 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div class="relative aspect-square overflow-hidden bg-bg-secondary select-none" style="aspect-ratio: 1/1;">
+                    <img 
+                        src="{{ asset('images/promotions/bua-trua-tron-vi.png') }}" 
+                        alt="Bữa trưa trọn vị chuẩn cơm mẹ nấu" 
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-primary mb-2">Bữa Trưa Trọn Vị</h3>
+                        <p class="text-text-secondary text-xs leading-relaxed mb-4">
+                            Mâm cơm trưa truyền thống thơm ngon dành cho gia đình và cơ quan. Chuẩn cơm mẹ nấu giữa lòng phố cổ Hoa Lư, Ninh Bình.
+                        </p>
+                    </div>
+                    <a href="tel:0566135135" class="text-secondary hover:text-secondary-dark font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all">
+                        Gọi điện đặt bàn <i class="fas fa-phone-alt text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Promotion Banner 2 -->
+            <div class="group bg-white rounded-2xl border border-border-custom/30 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div class="relative aspect-square overflow-hidden bg-bg-secondary select-none" style="aspect-ratio: 1/1;">
+                    <img 
+                        src="{{ asset('images/promotions/lau-de-thom-nuc.png') }}" 
+                        alt="Ăn gì trưa nay lẩu dê thơm nức" 
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-primary mb-2">Lẩu Dê Thơm Nức</h3>
+                        <p class="text-text-secondary text-xs leading-relaxed mb-4">
+                            Đặc sản lẩu dê núi Ninh Bình đậm đà, thịt dê tươi xắt lát bản to mọng nước, dùng kèm mì và rau nhúng tươi sạch.
+                        </p>
+                    </div>
+                    <a href="{{ route('booking.create') }}" class="text-secondary hover:text-secondary-dark font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all">
+                        Đặt bàn ngay <i class="fas fa-calendar-alt text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Space & Ambience Info -->
+            <div class="bg-white rounded-2xl border border-border-custom/30 overflow-hidden shadow-md p-8 flex flex-col justify-between relative">
+                <div class="absolute -right-12 -bottom-12 w-40 h-40 bg-secondary/5 rounded-full pointer-events-none"></div>
+                <div class="space-y-5">
+                    <i class="fas fa-hotel text-4xl text-secondary"></i>
+                    <h3 class="font-serif font-bold text-2xl text-primary leading-tight">Không Gian Cổ Kính, Đầm Ấm</h3>
+                    <div class="w-8 h-0.5 bg-secondary"></div>
+                    <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                        Tọa lạc ngay trung tâm Phố Cổ Hoa Lư, Ninh Bình (Đường Tràng An 2, Hồ Kỳ Lân). Nhà hàng tái hiện hoàn hảo không gian cơm xưa ấm cúng với những bộ bàn ghế gỗ mộc mạc, bát đĩa gốm mộc dân dã và những bức tranh nghệ thuật đương đại, đem lại cảm giác yên bình tuyệt đối khi dùng bữa.
+                    </p>
+                    <div class="space-y-2 pt-2">
+                        <div class="flex items-center text-xs text-text-secondary">
+                            <i class="fas fa-map-marker-alt text-secondary w-5"></i>
+                            <span>Đường Tràng An 2 (Hồ Kỳ Lân), Tân Thành, Ninh Bình</span>
+                        </div>
+                        <div class="flex items-center text-xs text-text-secondary">
+                            <i class="fas fa-phone-alt text-secondary w-5"></i>
+                            <span>Hotline: 0566 135 135 - 0344 136 136</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6">
+                    <a href="{{ route('booking.create') }}" class="w-full py-3 text-center bg-primary hover:bg-secondary text-white hover:text-bg-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all duration-300 flex items-center justify-center space-x-2 border border-secondary/20">
+                        <i class="fas fa-calendar-check text-secondary group-hover:text-bg-dark"></i>
+                        <span>Đặt bàn trực tuyến</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
