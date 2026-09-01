@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Thực Đơn Nhà Hàng - Cơm Cổ Hoa Lư')
-@section('meta_description', 'Khám phá toàn bộ thực đơn đặc sắc Ninh Bình: dê núi Tràng An, các món ăn đồng quê, lẩu thơm ngon và các combo mâm cơm gia đình truyền thống tại Cơm Cổ Hoa Lư.')
+@section('meta_description', 'Khám phá toàn bộ thực đơn đặc sắc Ninh Bình: khai vị, đặc sản dê núi Tràng An, các món ăn đồng quê, lẩu thơm ngon và các combo mâm cơm gia đình truyền thống tại Cơm Cổ Hoa Lư.')
 
 @section('content')
 <!-- Breadcrumb Header -->
@@ -42,25 +42,25 @@
             <div class="book-container">
                 <div class="book" id="book-3d-desktop">
                     
-                    <!-- Sheet 1: Cover & Dê Núi (Trang 1 & 2) -->
+                    <!-- Sheet 1: Cover & Khai Vị (Trang 1 & 2) -->
                     <div class="paper-sheet z-[50]" id="dsheet1">
                         <!-- Front (Trang 1: Bìa Menu) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Thực Đơn" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
                         </div>
-                        <!-- Back (Trang 2: Đặc sản dê núi) -->
+                        <!-- Back (Trang 2: Khai Vị - Bò - Hải Sản) -->
                         <div class="page-face back-face">
-                            <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi Ninh Bình" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-full object-fill">
                             <div class="page-overlay-glow shadow-left"></div>
                         </div>
                     </div>
 
-                    <!-- Sheet 2: Khai Vị - Bò & Món Cá (Trang 3 & 4) -->
+                    <!-- Sheet 2: Dê Núi & Món Cá (Trang 3 & 4) -->
                     <div class="paper-sheet z-[40]" id="dsheet2">
-                        <!-- Front (Trang 3: Khai Vị - Món Bò) -->
+                        <!-- Front (Trang 3: Đặc Sản Dê Núi) -->
                         <div class="page-face front-face">
-                            <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi Ninh Bình" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
                         </div>
                         <!-- Back (Trang 4: Món Cá - Tôm - Cua) -->
@@ -136,10 +136,10 @@
                         <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Trang 1: Bìa Menu" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="2">
-                        <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 2: Đặc Sản Dê Núi" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 2: Khai Vị - Bò - Hải Sản" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="3">
-                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 3: Khai Vị - Bò - Hải Sản" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 3: Đặc Sản Dê Núi" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="4">
                         <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 4: Món Cá - Tôm - Cua" class="w-full h-full object-fill" onclick="mobileNext()">
@@ -207,20 +207,7 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 1: Bìa Thực Đơn</h3>
         </div>
 
-        <!-- 2. Đặc Sản Dê Núi (Cho Dê đầu tiên) -->
-        <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
-                <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
-                </div>
-            </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Đặc Sản Dê Núi</h3>
-        </div>
-
-        <!-- 3. Khai Vị - Bò (Món ăn lên trước) -->
+        <!-- 2. Khai Vị - Bò - Hải Sản (Đưa lên Trang 2) -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
                 <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -230,7 +217,20 @@
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Khai Vị - Bò - Hải Sản</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Khai Vị - Bò - Hải Sản</h3>
+        </div>
+
+        <!-- 3. Đặc Sản Dê Núi (Đẩy xuống Trang 3) -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
+                <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Đặc Sản Dê Núi</h3>
         </div>
 
         <!-- 4. Món Cá -->
@@ -246,7 +246,7 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Món Cá - Tôm - Cua</h3>
         </div>
 
-        <!-- 5. Món Gà - Thịt Lợn - Lẩu (Lẩu sau cùng của món ăn) -->
+        <!-- 5. Món Gà - Thịt Lợn - Lẩu -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
                 <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món gà lợn lẩu" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -259,7 +259,7 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Món Gà - Thịt Lợn - Lẩu</h3>
         </div>
 
-        <!-- 6. Combo 200k (Sau lẩu là các set) -->
+        <!-- 6. Combo 200k -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-200k.jpg') }}')">
                 <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
