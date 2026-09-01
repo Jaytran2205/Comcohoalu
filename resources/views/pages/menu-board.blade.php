@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Thực Đơn Nhà Hàng - Cơm Cổ Hoa Lư')
-@section('meta_description', 'Khám phá toàn bộ thực đơn đặc sắc Ninh Bình: dê núi Tràng An, các combo mâm cơm gia đình truyền thống và các món ngon đồng quê tại Cơm Cổ Hoa Lư.')
+@section('meta_description', 'Khám phá toàn bộ thực đơn đặc sắc Ninh Bình: dê núi Tràng An, các món ăn đồng quê, lẩu thơm ngon và các combo mâm cơm gia đình truyền thống tại Cơm Cổ Hoa Lư.')
 
 @section('content')
 <!-- Breadcrumb Header -->
@@ -42,9 +42,9 @@
             <div class="book-container">
                 <div class="book" id="book-3d-desktop">
                     
-                    <!-- Cover Page / Sheet 1 -->
+                    <!-- Sheet 1: Cover & Dê Núi (Trang 1 & 2) -->
                     <div class="paper-sheet z-[50]" id="dsheet1">
-                        <!-- Front (Bìa Menu - Page 1) -->
+                        <!-- Front (Trang 1: Bìa Menu) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Thực Đơn" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
@@ -56,44 +56,44 @@
                         </div>
                     </div>
 
-                    <!-- Sheet 2 -->
+                    <!-- Sheet 2: Khai Vị - Bò & Món Cá (Trang 3 & 4) -->
                     <div class="paper-sheet z-[40]" id="dsheet2">
-                        <!-- Front (Trang 3: Combo 200k) -->
+                        <!-- Front (Trang 3: Khai Vị - Món Bò) -->
                         <div class="page-face front-face">
-                            <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người/bàn 6" class="w-full h-full object-fill">
-                            <div class="page-overlay-glow"></div>
-                        </div>
-                        <!-- Back (Trang 4: Combo 150k) -->
-                        <div class="page-face back-face">
-                            <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người/bàn 6" class="w-full h-full object-fill">
-                            <div class="page-overlay-glow shadow-left"></div>
-                        </div>
-                    </div>
-
-                    <!-- Sheet 3 -->
-                    <div class="paper-sheet z-[30]" id="dsheet3">
-                        <!-- Front (Trang 5: Combo 250k) -->
-                        <div class="page-face front-face">
-                            <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người/bàn 6" class="w-full h-full object-fill">
-                            <div class="page-overlay-glow"></div>
-                        </div>
-                        <!-- Back (Trang 6: Khai Vị - Bò - Hải Sản) -->
-                        <div class="page-face back-face">
                             <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow"></div>
+                        </div>
+                        <!-- Back (Trang 4: Món Cá - Tôm - Cua) -->
+                        <div class="page-face back-face">
+                            <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món Cá - Tôm - Cua" class="w-full h-full object-fill">
                             <div class="page-overlay-glow shadow-left"></div>
                         </div>
                     </div>
 
-                    <!-- Sheet 4 -->
-                    <div class="paper-sheet z-[20]" id="dsheet4">
-                        <!-- Front (Trang 7: Món Cá - Tôm - Cua) -->
+                    <!-- Sheet 3: Gà - Lợn - Lẩu & Combo 200k (Trang 5 & 6) -->
+                    <div class="paper-sheet z-[30]" id="dsheet3">
+                        <!-- Front (Trang 5: Món Gà - Thịt Lợn - Lẩu) -->
                         <div class="page-face front-face">
-                            <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món Cá - Tôm - Cua" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món Gà - Thịt Lợn - Lẩu Đồng Quê" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
                         </div>
-                        <!-- Back (Trang 8: Món Gà - Thịt Lợn) -->
+                        <!-- Back (Trang 6: Combo 200k) -->
                         <div class="page-face back-face">
-                            <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món Gà - Thịt Lợn" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người/bàn 6" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow shadow-left"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sheet 4: Combo 150k & Combo 250k (Trang 7 & 8) -->
+                    <div class="paper-sheet z-[20]" id="dsheet4">
+                        <!-- Front (Trang 7: Combo 150k) -->
+                        <div class="page-face front-face">
+                            <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người/bàn 6" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow"></div>
+                        </div>
+                        <!-- Back (Trang 8: Combo 250k) -->
+                        <div class="page-face back-face">
+                            <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người/bàn 6" class="w-full h-full object-fill">
                             <div class="page-overlay-glow shadow-left"></div>
                         </div>
                     </div>
@@ -139,22 +139,22 @@
                         <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 2: Đặc Sản Dê Núi" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="3">
-                        <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Trang 3: Combo 200k" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 3: Khai Vị - Bò - Hải Sản" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="4">
-                        <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Trang 4: Combo 150k" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 4: Món Cá - Tôm - Cua" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="5">
-                        <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Trang 5: Combo 250k" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 5: Món Gà - Thịt Lợn - Lẩu" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="6">
-                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 6: Khai Vị - Bò - Hải Sản" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Trang 6: Combo 200k" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="7">
-                        <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 7: Món Cá - Tôm - Cua" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Trang 7: Combo 150k" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="8">
-                        <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 8: Món Gà - Thịt Lợn" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Trang 8: Combo 250k" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                 </div>
 
@@ -207,7 +207,7 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 1: Bìa Thực Đơn</h3>
         </div>
 
-        <!-- 2. Đặc Sản Dê Núi -->
+        <!-- 2. Đặc Sản Dê Núi (Cho Dê đầu tiên) -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
                 <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -220,46 +220,7 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Đặc Sản Dê Núi</h3>
         </div>
 
-        <!-- 3. Combo 200k -->
-        <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-200k.jpg') }}')">
-                <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
-                    </span>
-                </div>
-            </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Combo 200K (Bàn 6)</h3>
-        </div>
-
-        <!-- 4. Combo 150k -->
-        <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-150k.jpg') }}')">
-                <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
-                    </span>
-                </div>
-            </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Combo 150K (Bàn 6)</h3>
-        </div>
-
-        <!-- 5. Combo 250k -->
-        <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-250k.jpg') }}')">
-                <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
-                    </span>
-                </div>
-            </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Combo 250K (Bàn 6)</h3>
-        </div>
-
-        <!-- 6. Khai Vị -->
+        <!-- 3. Khai Vị - Bò (Món ăn lên trước) -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
                 <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -269,10 +230,10 @@
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 6: Khai Vị - Bò - Hải Sản</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Khai Vị - Bò - Hải Sản</h3>
         </div>
 
-        <!-- 7. Món Cá -->
+        <!-- 4. Món Cá -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
                 <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món cá" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -282,20 +243,59 @@
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 7: Món Cá - Tôm - Cua</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Món Cá - Tôm - Cua</h3>
         </div>
 
-        <!-- 8. Món Lợn Gà -->
+        <!-- 5. Món Gà - Thịt Lợn - Lẩu (Lẩu sau cùng của món ăn) -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
-                <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món gà lợn" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món gà lợn lẩu" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 8: Món Gà - Thịt Lợn</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Món Gà - Thịt Lợn - Lẩu</h3>
+        </div>
+
+        <!-- 6. Combo 200k (Sau lẩu là các set) -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-200k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 6: Combo 200K (Bàn 6)</h3>
+        </div>
+
+        <!-- 7. Combo 150k -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-150k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 7: Combo 150K (Bàn 6)</h3>
+        </div>
+
+        <!-- 8. Combo 250k -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-250k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 8: Combo 250K (Bàn 6)</h3>
         </div>
 
     </div>
