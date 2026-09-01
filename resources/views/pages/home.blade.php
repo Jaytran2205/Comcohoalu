@@ -338,16 +338,16 @@
                 <div class="relative aspect-square overflow-hidden bg-bg-secondary select-none" style="aspect-ratio: 1/1;">
                     <img 
                         src="{{ asset('images/promotions/lau-de-thom-nuc.png') }}" 
-                        alt="Ăn gì trưa nay lẩu dê thơm nức" 
+                        alt="Ăn gì trưa nay lẩu riêu cua bắp bò thơm nức" 
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         loading="lazy"
                     >
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between">
                     <div>
-                        <h3 class="font-serif font-bold text-lg text-primary mb-2">Lẩu Dê Thơm Nức</h3>
+                        <h3 class="font-serif font-bold text-lg text-primary mb-2">Lẩu Riêu Cua Bắp Bò</h3>
                         <p class="text-text-secondary text-xs leading-relaxed mb-4">
-                            Đặc sản lẩu dê núi Ninh Bình đậm đà, thịt dê tươi xắt lát bản to mọng nước, dùng kèm mì và rau nhúng tươi sạch.
+                            Đặc sản lẩu riêu cua bắp bò đậm đà thơm nức mũi, nhiều gạch cua đồng béo ngậy, bắp bò tươi thái mọng nước dùng kèm mì và rau nhúng tươi sạch.
                         </p>
                     </div>
                     <a href="{{ route('booking.create') }}" class="text-secondary hover:text-secondary-dark font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all">
