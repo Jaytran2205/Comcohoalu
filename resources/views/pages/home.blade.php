@@ -275,15 +275,15 @@
         </div>
 
         <!-- Menu Tab Contents Container -->
-        <div class="menu-tab-content-container">
+        <div class="menu-tab-content-container max-w-5xl mx-auto">
             <!-- All items grid -->
-            <div class="menu-tab-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="tab-grid-all">
+            <div class="menu-tab-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center" id="tab-grid-all">
                 @include('partials.menu-grid', ['menuItems' => $featuredItems])
             </div>
             
             <!-- Category specific grids -->
             @foreach($categories as $categoryName => $items)
-                <div class="menu-tab-grid hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="tab-grid-{{ Str::slug($categoryName) }}">
+                <div class="menu-tab-grid hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center" id="tab-grid-{{ Str::slug($categoryName) }}">
                     @include('partials.menu-grid', ['menuItems' => $items])
                 </div>
             @endforeach

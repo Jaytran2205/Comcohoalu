@@ -59,46 +59,12 @@ class MenuSeeder extends Seeder
             $imagePath = 'images/default-dish.jpg';
             
             // Exact dish name overrides from user uploaded photos
-            if ($name === 'Khoai tây chiên') {
-                $imagePath = 'images/dishes/khoai-tay-chien.png';
-            } elseif ($name === 'Ngô chiên bơ') {
-                $imagePath = 'images/dishes/ngo-chien.png';
-            } elseif ($name === 'Mực chiên bơ') {
-                $imagePath = 'images/dishes/muc-chien.png';
-            } elseif ($name === 'Cá thu sốt cà chua') {
-                $imagePath = 'images/dishes/ca-thu-sot-ca.png';
-            } elseif ($name === 'Bò xào ngồng tỏi') {
-                $imagePath = 'images/dishes/bo-xao-ngong-toi.png';
-            } elseif ($name === 'Bò xào măng trúc') {
-                $imagePath = 'images/dishes/bo-xao-mang-truc.png';
-            } elseif ($name === 'Tiết canh dê (Đặt trước)') {
-                $imagePath = 'images/dishes/tiet-canh-de.png';
-            } elseif ($name === 'Dê xào lăn') {
-                $imagePath = 'images/dishes/de-xao-lan.png';
-            } elseif ($name === 'Chân dê hầm thuốc bắc') {
-                $imagePath = 'images/dishes/chan-de-ham.png';
+            if ($name === 'Lẩu riêu cua bắp bò') {
+                $imagePath = 'images/dishes/lau-rieu-cua-bap-bo.png';
             } elseif ($name === 'Cá chuối kho tộ') {
                 $imagePath = 'images/dishes/ca-chuoi-kho-to.png';
-            } elseif ($name === 'Tôm đồng rang') {
-                $imagePath = 'images/dishes/tom-dong-rang.png';
-            } elseif ($name === 'Cá chép giòn xào cần') {
-                $imagePath = 'images/dishes/chep-gion-xao-can.png';
-            } elseif ($name === 'Cá tầm rang muối') {
-                $imagePath = 'images/dishes/ca-tam-rang-muoi.png';
-            } elseif ($name === 'Cua đồng rang lá chanh') {
-                $imagePath = 'images/dishes/cua-dong-rang.png';
-            } elseif ($name === 'Chả ốc') {
-                $imagePath = 'images/dishes/cha-oc.png';
             } elseif ($name === 'Thịt chao riềng') {
                 $imagePath = 'images/dishes/thit-chao-rieng.png';
-            } elseif ($name === 'Thịt rang') {
-                $imagePath = 'images/dishes/thit-rang.png';
-            } elseif ($name === 'Thịt chưng mắm tép (Đặc biệt)') {
-                $imagePath = 'images/dishes/thit-mam-tep.png';
-            } elseif ($name === 'Gà rang muối') {
-                $imagePath = 'images/dishes/ga-rang-muoi.png';
-            } elseif ($name === 'Gà luộc (Đặt trước)') {
-                $imagePath = 'images/dishes/ga-luoc.png';
             }
             // Category defaults
             elseif ($catId === $catDeNui->id) {
