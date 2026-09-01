@@ -291,8 +291,8 @@
 
         <!-- View All CTA -->
         <div class="text-center mt-14">
-            <a href="{{ route('menu') }}" class="inline-block px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] text-xs uppercase tracking-wider">
-                <i class="fas fa-utensils mr-2"></i> Khám phá toàn bộ thực đơn
+            <a href="{{ route('menu.board') }}" class="inline-block px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] text-xs uppercase tracking-wider">
+                <i class="fas fa-book-open mr-2"></i> Khám phá toàn bộ thực đơn
             </a>
         </div>
 

@@ -12,6 +12,22 @@
     ]
 ])
 
+<!-- Menu / Combo Switch Navigation -->
+<div class="bg-bg-primary pt-6 pb-2 border-b border-border-custom/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+        <div class="inline-flex p-1.5 bg-bg-secondary rounded-2xl border border-border-custom/50 shadow-sm">
+            <a href="{{ route('menu') }}" class="flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-primary text-white shadow-md">
+                <i class="fas fa-layer-group text-secondary"></i>
+                <span>Combo Mâm Cơm</span>
+            </a>
+            <a href="{{ route('menu.board') }}" class="flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-text-secondary hover:text-primary hover:bg-white/60">
+                <i class="fas fa-book-open text-secondary"></i>
+                <span>Xem Toàn Bộ Menu Món</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- 1. Set Menu Section (Mâm Cơm Trọn Vị) -->
 @if($setMenus->isNotEmpty())
 <section class="py-16 bg-bg-primary border-b border-border-custom/30 relative overflow-hidden">
