@@ -49,9 +49,7 @@
 
             <a href="{{ route('home') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isHome ? 'active font-bold' : 'font-semibold' }}">Trang chủ</a>
             
-            <a href="{{ route('menu') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenu ? 'active font-bold' : 'font-semibold' }}">Combo</a>
-            
-            <a href="{{ route('menu.board') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenuBoard ? 'active font-bold' : 'font-semibold' }}">Menu</a>
+            <a href="{{ route('menu') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isMenu ? 'active font-bold' : 'font-semibold' }}">Thực đơn</a>
             
             <!-- Posts Category Direct Links -->
             <a href="{{ route('posts.category', 'tin-tuc') }}" class="nav-link nav-link-item px-2.5 py-1 rounded-md transition-all duration-200 text-[13px] xl:text-[14px] 2xl:text-[15px] whitespace-nowrap {{ $isNews ? 'active font-bold' : 'font-semibold' }}">Tin tức</a>
@@ -108,9 +106,7 @@
             <nav class="px-6 py-8 flex flex-col space-y-5 bg-bg-primary">
                 <a href="{{ route('home') }}" class="nav-link block text-lg border-b pb-2 {{ $isHome ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Trang chủ</a>
                 
-                <a href="{{ route('menu') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenu ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Combo</a>
-                
-                <a href="{{ route('menu.board') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenuBoard ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Menu</a>
+                <a href="{{ route('menu') }}" class="nav-link block text-lg border-b pb-2 {{ $isMenu ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Thực đơn</a>
                 
                 <a href="{{ route('posts.category', 'tin-tuc') }}" class="nav-link block text-lg border-b pb-2 {{ $isNews ? 'text-primary font-bold border-primary' : 'text-text-secondary hover:text-primary font-semibold border-border-custom/20' }}">Tin tức</a>
                 

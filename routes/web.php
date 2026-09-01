@@ -36,8 +36,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::redirect('/ve-chung-toi', '/')->name('about');
 Route::redirect('/gioi-thieu', '/');
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/thuc-don-anh', [MenuController::class, 'menuBoard'])->name('menu.board');
+Route::get('/menu', [MenuController::class, 'menuBoard'])->name('menu');
+Route::redirect('/thuc-don-anh', '/menu')->name('menu.board');
 
 // Đặt bàn
 Route::get('/dat-ban', [BookingController::class, 'create'])->name('booking.create');

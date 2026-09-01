@@ -74,12 +74,7 @@
                     </li>
                     <li>
                         <a href="{{ route('menu') }}" class="hover:text-secondary flex items-center transition-colors">
-                            <i class="fas fa-chevron-right text-xs mr-2 text-secondary/70"></i>Combo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('menu.board') }}" class="hover:text-secondary flex items-center transition-colors">
-                            <i class="fas fa-chevron-right text-xs mr-2 text-secondary/70"></i>Menu
+                            <i class="fas fa-chevron-right text-xs mr-2 text-secondary/70"></i>Thực đơn
                         </a>
                     </li>
                     <li>

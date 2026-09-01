@@ -1,32 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Thực Đơn Tương Tác 3D - Cơm Cổ Hoa Lư')
-@section('meta_description', 'Trải nghiệm sách lật thực đơn 3D đôi cao cấp độc đáo của nhà hàng Cơm Cổ Hoa Lư. Tối ưu hóa tuyệt hảo cho máy tính và thiết bị di động.')
+@section('title', 'Thực Đơn Nhà Hàng - Cơm Cổ Hoa Lư')
+@section('meta_description', 'Khám phá toàn bộ thực đơn đặc sắc Ninh Bình: dê núi Tràng An, các combo mâm cơm gia đình truyền thống và các món ngon đồng quê tại Cơm Cổ Hoa Lư.')
 
 @section('content')
 <!-- Breadcrumb Header -->
 @include('partials.breadcrumb', [
-    'title' => 'Thực Đơn Chi Tiết',
+    'title' => 'Thực Đơn Nhà Hàng',
     'items' => [
-        ['label' => 'Thực Đơn Chi Tiết', 'url' => null]
+        ['label' => 'Thực Đơn', 'url' => null]
     ]
 ])
-
-<!-- Menu / Combo Switch Navigation -->
-<div class="bg-bg-primary pt-6 pb-2 border-b border-border-custom/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div class="inline-flex p-1.5 bg-bg-secondary rounded-2xl border border-border-custom/50 shadow-sm">
-            <a href="{{ route('menu') }}" class="flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-text-secondary hover:text-primary hover:bg-white/60">
-                <i class="fas fa-layer-group text-secondary"></i>
-                <span>Combo Mâm Cơm</span>
-            </a>
-            <a href="{{ route('menu.board') }}" class="flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-primary text-white shadow-md">
-                <i class="fas fa-book-open text-secondary"></i>
-                <span>Xem Toàn Bộ Menu Món</span>
-            </a>
-        </div>
-    </div>
-</div>
 
 <section class="py-12 bg-bg-primary relative overflow-hidden min-h-[85vh] flex flex-col justify-between text-text-primary">
     <!-- Decorative background elements -->
@@ -34,7 +18,7 @@
     
     <!-- Top Intro & Toggle -->
     <div class="max-w-7xl mx-auto px-4 text-center z-10 space-y-4">
-        <h2 class="text-2xl md:text-4xl font-serif font-bold text-primary">Thực Đơn Bản Sách Lật 3D</h2>
+        <h2 class="text-2xl md:text-4xl font-serif font-bold text-primary">Thực Đơn Toàn Bộ Món Ngon</h2>
         <div class="w-16 h-0.5 bg-secondary mx-auto"></div>
 
         <!-- Mode Switcher -->
@@ -59,38 +43,70 @@
                 <div class="book" id="book-3d-desktop">
                     
                     <!-- Cover Page / Sheet 1 -->
-                    <div class="paper-sheet z-[30]" id="dsheet1">
+                    <div class="paper-sheet z-[50]" id="dsheet1">
                         <!-- Front (Bìa Menu - Page 1) -->
                         <div class="page-face front-face">
                             <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Thực Đơn" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
                         </div>
-                        <!-- Back (Khai vị - Page 2) -->
+                        <!-- Back (Trang 2: Đặc sản dê núi) -->
                         <div class="page-face back-face">
-                            <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai vị" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi Ninh Bình" class="w-full h-full object-fill">
                             <div class="page-overlay-glow shadow-left"></div>
                         </div>
                     </div>
 
-                    <!-- Page 3 & 4 / Sheet 2 -->
-                    <div class="paper-sheet z-[20]" id="dsheet2">
-                        <!-- Front (Dê núi Ninh Bình - Page 3) -->
+                    <!-- Sheet 2 -->
+                    <div class="paper-sheet z-[40]" id="dsheet2">
+                        <!-- Front (Trang 3: Combo 200k) -->
                         <div class="page-face front-face">
-                            <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Dê Núi" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người/bàn 6" class="w-full h-full object-fill">
                             <div class="page-overlay-glow"></div>
                         </div>
-                        <!-- Back (Món Cá - Page 4) -->
+                        <!-- Back (Trang 4: Combo 150k) -->
                         <div class="page-face back-face">
-                            <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món Cá" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người/bàn 6" class="w-full h-full object-fill">
                             <div class="page-overlay-glow shadow-left"></div>
                         </div>
                     </div>
 
-                    <!-- Page 5 / Sheet 3 -->
-                    <div class="paper-sheet z-[10]" id="dsheet3">
-                        <!-- Front (Món Gà - Page 5) -->
+                    <!-- Sheet 3 -->
+                    <div class="paper-sheet z-[30]" id="dsheet3">
+                        <!-- Front (Trang 5: Combo 250k) -->
                         <div class="page-face front-face">
-                            <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món Gà" class="w-full h-full object-fill">
+                            <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người/bàn 6" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow"></div>
+                        </div>
+                        <!-- Back (Trang 6: Khai Vị - Bò - Hải Sản) -->
+                        <div class="page-face back-face">
+                            <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow shadow-left"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sheet 4 -->
+                    <div class="paper-sheet z-[20]" id="dsheet4">
+                        <!-- Front (Trang 7: Món Cá - Tôm - Cua) -->
+                        <div class="page-face front-face">
+                            <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món Cá - Tôm - Cua" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow"></div>
+                        </div>
+                        <!-- Back (Trang 8: Món Gà - Thịt Lợn) -->
+                        <div class="page-face back-face">
+                            <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món Gà - Thịt Lợn" class="w-full h-full object-fill">
+                            <div class="page-overlay-glow shadow-left"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sheet 5: Back Cover -->
+                    <div class="paper-sheet z-[10]" id="dsheet5">
+                        <!-- Front -->
+                        <div class="page-face front-face bg-[#1f1610] flex flex-col items-center justify-center p-6 border-l border-white/5 text-center">
+                            <div class="w-24 h-24 rounded-full border-2 border-secondary/30 flex items-center justify-center mb-4 bg-black/40">
+                                <i class="fas fa-utensils text-3xl text-secondary"></i>
+                            </div>
+                            <h4 class="font-serif font-bold text-lg text-secondary">Cơm Cổ Hoa Lư</h4>
+                            <p class="text-[10px] text-white/40 mt-1 uppercase tracking-widest">Ninh Bình Quán</p>
                             <div class="page-overlay-glow"></div>
                         </div>
                         <!-- Back (Leather Back Cover) -->
@@ -111,31 +127,40 @@
         <!-- B. MOBILE SINGLE-PAGE VIEW (Shown on < 640px) -->
         <div class="flex sm:hidden w-full max-w-[340px] px-4 items-center justify-center">
             <div class="relative w-full aspect-[3/4.2] bg-white rounded-xl shadow-2xl border-4 border-amber-900/30 overflow-hidden" id="book-3d-mobile-container">
-                <!-- Leather spine spine visual on left -->
+                <!-- Leather spine visual on left -->
                 <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-amber-950 via-amber-900 to-transparent z-30 opacity-70"></div>
                 
                 <!-- Stack of Pages -->
                 <div class="relative w-full h-full" id="mobile-pages-stack">
                     <div class="mobile-page active-page" data-idx="1">
-                        <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Trang 1" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Trang 1: Bìa Menu" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="2">
-                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 2" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 2: Đặc Sản Dê Núi" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="3">
-                        <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Trang 3" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Trang 3: Combo 200k" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="4">
-                        <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 4" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Trang 4: Combo 150k" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                     <div class="mobile-page" data-idx="5">
-                        <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 5" class="w-full h-full object-fill" onclick="mobileNext()">
+                        <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Trang 5: Combo 250k" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page" data-idx="6">
+                        <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Trang 6: Khai Vị - Bò - Hải Sản" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page" data-idx="7">
+                        <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Trang 7: Món Cá - Tôm - Cua" class="w-full h-full object-fill" onclick="mobileNext()">
+                    </div>
+                    <div class="mobile-page" data-idx="8">
+                        <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Trang 8: Món Gà - Thịt Lợn" class="w-full h-full object-fill" onclick="mobileNext()">
                     </div>
                 </div>
 
                 <!-- Page Number Tag for Mobile -->
                 <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md z-30 font-semibold" id="mobile-page-indicator">
-                    Trang 1 / 5
+                    Trang 1 / 8
                 </div>
             </div>
         </div>
@@ -151,6 +176,7 @@
                     <span onclick="handleJump(1)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
                     <span onclick="handleJump(2)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
                     <span onclick="handleJump(3)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
+                    <span onclick="handleJump(4)" class="w-2 h-2 rounded-full bg-border-custom/85 cursor-pointer transition-all duration-300 hover:bg-primary/50"></span>
                 </div>
                 <button onclick="handleNext()" class="px-5 py-2.5 rounded-full bg-white hover:bg-primary hover:text-white border border-border-custom flex items-center justify-center text-text-primary transition-all shadow-xs focus:outline-none text-xs font-bold uppercase tracking-wider">
                     Trang Sau <i class="fas fa-chevron-right ml-2"></i>
@@ -159,16 +185,16 @@
 
             <p class="text-text-secondary/70 text-[10px] sm:text-xs text-center flex items-center gap-1.5 px-4">
                 <i class="fas fa-hand-pointer text-primary/70"></i>
-                <span class="hidden sm:inline">Nhấp vào trang sách để lật trang hoặc vuốt ngang trên màn hình điện thoại</span>
+                <span class="hidden sm:inline">Nhấp vào trang sách để lật trang hoặc vuốt ngang trên màn hình</span>
                 <span class="inline sm:hidden">Chạm vào trang sách để lật hoặc vuốt ngang màn hình</span>
             </p>
         </div>
     </div>
 
-    <!-- ======================= 2. MODE: DANG LUOI (UNCROPPED) ======================= -->
-    <div id="view-mode-grid" class="hidden max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-8 z-10">
+    <!-- ======================= 2. MODE: DẠNG LƯỚI (UNCROPPED) ======================= -->
+    <div id="view-mode-grid" class="hidden max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 my-8 z-10">
         
-        <!-- 1. Cover Page -->
+        <!-- 1. Bìa Thực Đơn -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_3.jpg') }}')">
                 <img src="{{ asset('images/menu/media_3.jpg') }}" alt="Bìa Menu" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -181,33 +207,72 @@
             <h3 class="font-serif font-bold text-sm text-primary">Trang 1: Bìa Thực Đơn</h3>
         </div>
 
-        <!-- 2. Khai Vị -->
-        <div class="space-y-3 text-center">
-            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
-                <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
-                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
-                    </span>
-                </div>
-            </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Khai Vị - Bò - Hải Sản</h3>
-        </div>
-
-        <!-- 3. Dê Núi -->
+        <!-- 2. Đặc Sản Dê Núi -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_1.jpg') }}')">
-                <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <img src="{{ asset('images/menu/media_1.jpg') }}" alt="Đặc sản dê núi" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Đặc Sản Dê Núi</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 2: Đặc Sản Dê Núi</h3>
         </div>
 
-        <!-- 4. Món Cá -->
+        <!-- 3. Combo 200k -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-200k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-200k.jpg') }}" alt="Combo 200k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 3: Combo 200K (Bàn 6)</h3>
+        </div>
+
+        <!-- 4. Combo 150k -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-150k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-150k.jpg') }}" alt="Combo 150k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Combo 150K (Bàn 6)</h3>
+        </div>
+
+        <!-- 5. Combo 250k -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/set-menus/set-250k.jpg') }}')">
+                <img src="{{ asset('images/set-menus/set-250k.jpg') }}" alt="Combo 250k/người" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to combo
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Combo 250K (Bàn 6)</h3>
+        </div>
+
+        <!-- 6. Khai Vị -->
+        <div class="space-y-3 text-center">
+            <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_4.jpg') }}')">
+                <img src="{{ asset('images/menu/media_4.jpg') }}" alt="Khai Vị - Món Bò - Hải Sản" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
+                        <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 6: Khai Vị - Bò - Hải Sản</h3>
+        </div>
+
+        <!-- 7. Món Cá -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_2.jpg') }}')">
                 <img src="{{ asset('images/menu/media_2.jpg') }}" alt="Món cá" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
@@ -217,20 +282,20 @@
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 4: Món Cá - Tôm - Cua</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 7: Món Cá - Tôm - Cua</h3>
         </div>
 
-        <!-- 5. Món Lợn Gà -->
+        <!-- 8. Món Lợn Gà -->
         <div class="space-y-3 text-center">
             <div class="relative rounded-xl overflow-hidden border border-border-custom/40 bg-[#1a1410] shadow-md hover:border-primary/40 transition-all duration-300 group cursor-zoom-in" onclick="openZoom('{{ asset('images/menu/media_5.jpg') }}')">
-                <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Gà lợn" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
+                <img src="{{ asset('images/menu/media_5.jpg') }}" alt="Món gà lợn" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-102">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span class="px-3.5 py-2 bg-primary text-white text-[11px] font-bold rounded-lg shadow-md">
                         <i class="fas fa-search-plus mr-1.5"></i> Phóng to thực đơn
                     </span>
                 </div>
             </div>
-            <h3 class="font-serif font-bold text-sm text-primary">Trang 5: Món Gà - Thịt Lợn</h3>
+            <h3 class="font-serif font-bold text-sm text-primary">Trang 8: Món Gà - Thịt Lợn</h3>
         </div>
 
     </div>
@@ -376,7 +441,9 @@
     const dsheets = [
         document.getElementById('dsheet1'),
         document.getElementById('dsheet2'),
-        document.getElementById('dsheet3')
+        document.getElementById('dsheet3'),
+        document.getElementById('dsheet4'),
+        document.getElementById('dsheet5')
     ];
     let dCurrentIndex = 0; 
     const totalDSheets = dsheets.length;
@@ -384,7 +451,7 @@
     function flipForwardDesktop() {
         if (dCurrentIndex < totalDSheets) {
             dsheets[dCurrentIndex].classList.add('flipped');
-            dsheets[dCurrentIndex].style.zIndex = 30 + dCurrentIndex;
+            dsheets[dCurrentIndex].style.zIndex = 50 + dCurrentIndex;
             dCurrentIndex++;
             updateDots();
         }
@@ -394,24 +461,26 @@
         if (dCurrentIndex > 0) {
             dCurrentIndex--;
             dsheets[dCurrentIndex].classList.remove('flipped');
-            dsheets[dCurrentIndex].style.zIndex = 30 - dCurrentIndex;
+            dsheets[dCurrentIndex].style.zIndex = 50 - dCurrentIndex;
             updateDots();
         }
     }
 
     dsheets.forEach((sheet, idx) => {
-        sheet.addEventListener('click', function(e) {
-            if (sheet.classList.contains('flipped')) {
-                flipBackDesktop();
-            } else {
-                flipForwardDesktop();
-            }
-        });
+        if (sheet) {
+            sheet.addEventListener('click', function(e) {
+                if (sheet.classList.contains('flipped')) {
+                    flipBackDesktop();
+                } else {
+                    flipForwardDesktop();
+                }
+            });
+        }
     });
 
     // ─── B. MOBILE BOOK LOGIC ───
     let mCurrentPage = 1;
-    const totalMPages = 5;
+    const totalMPages = 8;
     let isTransitioningMobile = false;
 
     function mobileNext() {
@@ -423,9 +492,9 @@
         const nextEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
 
         // Turn current page away
-        currentEl.className = "mobile-page turned-page";
+        if (currentEl) currentEl.className = "mobile-page turned-page";
         // Activate next page
-        nextEl.className = "mobile-page active-page";
+        if (nextEl) nextEl.className = "mobile-page active-page";
         
         setTimeout(() => {
             updateIndicatorsMobile();
@@ -442,9 +511,9 @@
         const prevEl = document.querySelector(`.mobile-page[data-idx="${mCurrentPage}"]`);
 
         // Reset current page to unreached stack state
-        currentEl.className = "mobile-page";
+        if (currentEl) currentEl.className = "mobile-page";
         // Turn prev page back to active front face
-        prevEl.className = "mobile-page active-page";
+        if (prevEl) prevEl.className = "mobile-page active-page";
 
         setTimeout(() => {
             updateIndicatorsMobile();
@@ -453,7 +522,8 @@
     }
 
     function updateIndicatorsMobile() {
-        document.getElementById('mobile-page-indicator').innerText = `Trang ${mCurrentPage} / ${totalMPages}`;
+        const ind = document.getElementById('mobile-page-indicator');
+        if (ind) ind.innerText = `Trang ${mCurrentPage} / ${totalMPages}`;
         updateDots();
     }
 
@@ -479,8 +549,6 @@
     }
 
     // ─── C. GLOBAL CONTROL SYNC ───
-    
-    // Determine screen type
     function isMobileScreen() {
         return window.innerWidth < 640;
     }
@@ -503,8 +571,7 @@
 
     function handleJump(targetIndex) {
         if (isMobileScreen()) {
-            // Mobile Page Jump (targetIndex ranges from 0 to 3, map to page 1 to 5)
-            const targetPage = targetIndex + 1;
+            const targetPage = Math.min(Math.floor((targetIndex / (dsheets.length - 1)) * (totalMPages - 1)) + 1, totalMPages);
             if (targetPage === mCurrentPage || isTransitioningMobile) return;
 
             if (targetPage > mCurrentPage) {
@@ -535,7 +602,7 @@
 
     function updateDots() {
         const dots = document.querySelectorAll('#flipbook-dots span');
-        const activeIndex = isMobileScreen() ? (mCurrentPage - 1) : dCurrentIndex;
+        const activeIndex = isMobileScreen() ? Math.min(Math.floor((mCurrentPage - 1) / 2), dots.length - 1) : dCurrentIndex;
         
         dots.forEach((dot, idx) => {
             if (idx === activeIndex) {
@@ -605,11 +672,14 @@
     }
 
     // Close when clicking backdrop outside image
-    document.getElementById('lightbox-modal').addEventListener('click', function(e) {
-        if (e.target === this || e.target.classList.contains('flex-grow')) {
-            closeZoom();
-        }
-    });
+    const lbModal = document.getElementById('lightbox-modal');
+    if (lbModal) {
+        lbModal.addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('flex-grow')) {
+                closeZoom();
+            }
+        });
+    }
 
     // Auto update dot index when switching view modes/resizing
     window.addEventListener('resize', updateDots);
